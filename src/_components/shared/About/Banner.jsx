@@ -1,0 +1,24 @@
+import React from "react";
+import ParaGraph from "./ParaGraph";
+
+export default function Banner({ title, description, style }) {
+  return (
+    <div
+      className="hero h-full "
+      style={{
+        backgroundImage:
+          "url(https://pfecglobal.com.bd/wp-content/uploads/2023/08/How-Education-Consultants-Can-Help.jpg)",
+      }}
+    >
+      <div className="hero-overlay bg-opacity-60 bg-black "></div>
+      <div className="hero-content text-neutral-content  flex justify-start w-full px-5 md:px-16">
+        <div className="max-w-4xl ml-0 py-28 pb-20  text-start ">
+          <div>
+            <h1 className={`mb-5 md:text-5xl text-3xl font-bold poppins-bold capitalize`}>{title}</h1>
+            <ParaGraph description={description} style={style}/>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
