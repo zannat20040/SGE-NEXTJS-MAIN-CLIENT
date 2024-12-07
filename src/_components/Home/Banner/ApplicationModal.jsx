@@ -269,7 +269,7 @@ export default function ApplicationModal() {
                 color="blue-gray"
                 className="mb-2 text-left font-medium"
               >
-                Select Study Intakr
+                Select Study Intake
               </Typography>
               <select
                 defaultValue={""}
