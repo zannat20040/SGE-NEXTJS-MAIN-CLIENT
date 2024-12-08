@@ -1,7 +1,10 @@
-// pages/form.js
 "use client";
 
+import axios from "axios";
+import { Slide, toast } from "react-toastify";
+
 export default function CreateBlogs() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,23 +19,52 @@ export default function CreateBlogs() {
       category: e.target.category.value,
       readingTime: e.target.readingTime.value,
       img: e.target.img.value,
+      description: e.target.description.value,
       date: new Date().toISOString(), // Auto-generate date
     };
 
     console.log("Form Submitted Data:", formData);
 
-    // Send data to an API endpoint
-    // const response = await fetch("/api/submitForm", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
+    // console.log(data);
+    try {
+      // Make sure to pass 'data' in the request body
+      await axios.post(`${apiUrl}/blog/createBlog`, formData);
+      console.log("sucess");
+      // console.log("Data submitted successfully");
+      toast.success("Your blog posted successfully.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+        style: { zIndex: 999999999 },
+      });
+    } catch (error) {
+      console.log("Error submitting the form:", error.response.data.errors[0]);
+      let errMessage = "An unknown error occurred"; // Default message
+      if (error.response && error.response.data && error.response.data.errors) {
+        errMessage = error.response.data.errors[0] || "An error occurred";
+      } else {
+        errMessage = error.message || errMessage;
+      }
 
-    // if (response.ok) {
-    //   alert("Form submitted successfully!");
-    // } else {
-    //   alert("Failed to submit form.");
-    // }
+      toast.error(errMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+        style: { zIndex: 999999999 },
+      });
+    }
   };
 
   return (
@@ -53,7 +85,7 @@ export default function CreateBlogs() {
               id="title"
               name="title"
               className="block w-full border border-gray-300 rounded-md py-2 px-3"
-              required
+              // required
             />
           </div>
           <div>
@@ -73,7 +105,6 @@ export default function CreateBlogs() {
           </div>
         </div>
 
-        {/* Description (Rich Text Editor) */}
         <div>
           <label
             htmlFor="description"
@@ -81,7 +112,13 @@ export default function CreateBlogs() {
           >
             Description
           </label>
-     
+          <input
+            type="text"
+            id="description"
+            name="description"
+            className="block w-full border border-gray-300 rounded-md py-2 px-3"
+            required
+          />
         </div>
 
         {/* Image Link */}
@@ -93,7 +130,7 @@ export default function CreateBlogs() {
             Image (Link)
           </label>
           <input
-            type="text"
+            type="url"
             id="img"
             name="img"
             className="block w-full border border-gray-300 rounded-md py-2 px-3"
