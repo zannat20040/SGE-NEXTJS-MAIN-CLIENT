@@ -1,8 +1,38 @@
+"use client";
 import "./Blogs_Cards.css";
 import Image from "next/image";
 import Link from "next/link";
-import data from '../../../assets/json/blogData.json'
+import data from "../../../assets/json/blogData.json";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const Blogs_Cards = () => {
+  // const [blogs, setBlogs] = useState([]); // State to store blog data
+  const [loading, setLoading] = useState(true); // State to manage loading status
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const [blogs, setBlogs] = useState<Blog[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Function to fetch the blog data from API
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/blog/getAllBlogs`);
+        setBlogs(response.data.blogs);
+      } catch (err) {
+        setError("Failed to load blogs");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  console.log(blogs);
   return (
     <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 my-5 bg-[#FFF] mt-32">
       <div className="hidden md:block px-4">
@@ -79,20 +109,26 @@ const Blogs_Cards = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10 ">
-        {data.map((item) => (
-            <div key={item.id} className="group">
+          {blogs?.map((item) => (
+            <div key={item?.id} className="group">
               <div className="shadow-xl rounded-[16px] flex flex-col h-full group-hover:bg-[#081831] duration-300">
-                <Image width={100} height={100} src={item.image} alt="" className="h-[220px] w-full" />
+                <Image
+                  width={100}
+                  height={100}
+                  src={item?.img}
+                  alt=""
+                  className="h-[220px] w-full"
+                />
                 <div className="p-4 pb-4 flex flex-col justify-between flex-grow">
                   <div>
                     <p className="inline-block w-fit px-2 py-[2px] text-[#FF8156] text-xs bg-[#FFF2EE] rounded mb-2">
-                      {item.category}
+                      {item?.category}
                     </p>
                     <p className="mb-2 text-black font-bold group-hover:text-white !mt-0 flex-grow">
-                      {item.title}
+                      {item?.title}
                     </p>
                     <p className="group-hover:text-white !mt-0">
-                      {item.description.slice(0, 150)}...
+                      {item?.description.slice(0, 150)}...
                     </p>
                   </div>
                   <Link href={"/singleBlog"}>
@@ -105,12 +141,9 @@ const Blogs_Cards = () => {
             </div>
           ))}
         </div>
-         
       </div>
     </div>
   );
 };
 
 export default Blogs_Cards;
-
-
