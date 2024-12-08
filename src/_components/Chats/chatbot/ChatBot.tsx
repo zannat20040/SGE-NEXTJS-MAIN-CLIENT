@@ -54,7 +54,6 @@ const ChatBot = ({chatHover, showChat, setShowChat}:{chatHover:boolean, showChat
               setClientMessage("");
               if (rest.status == 200) {
                 refetch();
-                console.log('fetched client message')
                 axiosPublic
                   .patch(`/chats/${token}`, {
                     botResponse: res.data,
