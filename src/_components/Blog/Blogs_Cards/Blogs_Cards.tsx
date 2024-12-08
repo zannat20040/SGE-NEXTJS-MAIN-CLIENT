@@ -8,8 +8,8 @@ import axios from "axios";
 
 const Blogs_Cards = () => {
   // const [blogs, setBlogs] = useState([]); // State to store blog data
-  const [loading, setLoading] = useState(true); // State to manage loading status
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const [loading, setLoading] = useState(true); // State to manage loading status
   const [blogs, setBlogs] = useState<Blog[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
