@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/_components/shared/SingleUniversity/SingleUniversity.jsx", "src/app/pages/singleUniversity/[Name]/page.jsx"  ],
+, "src/_components/shared/SingleUniversity/SingleUniversity.jsx", "src/app/pages/singleUniversity/[Name]/page.jsx", "src/app/layout.tsx", "src/app/admin/layout.jsx"   ],
   "exclude": [
     "node_modules"
   ]

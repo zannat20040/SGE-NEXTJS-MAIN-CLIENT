@@ -40,7 +40,7 @@ export default function EnquireModal() {
     try {
       // Make sure to pass 'data' in the request body
       await axios.post(`${apiUrl}/enquire`, data);
-      console.log("Data submitted successfully");
+      // console.log("Data submitted successfully");
       toast.success(
         "Your enquiry submitted successfully. We will contact with you very soon",
         {

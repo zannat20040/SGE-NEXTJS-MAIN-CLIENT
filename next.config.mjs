@@ -3,7 +3,6 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: "/comingSoon", destination: "/pages/comingSoon" },
-      { source: "/admin", destination: "/pages/comingSoon" },
       { source: "/services", destination: "/pages/services" },
       { source: "/contact", destination: "/pages/contactUs" },
       { source: "/about", destination: "/pages/aboutUs" },

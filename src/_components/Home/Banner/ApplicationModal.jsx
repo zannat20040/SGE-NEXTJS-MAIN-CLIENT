@@ -46,7 +46,7 @@ export default function ApplicationModal() {
     try {
       // Make sure to pass 'data' in the request body
       await axios.post(`${apiUrl}/apply`, data);
-      console.log("Data submitted successfully");
+      // console.log("Data submitted successfully");
       toast.success("Your application submitted successfully", {
         position: "bottom-right",
         autoClose: 5000,
