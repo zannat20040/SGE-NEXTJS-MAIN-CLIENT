@@ -3,10 +3,9 @@
 import { use, useEffect, useState } from "react";
 import axios from "axios";
 import Blog_BlogInbox from "@/_components/Blog/Blog_BlogInbox/Blog_BlogInbox";
-import BlogSingle_Banner from "@/_components/Blog/BlogSingle_Banner/BlogSingle_Banner";
 import BlogSingle from "@/_components/Blog/Blogs_Component/BlogSingle";
+import BlogSingle_Banner from "@/_components/Blog/BlogSingle_Banner/BlogSingle_Banner";
 import Latest_Blogs from "@/_components/Blog/Latest_Blogs";
-import Head from "next/head";
 
 const Page = ({ params }) => {
   const resolvedParams = use(params); // Unwrap the Promise
@@ -36,15 +35,14 @@ const Page = ({ params }) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-
-  console.log(blog)
+  console.log(blog);
 
   return (
     <div className="font-poppins">
-      <Head>
+      {/* <Head>
         <title>{blog?.pageTitle || "Blog"} - My Blog Site</title>
-      </Head>
-      <BlogSingle_Banner />
+      </Head> */}
+      <BlogSingle_Banner blog={blog} />
       <BlogSingle blog={blog} />
       <Blog_BlogInbox />
       <Latest_Blogs />

@@ -2,18 +2,17 @@ import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa6";
 
 const BlogSingle = ({ blog }) => {
-  console.log("==========>", blog);
   const {
     title,
-    subtitle,
-    routeName,
-    readingTime,
-    pageTitle,
-    img,
+    // subtitle,
+    // routeName,
+    // readingTime,
+    // pageTitle,
+    // img,
     description,
-    date,
-    createdBy,
-    category,
+    // date,
+    // createdBy,
+    // category,
   } = blog;
 
   const Header = ({ title }) => {

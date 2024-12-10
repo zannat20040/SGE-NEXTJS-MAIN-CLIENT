@@ -1,17 +1,35 @@
 import Image from "next/image";
+import React from "react";
 import "./BlogSingle_Banner.css";
 
-const BlogSingle_Banner = () => {
+export default function BlogSingle_Banner({ blog }) {
+  const {
+    title,
+    subtitle,
+    routeName,
+    readingTime,
+    pageTitle,
+    img,
+    description,
+    date,
+    createdBy,
+    category,
+  } = blog;
+
+  const convertDate = (isoDate) => {
+    const date = new Date(isoDate); // Parse the ISO date string
+    const options = { year: "numeric", month: "long", day: "2-digit" }; // Format options
+    return date.toLocaleDateString("en-US", options); // Convert to desired format
+  };
+
   return (
     <div className="blog-single-bg">
       <div className="max-w-[1152px] mx-auto relative px-10 lg:mb-[434px] md:mb-[200px] mb-[130px]">
         <h2 className="poppins-semibold lg:text-[40px] lg:w-[691px] text-[28px] leading-[56px] -tracking-[0.02] text-white lg:text-left text-center pt-[63px] pb-[32px]">
-          Choosing the Right UK University and Course: Factors to Consider
+          {title}
         </h2>
         <div className="flex items-center gap-[10px] pb-1 lg:justify-start justify-center flex-wrap">
-          <p className="poppins-regular text-[14px]  text-white">
-            Study in The UK
-          </p>
+          <p className="poppins-regular text-[14px]  text-white">{subtitle}</p>
           <div className="gap-2 flex items-center ">
             <svg
               width="9"
@@ -23,7 +41,7 @@ const BlogSingle_Banner = () => {
               <circle cx="4.04883" cy="4.81274" r="4" fill="#88F3D0" />
             </svg>
             <p className="poppins-regular text-[14px]  text-white">
-              January 07, 2024 by Kelvin Abdul Kareem Jones
+              {convertDate(date)} by {createdBy}
             </p>
           </div>
         </div>
@@ -41,12 +59,15 @@ const BlogSingle_Banner = () => {
             />
           </svg>
           <p className="poppins-regular text-[14px]  text-white">
-            10 minutes of reading time
+            {readingTime} minutes of reading time
           </p>
         </div>
         <div className="absolute lg:-bottom-[28rem] md:-bottom-[20rem] sm:-bottom-[12rem] -bottom-[8rem]  left-0 right-0 mx-auto px-5">
-          <Image width={100} height={100} className="w-auto h-auto"
-            src="https://i.ibb.co.com/HCdfPYW/blogsingle-Banner.png"
+          <Image
+            width={100}
+            height={100}
+            className="w-full h-auto shadow rounded-xl"
+            src={img}
             alt=""
           />
           <div className="mt-5">
@@ -124,6 +145,4 @@ const BlogSingle_Banner = () => {
       </div>
     </div>
   );
-};
-
-export default BlogSingle_Banner;
+}
