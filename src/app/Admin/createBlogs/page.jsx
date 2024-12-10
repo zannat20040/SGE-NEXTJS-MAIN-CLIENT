@@ -8,29 +8,29 @@ export default function CreateBlogs() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Collect form data
     const formData = {
       title: e.target.title.value,
       subtitle: e.target.subtitle.value,
       pageTitle: e.target.pageTitle.value,
-      routeName: e.target.routeName.value,
+      url: e.target.url.value,
       createdBy: e.target.createdBy.value,
       category: e.target.category.value,
       readingTime: e.target.readingTime.value,
       img: e.target.img.value,
       description: e.target.description.value,
+      metaDescription: e.target.meta.value,
       date: new Date().toISOString(), // Auto-generate date
     };
-
+  
     console.log("Form Submitted Data:", formData);
-
-    // console.log(data);
+  
     try {
       // Make sure to pass 'data' in the request body
       await axios.post(`${apiUrl}/blog/createBlog`, formData);
-      console.log("sucess");
-      // console.log("Data submitted successfully");
+      console.log("success");
+  
       toast.success("Your blog posted successfully.", {
         position: "bottom-right",
         autoClose: 5000,
@@ -44,14 +44,25 @@ export default function CreateBlogs() {
         style: { zIndex: 999999999 },
       });
     } catch (error) {
-      console.log("Error submitting the form:", error.response.data.errors[0]);
       let errMessage = "An unknown error occurred"; // Default message
-      if (error.response && error.response.data && error.response.data.errors) {
-        errMessage = error.response.data.errors[0] || "An error occurred";
+  
+      if (error.response) {
+        // Check if error.response and error.response.data exist
+        const errorData = error.response.data;
+  
+        if (errorData.errors && errorData.errors.length > 0) {
+          // If errors array is available and not empty, get the first error message
+          errMessage = errorData.errors.join(", ");
+        } else {
+          // Handle other 400 errors with specific message
+          errMessage = errorData.message || "Something went wrong. Please try again.";
+        }
       } else {
+        // If no response data, fallback to error.message
         errMessage = error.message || errMessage;
       }
-
+  
+      // Show the error message as a toast
       toast.error(errMessage, {
         position: "bottom-right",
         autoClose: 5000,
@@ -66,6 +77,7 @@ export default function CreateBlogs() {
       });
     }
   };
+  
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 shadow-lg rounded-lg">
@@ -121,6 +133,22 @@ export default function CreateBlogs() {
           />
         </div>
 
+        <div>
+          <label
+            htmlFor="meta"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Meta Description
+          </label>
+          <input
+            type="text"
+            id="meta"
+            name="meta"
+            className="block w-full border border-gray-300 rounded-md py-2 px-3"
+            required
+          />
+        </div>
+
         {/* Image Link */}
         <div>
           <label
@@ -157,15 +185,15 @@ export default function CreateBlogs() {
           </div>
           <div>
             <label
-              htmlFor="routeName"
+              htmlFor="url"
               className="block text-sm font-medium text-gray-700"
             >
-              Route Name
+              URL
             </label>
             <input
               type="text"
-              id="routeName"
-              name="routeName"
+              id="url"
+              name="url"
               className="block w-full border border-gray-300 rounded-md py-2 px-3"
               required
             />

@@ -18,7 +18,7 @@ const nextConfig = {
       { source: "/events", destination: "/pages/events" },
       { source: "/singleEvent", destination: "/pages/singleEvent" },
       { source: "/blogs", destination: "/pages/blogs" },
-      { source: "/singleBlog/:id", destination: "/pages/singleBlog/:id" },
+      { source: "/:slug", destination: "/pages/:slug" },
       {
         source: "/personalizedUniversity",
         destination: "/pages/ServicesPages/personalizedUniversity",
