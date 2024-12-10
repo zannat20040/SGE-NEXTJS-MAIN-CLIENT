@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa6";
 
-const BlogSingle = ({blog}) => {
+const BlogSingle = ({ id }) => {
 
-  const Header = ({ title }:{title:string}) => {
+  const Header = ({ title }: { title: string }) => {
     return <h2 className="text-xl font-semibold">{title}</h2>;
   };
-  const Text = ({ text }:{text:string}) => {
+  const Text = ({ text }: { text: string }) => {
     return <p className=" ">{text}</p>;
   };
-  const Label = ({ text }:{text:string}) => {
+  const Label = ({ text }: { text: string }) => {
     return (
       <p className=" font-medium">
         {text}
@@ -17,7 +17,7 @@ const BlogSingle = ({blog}) => {
       </p>
     );
   };
-  const Input = ({ text, type }:{text:string, type:string}) => {
+  const Input = ({ text, type }: { text: string; type: string }) => {
     return (
       <input
         className="overscroll-none border-[1px] hover:border-[#3b82f6] cursor-pointer w-full p-1 placeholder:text-xs placeholder:text-gray-300 focus:outline-[#3b82f6] "
@@ -27,10 +27,16 @@ const BlogSingle = ({blog}) => {
     );
   };
 
-  const Card = ({ img, title }:{img:string, title:string}) => {
+  const Card = ({ img, title }: { img: string; title: string }) => {
     return (
       <div className="space-y-2  lg:w-full sm:w-[48%] w-full  shadow-2xl rounded-2xl  h-max !mt-0">
-        <Image width={100} height={100} src={img} alt="" className="w-full h-auto" />
+        <Image
+          width={100}
+          height={100}
+          src={img}
+          alt=""
+          className="w-full h-auto"
+        />
         <div className="p-5">
           <div className="bg-[#fff2ee] w-fit p-2 text-xs text-[#ff8156] rounded-sm">
             Networking
@@ -221,7 +227,13 @@ const BlogSingle = ({blog}) => {
                 <Label text="Phone Number" />
                 <div className="flex items-center gap-5 text-gray-300 text-xs">
                   <span className="flex p-2 border-[1px]">
-                    <Image width={100} height={100} className="w-auto h-auto" src='https://i.ibb.co.com/QjQfzT1/contents.png' alt="" />
+                    <Image
+                      width={100}
+                      height={100}
+                      className="w-auto h-auto"
+                      src="https://i.ibb.co.com/QjQfzT1/contents.png"
+                      alt=""
+                    />
                     <p className="pr-2">+880</p>
                   </span>
                   <Input text="1891123654" type="text" />
@@ -298,7 +310,13 @@ const BlogSingle = ({blog}) => {
 
           <div className="my-10">
             <div className="flex items-center">
-              <Image width={100} height={100} className="w-auto h-auto" src='https://i.ibb.co.com/0tWWKrV/Category-1-Plus.png' alt="" />
+              <Image
+                width={100}
+                height={100}
+                className="w-auto h-auto"
+                src="https://i.ibb.co.com/0tWWKrV/Category-1-Plus.png"
+                alt=""
+              />
               <p className="font-semibold">Category</p>
             </div>
             <ul className="space-y-1 my-1">
@@ -318,18 +336,18 @@ const BlogSingle = ({blog}) => {
             </ul>
           </div>
 
-            <h2 className="font-semibold text-md mb-3">Related Blogs</h2>
+          <h2 className="font-semibold text-md mb-3">Related Blogs</h2>
           <div className="space-y-5 flex flex-wrap gap-5 justify-between w-full ">
             <Card
-              img='https://i.ibb.co.com/pfHGbFK/Rectangle-191.png'
+              img="https://i.ibb.co.com/pfHGbFK/Rectangle-191.png"
               title={`Networking in University: A Shabuj Global ${`Student's`} Guide`}
             />
             <Card
-              img='https://i.ibb.co.com/D15Vx5q/Rectangle-192.png'
+              img="https://i.ibb.co.com/D15Vx5q/Rectangle-192.png"
               title={`University Networking: Guide for Global Students by Shabuj`}
             />
             <Card
-              img='https://i.ibb.co.com/pfHGbFK/Rectangle-191.png'
+              img="https://i.ibb.co.com/pfHGbFK/Rectangle-191.png"
               title={`Networking in University: A Shabuj Global Student's Guide`}
             />
           </div>

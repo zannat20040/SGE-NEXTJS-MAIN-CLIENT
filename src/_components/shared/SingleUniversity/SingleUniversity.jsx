@@ -7,23 +7,7 @@ import Single_University_Check from "./Single_University_Check";
 import Single_University_Info from "./Single_University_Info";
 import Single_University_Form from "./Single_University_Form";
 
-// interface University {
-//   Name: string | null;
-//   Overview: string | number | null;
-//   History: string | number | null;
-//   "Ranking & Achievement": string | number | null;
-//   courses: string | number | null;
-//   "Department & Faculty": string | number | null;
-//   Fee: string | number | null;
-//   Services: number | string | null;
-//   Accommodation: number | string | null;
-//   established: number | string | null;
-//   rank: number | string | null;
-//   location: string | number | null;
-//   "international student": number | string | null;
-//   country: string | number | null;
-//   logo: string | null;
-// }
+
 
 const SingleUniversity = ({ Name }) => {
   const [selectedUniversity, setSelectedUniversity] = useState(null);

@@ -107,7 +107,7 @@ const Blogs_Cards = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10 ">
           {blogs?.map((item) => (
-            <div key={item?.id} className="group">
+            <div key={item?._id} className="group">
               <div className="shadow-xl rounded-[16px] flex flex-col h-full group-hover:bg-[#081831] duration-300">
                 <Image
                   width={100}
