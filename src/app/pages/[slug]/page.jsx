@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import axios from "axios";
 import Blog_BlogInbox from "@/_components/Blog/Blog_BlogInbox/Blog_BlogInbox";
 import BlogSingle from "@/_components/Blog/Blogs_Component/BlogSingle";
@@ -8,7 +8,7 @@ import Latest_Blogs from "@/_components/Blog/Latest_Blogs";
 
 const Page = ({ params }) => {
   // Use React.use() to unwrap the params object
-  const { slug } = params;  // No need to use `use` here
+  const { slug } = use(params);  // No need to use `use` here
 
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
