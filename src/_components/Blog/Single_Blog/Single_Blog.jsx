@@ -33,6 +33,8 @@ const Single_Blog = ({id}) => {
     fetchBlog();
   }, [id]);
 
+  console.log(blog)
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 

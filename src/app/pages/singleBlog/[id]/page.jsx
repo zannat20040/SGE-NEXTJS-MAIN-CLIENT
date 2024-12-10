@@ -1,34 +1,50 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { use, useEffect, useState } from "react";
+import axios from "axios";
 import Blog_BlogInbox from "@/_components/Blog/Blog_BlogInbox/Blog_BlogInbox";
 import BlogSingle from "@/_components/Blog/Blogs_Component/BlogSingle";
 import BlogSingle_Banner from "@/_components/Blog/BlogSingle_Banner/BlogSingle_Banner";
 import Latest_Blogs from "@/_components/Blog/Latest_Blogs";
-import Single_blog from "@/_components/Blog/Single_Blog/Single_Blog";
+import Head from "next/head";
 
 const Page = ({ params }) => {
-  console.log(params)
-  const [id, setId] = useState(null);
+  const resolvedParams = use(params); // Unwrap the Promise
+  const { id } = resolvedParams;
+
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Unwrap the promise
-    async function fetchParams() {
-      const resolvedParams = await params;
-      setId(resolvedParams.id);
-    }
+    const fetchBlog = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/blog/getBlogById/${id}`
+        );
+        setBlog(response.data.blog);
+      } catch (err) {
+        setError("Failed to load blog");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    fetchParams();
-  }, [params]);
+    fetchBlog();
+  }, [id]);
 
-  if (!id) {
-    // Optionally render a loading state
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <Single_blog id={id} />
+    <div className="font-poppins">
+      <Head>
+        <title>{blog?.pageTitle || "Blog"} - My Blog Site</title>
+      </Head>
+      <BlogSingle_Banner />
+      <BlogSingle blog={blog} />
       <Blog_BlogInbox />
+      <Latest_Blogs />
     </div>
   );
 };
