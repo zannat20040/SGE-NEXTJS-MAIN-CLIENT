@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa6";
 
-const BlogSingle = ({ id }) => {
+const BlogSingle = ({blog }) => {
+
+  console.log(blog)
 
   const Header = ({ title }: { title: string }) => {
     return <h2 className="text-xl font-semibold">{title}</h2>;
