@@ -4,15 +4,8 @@ import { FaAngleDown } from "react-icons/fa6";
 const BlogSingle = ({ blog }) => {
   const {
     title,
-    // subtitle,
-    // routeName,
-    // readingTime,
-    // pageTitle,
-    // img,
     description,
-    // date,
-    // createdBy,
-    // category,
+
   } = blog;
 
   const Header = ({ title }) => {

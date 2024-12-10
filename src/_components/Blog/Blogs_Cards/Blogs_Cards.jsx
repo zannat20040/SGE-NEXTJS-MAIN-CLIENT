@@ -134,7 +134,7 @@ const Blogs_Cards = () => {
                       </p>
                     </div>
                     <Link
-                      href={`/blog/${item?.url}`}
+                      href={`/${item?.url}`}
                       className="text-white mt-3 bg-[#F25025] py-2 text-center rounded-[3px] text-sm group-hover:text-[#081831] group-hover:bg-[#FFF] duration-300"
                     >
                       Read More

@@ -3,23 +3,12 @@ import React from "react";
 import "./BlogSingle_Banner.css";
 
 export default function BlogSingle_Banner({ blog }) {
-  const {
-    title,
-    subtitle,
-    routeName,
-    readingTime,
-    pageTitle,
-    img,
-    description,
-    date,
-    createdBy,
-    category,
-  } = blog;
+  const { title, subtitle, readingTime, img, date, createdBy } = blog;
 
   const convertDate = (isoDate) => {
     const date = new Date(isoDate); // Parse the ISO date string
     const options = { year: "numeric", month: "long", day: "2-digit" }; // Format options
-    return date.toLocaleDateString("en-US", options); // Convert to desired format
+    return date.toLocaleDateString("en-US", options);
   };
 
   return (
