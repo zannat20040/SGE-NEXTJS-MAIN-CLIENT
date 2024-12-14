@@ -18,29 +18,22 @@ export default function CreateBlogs() {
     description: "",
     metaDescription: "",
   });
-  const [isFormComplete, setIsFormComplete] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormValues((prevValues) => {
-      const updatedValues = { ...prevValues, [name]: value };
-
-      // Check if all fields are filled
-      const allFieldsFilled = Object.values(updatedValues).every(
-        (field) => field.trim() !== ""
-      );
-
-      setIsFormComplete(allFieldsFilled);
-      return updatedValues;
-    });
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
     const formData = {
       ...formValues,
       date: new Date().toISOString(),
@@ -73,7 +66,6 @@ export default function CreateBlogs() {
         description: "",
         metaDescription: "",
       });
-      setIsFormComplete(false);
       router.push("http://localhost:3000/blogs");
     } catch (error) {
       let errMessage =
@@ -93,17 +85,19 @@ export default function CreateBlogs() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto  bg-gray-100 shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">
       <h1 className="text-xl rounded-t-lg p-3 px-6 text-center font-bold mb-4 bg-blue-900 text-white">
         Create a New Post
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="p-6 space-y-3">
-          <div className="grid md:grid-cols-2 grid-cols-1  gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div>
               <label
                 htmlFor="title"
@@ -112,7 +106,7 @@ export default function CreateBlogs() {
                 Title
               </label>
               <input
-                placeholder="eg:Know about Shabuj Global"
+                placeholder="Enter the title of the blog"
                 type="text"
                 id="title"
                 name="title"
@@ -130,7 +124,7 @@ export default function CreateBlogs() {
                 Subtitle
               </label>
               <input
-                placeholder="eg:Reach Your Dream Destination"
+                placeholder="Enter a subtitle for the blog"
                 type="text"
                 id="subtitle"
                 name="subtitle"
@@ -149,7 +143,7 @@ export default function CreateBlogs() {
               Description
             </label>
             <textarea
-              placeholder="Description must be at least 10 characters long"
+              placeholder="Provide a detailed description. Atleast 10 character must."
               id="description"
               name="description"
               value={formValues.description}
@@ -160,14 +154,14 @@ export default function CreateBlogs() {
           </div>
           <div>
             <label
-              htmlFor="meta"
+              htmlFor="metaDescription"
               className="block text-sm font-medium text-gray-700"
             >
               Meta Description
             </label>
             <textarea
-              placeholder="eg:Know about Shabuj Global...."
-              id="meta"
+              placeholder="Provide a short meta description for SEO"
+              id="metaDescription"
               name="metaDescription"
               value={formValues.metaDescription}
               onChange={handleChange}
@@ -183,7 +177,7 @@ export default function CreateBlogs() {
               Image (Link)
             </label>
             <input
-              placeholder="eg:www.url.com"
+              placeholder="Enter the image URL"
               type="url"
               id="img"
               name="img"
@@ -193,7 +187,6 @@ export default function CreateBlogs() {
               required
             />
           </div>
-          {/* PageTitle + RouteName in 1 Row */}
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div>
               <label
@@ -203,13 +196,13 @@ export default function CreateBlogs() {
                 Page Title
               </label>
               <input
-                placeholder="eg:Know about Shabuj Global - Reach your DreaM Destination"
+                placeholder="Enter the page title"
                 type="text"
-                value={formValues.pageTitle}
-                onChange={handleChange}
                 id="pageTitle"
                 name="pageTitle"
-                className="outline-0 rounded focus:border-blue-900 block w-full border  border-gray-300  py-2 px-3"
+                value={formValues.pageTitle}
+                onChange={handleChange}
+                className="outline-0 rounded focus:border-blue-900 block w-full border border-gray-300 py-2 px-3"
                 required
               />
             </div>
@@ -221,19 +214,18 @@ export default function CreateBlogs() {
                 Page URL
               </label>
               <input
-                placeholder="eg:Know about Shabuj Global. Do not use any hyphen"
+                placeholder="Enter the page URL. Avaid hyphen"
                 type="text"
                 id="url"
+                name="url"
                 value={formValues.url}
                 onChange={handleChange}
-                name="url"
-                className="outline-0 rounded focus:border-blue-900 block w-full border  border-gray-300  py-2 px-3"
+                className="outline-0 rounded focus:border-blue-900 block w-full border border-gray-300 py-2 px-3"
                 required
               />
             </div>
           </div>
 
-          {/* Created By + Category + Reading Time in 1 Row */}
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div>
               <label
@@ -243,13 +235,13 @@ export default function CreateBlogs() {
                 Created By
               </label>
               <input
-                placeholder="eg:Shabuj Global"
+                placeholder="Enter the creator's name"
                 type="text"
                 id="createdBy"
                 name="createdBy"
                 value={formValues.createdBy}
                 onChange={handleChange}
-                className="outline-0 rounded focus:border-blue-900 block w-full border  border-gray-300  py-2 px-3"
+                className="outline-0 rounded focus:border-blue-900 block w-full border border-gray-300 py-2 px-3"
                 required
               />
             </div>
@@ -261,13 +253,13 @@ export default function CreateBlogs() {
                 Category
               </label>
               <input
-                placeholder="eg:Blog"
+                placeholder="Enter the blog category"
                 type="text"
                 id="category"
                 name="category"
                 value={formValues.category}
                 onChange={handleChange}
-                className="outline-0 rounded focus:border-blue-900 block w-full border  border-gray-300  py-2 px-3"
+                className="outline-0 rounded focus:border-blue-900 block w-full border border-gray-300 py-2 px-3"
                 required
               />
             </div>
@@ -279,13 +271,13 @@ export default function CreateBlogs() {
                 Reading Time (mins)
               </label>
               <input
-                placeholder="eg:4"
+                placeholder="Enter reading time in minutes"
                 type="number"
                 id="readingTime"
                 name="readingTime"
                 value={formValues.readingTime}
                 onChange={handleChange}
-                className="outline-0 rounded focus:border-blue-900 block w-full border  border-gray-300  py-2 px-3"
+                className="outline-0 rounded focus:border-blue-900 block w-full border border-gray-300 py-2 px-3"
                 min="1"
                 required
               />
@@ -294,14 +286,14 @@ export default function CreateBlogs() {
         </div>
         <button
           type="submit"
-          disabled={!isFormComplete}
+          disabled={isLoading}
           className={`text-center w-full rounded-t-none rounded-lg px-6 py-3 ${
-            isFormComplete
-              ? "bg-blue-900 text-white hover:bg-gray-500"
-              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            isLoading
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-blue-900 text-white hover:bg-gray-500"
           } duration-500 uppercase tracking-wider font-medium text-sm`}
         >
-          Post this blog
+          {isLoading ? "Posting..." : "Post this blog"}
         </button>
       </form>
     </div>
