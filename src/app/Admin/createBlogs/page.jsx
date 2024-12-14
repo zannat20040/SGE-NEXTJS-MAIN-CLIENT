@@ -103,7 +103,7 @@ export default function CreateBlogs() {
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="p-6 space-y-3">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1  gap-4">
             <div>
               <label
                 htmlFor="title"
@@ -194,7 +194,7 @@ export default function CreateBlogs() {
             />
           </div>
           {/* PageTitle + RouteName in 1 Row */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div>
               <label
                 htmlFor="pageTitle"
@@ -234,7 +234,7 @@ export default function CreateBlogs() {
           </div>
 
           {/* Created By + Category + Reading Time in 1 Row */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div>
               <label
                 htmlFor="createdBy"

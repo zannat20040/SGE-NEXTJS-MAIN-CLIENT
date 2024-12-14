@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function AdminSidebar() {
+
   return (
     <div className="drawer lg:drawer-open sticky left-0 top-0 ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
