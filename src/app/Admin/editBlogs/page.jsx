@@ -47,7 +47,7 @@ export default function BlogsPage() {
             className="flex justify-between   rounded-md overflow-hidden shadow-lg bg-white"
           >
             <div className="w-2/5 ">
-              <img className="w-full h-full" src={blog?.img} alt={blog?.title} />
+              <img className="w-full h-full" src={blog?.img} alt="Description of the image"/>
             </div>
             <div className="flex flex-col w-full px-3 py-3">
               <div className="">
