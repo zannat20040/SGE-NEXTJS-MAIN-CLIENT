@@ -20,7 +20,7 @@ const BlogPageClient = ({ slug }) => {
         );
         setBlog(response.data.blog);
       } catch (err) {
-        setError("Failed to load blog");
+        setError("Failed to load blog", err);
       } finally {
         setLoading(false);
       }

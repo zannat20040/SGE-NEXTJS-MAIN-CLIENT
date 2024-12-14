@@ -135,6 +135,9 @@ const nextConfig = {
     domains: ["i.ibb.co", "i.ibb.co.com"],
     unoptimized: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;

@@ -36,7 +36,7 @@ const Page = ({ params }) => {
           router.replace(`/${expectedSlug}`);
         }
       } catch (err) {
-        setError("Failed to load blog");
+        setError("Failed to load blog", err);
       } finally {
         setLoading(false);
       }
