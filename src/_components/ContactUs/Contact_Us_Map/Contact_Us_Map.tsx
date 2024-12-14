@@ -61,7 +61,7 @@ const Contact_Us_Map = () => {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-  }, []);
+  }, [handleClickOutside]);
 
   const handleSvgClick = (event: React.MouseEvent<SVGPathElement>) => {
     event.stopPropagation();

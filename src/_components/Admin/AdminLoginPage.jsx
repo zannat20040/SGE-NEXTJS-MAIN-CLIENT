@@ -9,7 +9,6 @@ export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const router = useRouter();
 
   // Check if the form fields are filled
@@ -47,7 +46,6 @@ export default function AdminLoginPage() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
-      setError(error.message); // Set the error message
     } finally {
       setLoading(false); // Set loading state to false
     }

@@ -25,7 +25,7 @@ const Blogs_Cards = () => {
     };
 
     fetchBlogs();
-  }, []);
+  }, [apiUrl]);
 
   console.log(error);
   return (

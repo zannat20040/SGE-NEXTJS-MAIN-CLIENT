@@ -8,8 +8,6 @@ export async function generateMetadata({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/blog/getBlogBySlug/${slug}`
   );
   const post = response.data.blog;
-  console.log("slug=======>", slug);
-  console.log("res=======>", post);
 
   return {
     title: `${post.title} - My Blog`,
