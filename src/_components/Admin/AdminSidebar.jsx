@@ -41,6 +41,12 @@ export default function AdminSidebar() {
           >
             Add New Destination
           </Link>
+          <Link
+            href={"/admin/editBlogs"}
+            className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300 "
+          >
+            Edit New blog
+          </Link>
         </ul>
       </div>
     </div>
