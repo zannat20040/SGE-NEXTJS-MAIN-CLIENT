@@ -66,7 +66,7 @@ export default function CreateBlogs() {
         description: "",
         metaDescription: "",
       });
-      router.push("http://localhost:3000/blogs");
+      router.push("/blogs");
     } catch (error) {
       let errMessage =
         error.response?.data?.message ||
