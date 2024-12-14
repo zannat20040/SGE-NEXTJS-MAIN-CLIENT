@@ -20,11 +20,13 @@ export default function RootLayoutComponent({ children }) {
         <div>
           {!isAdminRoute && <Navbar2 />}
           <ToastContainer />
-          <div className="pb-10">
+          <div className={`${!isAdminRoute && "pb-10"}`}>
             {children}
-            <Chats />
+            {/* <Chats /> */}
+            {!isAdminRoute && <Chats />}
           </div>
-          <Chats />
+          
+          {!isAdminRoute && <Chats />}
           {!isAdminRoute && <Footer />}
         </div>
       </MyContextProvider>

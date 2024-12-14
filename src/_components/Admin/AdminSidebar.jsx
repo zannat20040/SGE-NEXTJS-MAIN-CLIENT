@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AdminSidebar() {
   return (
-    <div className="drawer lg:drawer-open sticky left-0 top-0">
+    <div className="drawer lg:drawer-open sticky left-0 top-0 ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
@@ -20,23 +20,23 @@ export default function AdminSidebar() {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <ul className="menu bg-blue-900  text-white min-h-full w-60 p-4">
           {/* Sidebar content here */}
           <Link
             href={"/admin/createBlogs"}
-            className="py-2 px-6 hover:bg-gray-300 rounded"
+            className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300 "
           >
             Add New Blogs
           </Link>
           <Link
             href={"/admin/createEvent"}
-            className="py-2 px-6 hover:bg-gray-300 rounded"
+            className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300 "
           >
             Add New Event
           </Link>
           <Link
             href={"/admin/createDestination"}
-            className="py-2 px-6 hover:bg-gray-300 rounded"
+            className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300 "
           >
             Add New Destination
           </Link>
