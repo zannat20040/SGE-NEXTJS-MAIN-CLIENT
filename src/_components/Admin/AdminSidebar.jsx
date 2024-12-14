@@ -8,9 +8,9 @@ export default function AdminSidebar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log('btn pressed');
+      console.log("btn pressed");
     } catch (error) {
-      console.log('Error logging out:', error);
+      console.log("Error logging out:", error);
     }
   };
 
@@ -34,6 +34,9 @@ export default function AdminSidebar() {
         ></label>
         <ul className="menu bg-blue-900 text-white min-h-full w-60 p-4">
           {/* Sidebar content here */}
+          <div>
+            <h1 className="text-lg mb-7 border-b  pb-3 text-center font-semibold">SGE Admin Panel</h1>
+          </div>{" "}
           <Link
             href={"/admin/createBlogs"}
             className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300"
@@ -59,7 +62,7 @@ export default function AdminSidebar() {
             Edit New blog
           </Link>
           <button
-            onClick={handleLogout}  // Changed onSubmit to onClick
+            onClick={handleLogout} // Changed onSubmit to onClick
             className="rounded py-2 px-6 bg-blue-700"
           >
             Logout

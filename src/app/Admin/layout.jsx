@@ -4,7 +4,7 @@ import AdminSidebar from "../../_components/Admin/AdminSidebar";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../../firebase.config";
-import AdminLoginPage from "../adminLogin/page";
+import AdminLoginPage from "../../_components/Admin/AdminLoginPage";
 
 export default function AdminLayout({ children }) {
   const [user, setUser] = useState(null);
