@@ -37,61 +37,61 @@ export default function DestinationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    // alert("Form Submitted! Check the console for details.");
-    // try {
-    //   // Make sure to pass 'data' in the request body
-    //   await axios.post(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
-    //     formData
-    //   );
+    alert("Form Submitted! Check the console for details.");
+    try {
+      // Make sure to pass 'data' in the request body
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
+        formData
+      );
 
-    //   // Display success toast notification
-    //   toast.success("Your new Destination added successfully.", {
-    //     position: "bottom-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //     transition: Slide,
-    //     style: { zIndex: 999999999 },
-    //   });
-    // } catch (error) {
-    //   let errMessage = "An unknown error occurred"; // Default message
+      // Display success toast notification
+      toast.success("Your new Destination added successfully.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+        style: { zIndex: 999999999 },
+      });
+    } catch (error) {
+      let errMessage = "An unknown error occurred"; // Default message
 
-    //   if (error.response) {
-    //     // Check if error.response and error.response.data exist
-    //     const errorData = error.response.data;
+      if (error.response) {
+        // Check if error.response and error.response.data exist
+        const errorData = error.response.data;
 
-    //     if (errorData.errors && errorData.errors.length > 0) {
-    //       // If errors array is available and not empty, get the first error message
-    //       errMessage = errorData.errors.join(", ");
-    //     } else {
-    //       // Handle other 400 errors with specific message
-    //       errMessage =
-    //         errorData.message || "Something went wrong. Please try again.";
-    //     }
-    //   } else {
-    //     // If no response data, fallback to error.message
-    //     errMessage = error.message || errMessage;
-    //   }
+        if (errorData.errors && errorData.errors.length > 0) {
+          // If errors array is available and not empty, get the first error message
+          errMessage = errorData.errors.join(", ");
+        } else {
+          // Handle other 400 errors with specific message
+          errMessage =
+            errorData.message || "Something went wrong. Please try again.";
+        }
+      } else {
+        // If no response data, fallback to error.message
+        errMessage = error.message || errMessage;
+      }
 
-    //   // Show the error message as a toast
-    //   toast.error(errMessage, {
-    //     position: "bottom-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "light",
-    //     transition: Slide,
-    //     style: { zIndex: 999999999 },
-    //   });
-    // }
+      // Show the error message as a toast
+      toast.error(errMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+        style: { zIndex: 999999999 },
+      });
+    }
   };
 
   // fact
