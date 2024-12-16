@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Slide, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function DestinationForm() {
   const [formData, setFormData] = useState({
@@ -15,9 +15,12 @@ export default function DestinationForm() {
     topUniversity: [],
     studyRequirement: [],
     examRequirement: [],
-    documentRequirement: "",
-    statement: "",
-    applyDocument: "",
+    documentDescription: "",
+    documentList: [],
+    statementDescription: "",
+    statementList: [],
+    applyDocumentDescription: "",
+    applyDocumentList: [],
     faq: [],
     expertNumber: "",
     destinationName: "",
@@ -33,62 +36,62 @@ export default function DestinationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Form Data Submitted:", formData);
+    console.log("Form Data Submitted:", formData);
     // alert("Form Submitted! Check the console for details.");
-    try {
-      // Make sure to pass 'data' in the request body
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
-        formData
-      );
+    // try {
+    //   // Make sure to pass 'data' in the request body
+    //   await axios.post(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
+    //     formData
+    //   );
 
-      // Display success toast notification
-      toast.success("Your new Destination added successfully.", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-        style: { zIndex: 999999999 },
-      });
-    } catch (error) {
-      let errMessage = "An unknown error occurred"; // Default message
+    //   // Display success toast notification
+    //   toast.success("Your new Destination added successfully.", {
+    //     position: "bottom-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //     transition: Slide,
+    //     style: { zIndex: 999999999 },
+    //   });
+    // } catch (error) {
+    //   let errMessage = "An unknown error occurred"; // Default message
 
-      if (error.response) {
-        // Check if error.response and error.response.data exist
-        const errorData = error.response.data;
+    //   if (error.response) {
+    //     // Check if error.response and error.response.data exist
+    //     const errorData = error.response.data;
 
-        if (errorData.errors && errorData.errors.length > 0) {
-          // If errors array is available and not empty, get the first error message
-          errMessage = errorData.errors.join(", ");
-        } else {
-          // Handle other 400 errors with specific message
-          errMessage =
-            errorData.message || "Something went wrong. Please try again.";
-        }
-      } else {
-        // If no response data, fallback to error.message
-        errMessage = error.message || errMessage;
-      }
+    //     if (errorData.errors && errorData.errors.length > 0) {
+    //       // If errors array is available and not empty, get the first error message
+    //       errMessage = errorData.errors.join(", ");
+    //     } else {
+    //       // Handle other 400 errors with specific message
+    //       errMessage =
+    //         errorData.message || "Something went wrong. Please try again.";
+    //     }
+    //   } else {
+    //     // If no response data, fallback to error.message
+    //     errMessage = error.message || errMessage;
+    //   }
 
-      // Show the error message as a toast
-      toast.error(errMessage, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-        style: { zIndex: 999999999 },
-      });
-    }
+    //   // Show the error message as a toast
+    //   toast.error(errMessage, {
+    //     position: "bottom-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //     transition: Slide,
+    //     style: { zIndex: 999999999 },
+    //   });
+    // }
   };
 
   // fact
@@ -193,7 +196,7 @@ export default function DestinationForm() {
     const updatedExams = [...formData.examRequirement];
     updatedExams[index] = {
       ...updatedExams[index],
-      [field]: e.target.value,
+      [field]: e.target.value, // Handles splitting description into an array
     };
     setFormData({ ...formData, examRequirement: updatedExams });
   };
@@ -201,7 +204,7 @@ export default function DestinationForm() {
   const addExam = () => {
     const newExam = {
       title: "",
-      description: "",
+      description: [], // Initialize description as an array
     };
     setFormData({
       ...formData,
@@ -544,9 +547,23 @@ export default function DestinationForm() {
               <div className="mb-2">
                 <textarea
                   required
-                  value={exam.description}
-                  onChange={(e) => handleExamChange(e, index, "description")}
-                  placeholder="Description"
+                  value={exam.description.join(", ")} // Display array as a comma-separated string
+                  onChange={(e) =>
+                    handleExamChange(
+                      {
+                        ...e,
+                        target: {
+                          ...e.target,
+                          value: e.target.value
+                            .split(",")
+                            .map((item) => item.trim()), // Trim extra spaces
+                        },
+                      },
+                      index,
+                      "description"
+                    )
+                  }
+                  placeholder="Description (comma-separated)"
                   className="w-full border rounded p-2 mb-2"
                 ></textarea>
               </div>
@@ -562,42 +579,123 @@ export default function DestinationForm() {
         </div>
 
         {/* Document Requirement */}
-        <div>
-          <h2 className="text-lg font-semibold">Document Requirement</h2>
-          <textarea
-            required
-            name="documentRequirement"
-            value={formData.documentRequirement}
-            onChange={handleChange}
-            placeholder="Description"
-            className="w-full border rounded p-2"
-          ></textarea>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <h2 className="text-lg font-semibold">
+              Document Requirement - Description
+            </h2>
+            <textarea
+              required
+              name="documentRequirementDescription"
+              value={formData.documentDescription}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  documentDescription: e.target.value,
+                })
+              }
+              placeholder="Enter document description"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">
+              Document Requirement - List
+            </h2>
+            <textarea
+              required
+              name="documentRequirementList"
+              value={formData.documentList.join(", ")}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  documentList: e.target.value
+                    .split(",")
+                    .map((item) => item.trim()),
+                })
+              }
+              placeholder="Enter document list (comma-separated)"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
         </div>
 
         {/* Statement */}
-        <div>
-          <h2 className="text-lg font-semibold">Statement</h2>
-          <textarea
-            required
-            name="statement"
-            value={formData.statement}
-            onChange={handleChange}
-            placeholder="Description"
-            className="w-full border rounded p-2"
-          ></textarea>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <h2 className="text-lg font-semibold">Statement - Description</h2>
+            <textarea
+              required
+              name="statementDescription"
+              value={formData.statementDescription}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  statementDescription: e.target.value,
+                })
+              }
+              placeholder="Enter statement description"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">Statement - List</h2>
+            <textarea
+              required
+              name="statementList"
+              value={formData.statementList.join(", ")}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  statementList: e.target.value
+                    .split(",")
+                    .map((item) => item.trim()),
+                })
+              }
+              placeholder="Enter statement list (comma-separated)"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
         </div>
 
         {/* Apply Document */}
-        <div>
-          <h2 className="text-lg font-semibold">Apply Document</h2>
-          <textarea
-            required
-            name="applyDocument"
-            value={formData.applyDocument}
-            onChange={handleChange}
-            placeholder="Description"
-            className="w-full border rounded p-2"
-          ></textarea>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <h2 className="text-lg font-semibold">
+              Apply Document - Description
+            </h2>
+            <textarea
+              required
+              name="applyDocumentDescription"
+              value={formData.applyDocumentDescription}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  applyDocumentDescription: e.target.value,
+                })
+              }
+              placeholder="Enter apply document description"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">Apply Document - List</h2>
+            <textarea
+              required
+              name="applyDocumentList"
+              value={formData.applyDocumentList.join(", ")}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  applyDocumentList: e.target.value
+                    .split(",")
+                    .map((item) => item.trim()),
+                })
+              }
+              placeholder="Enter apply document list (comma-separated)"
+              className="w-full border rounded p-2"
+            ></textarea>
+          </div>
         </div>
 
         {/* FAQ */}
