@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/_components/shared/SingleUniversity/SingleUniversity.jsx", "src/app/pages/singleUniversity/[Name]/page.jsx", "src/app/layout.tsx", "src/app/admin/layout.jsx", "src/_components/Blog/Blogs_Cards/Blogs_Cards.jsx", "src/app/pages/singleBlog/[id]/[slug]/page.jsx", "src/app/RootLayoutComponent.jsx", "src/_components/Home/Home_Destination/Home_Destination.jsx", "src/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1.jsx", "src/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1.jsx", "src/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower.jsx", "src/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts.jsx"   ],
+, "src/_components/shared/SingleUniversity/SingleUniversity.jsx", "src/app/pages/singleUniversity/[Name]/page.jsx", "src/app/layout.tsx", "src/app/admin/layout.jsx", "src/_components/Blog/Blogs_Cards/Blogs_Cards.jsx", "src/app/pages/singleBlog/[id]/[slug]/page.jsx", "src/app/RootLayoutComponent.jsx", "src/_components/Home/Home_Destination/Home_Destination.jsx", "src/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1.jsx", "src/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1.jsx", "src/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower.jsx", "src/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts.jsx", "src/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText.jsx"   ],
   "exclude": [
     "node_modules"
   ]
