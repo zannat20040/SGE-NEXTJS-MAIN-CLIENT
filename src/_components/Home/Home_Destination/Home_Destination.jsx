@@ -164,7 +164,7 @@ const Home_Destination = () => {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-36 my-10 max-w-7xl mx-auto p-5 lg:p-0">
           {displayedCountries.map((country, index) => (
             <Link
-              href={'/hema'}
+              href={`/study-destinations/${country?.url}`}
               key={index}
               onMouseEnter={() => setCardIndex(index)}
               onMouseLeave={() => setCardIndex(100)}
@@ -183,7 +183,7 @@ const Home_Destination = () => {
                   className={`${
                     cardIndex === index && "rotate-bg"
                   } h-[300px] scale-x-[-1] w-full rounded-3xl bg-white`}
-                  // src={country?.img}
+                  src={country?.destinationFlag}
                   alt=""
                 />
               </div>
@@ -203,7 +203,7 @@ const Home_Destination = () => {
                 } absolute top-0 left-0 flex flex-col justify-around items-center w-full h-[300px] rounded-3xl`}
               >
                 <h1 className="text-[#88F3D0] text-2xl text-center font-bold">
-                  {country.name}
+                  {country?.destinationName}
                 </h1>
                 <button className="w-fit bg-[#2563EB] rounded-full text-white p-2">
                   <LiaGreaterThanSolid />
