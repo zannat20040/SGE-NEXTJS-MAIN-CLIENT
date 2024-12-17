@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   console.log(data);
 
   return {
-    title: `${data.title} - My Blog`,
+    title: `${data.pageTitle} - My Blog`,
     description: data.meta,
   };
 }
