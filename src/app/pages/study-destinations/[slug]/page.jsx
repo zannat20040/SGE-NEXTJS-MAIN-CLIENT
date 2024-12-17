@@ -8,7 +8,6 @@ export async function generateMetadata({ params }) {
     `${process.env.NEXT_PUBLIC_API_URL}/destination/getDestinationBySlug/${slug}`
   );
   const data = response.data.destination;
-  console.log(data);
 
   return {
     title: `${data.pageTitle} - My Blog`,
