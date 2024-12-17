@@ -4,37 +4,19 @@ import React, { useState } from "react";
 import { TiLocation } from "react-icons/ti";
 import universitiesData from "../../../../../assets/json/ukUni.json";
 
-interface University {
-  Name: string | null;
-  Overview: string | number | null;
-  History: string | number | null;
-  "Ranking & Achievement": string | number | null;
-  courses: string | number | null;
-  "Department & Faculty": string | number | null;
-  Fee: string | number | null;
-  Services: number | string | null;
-  Accommodation: number | string | null;
-  established: number | string | null;
-  rank: number | string | null;
-  location: string | number | null;
-  "international student": number | string | null;
-  country: string | number | null;
-  logo: string | null;
-}
+export default function UniversityCards({ country, universities }) {
+  const [selectedUniversity, setSelectedUniversity] = useState(null);
 
-export default function UniversityCards({ country }: { country: string }) {
-  const [selectedUniversity, setSelectedUniversity] =
-    useState<University | null>(null);
+  // const universities = universitiesData;
 
-  const universities: University[] = universitiesData as University[];
-
-  const handleCardClick = (university: University) => {
+  const handleCardClick = (university) => {
     setSelectedUniversity(university);
   };
 
+  console.log(universities);
   return (
     <div
-      className="mx-auto p-4 bg-[#EFF6FF]"
+      className="mx-auto p-4 bg-[#EFF6FF] mb-40"
       onMouseLeave={() => setSelectedUniversity(null)}
     >
       <h1 className="lg:text-[56px] text-[28px] font-bold py-28 text-center">
@@ -51,15 +33,15 @@ export default function UniversityCards({ country }: { country: string }) {
           {universities.map((university) => (
             <div
               key={university.Name}
-              className="p-4 bg-white rounded-lg cursor-pointer flex justify-center items-center"
+              className="p-4 flex items-center justify-center bg-white rounded-lg cursor-pointer "
               onMouseEnter={() => handleCardClick(university)}
             >
               <Image
                 width={200}
                 height={100}
-                src={university?.logo ? university.logo : ""}
-                alt={university?.Name ? university.Name : ""}
-                className="w-[200px] h-auto object-contain mb-4 lg:px-4 md:px-4 px-0"
+                src={university?.img}
+                alt={university?.name}
+                className="w-[200px] h-auto object-contain lg:px-4 md:px-4 px-0"
               />
             </div>
           ))}
@@ -76,21 +58,22 @@ export default function UniversityCards({ country }: { country: string }) {
                 width={200}
                 height={100}
                 className="mx-auto h-auto md:w-[50%] w-auto mb-5"
-                src={selectedUniversity?.logo ? selectedUniversity.logo : ""}
-                alt={selectedUniversity?.Name ? selectedUniversity.Name : ""}
+                src={selectedUniversity?.img}
+                alt={selectedUniversity?.name}
               />
               <h2 className="text-2xl font-bold mb-2">
-                {selectedUniversity.Name}
+                {selectedUniversity.name}
               </h2>
-              <p className="text-justify">{selectedUniversity.Overview}</p>
+              <p className="text-justify">{selectedUniversity.desc}</p>
               <p className="poppins-bold text-sm pt-5">
-                One of {`${country}'s`} leading universities
+                {/* One of {`${country}'s`} leading universities */}
+                {selectedUniversity?.subtitle}
               </p>
               <p className="flex items-center pt-5 pb-6 lg:text-sm text-[10px]">
                 <TiLocation className="text-blue-500" /> Located in{" "}
                 {selectedUniversity.location}
               </p>
-              <Link href={`/singleUniversity/${selectedUniversity.Name}`}>
+              <Link href={`/singleUniversity/${selectedUniversity.name}`}>
                 <button className="btn mt-4 lg:px-28 px-16 py-2 bg-blue-500 text-white rounded-3xl">
                   Apply Now
                 </button>

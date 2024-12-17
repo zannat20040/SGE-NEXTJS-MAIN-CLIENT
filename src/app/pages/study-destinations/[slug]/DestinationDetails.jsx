@@ -3,6 +3,7 @@ import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Ban
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
 import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
 import Tabs from "@/_components/StudyDestinationComponents/Shared/Components/Tabs/Tabs";
+import UniversityCards from "@/_components/StudyDestinationComponents/Shared/Components/UniversityCards/UniversityCards";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -49,7 +50,7 @@ export default function DestinationDetails({ slug }) {
       <QuickFacts facts={details?.quickFacts} />
       <Tabs country={details?.destinationTitle} />
       <AnimatedText country="UK" keywords={details?.popularIn} />
-      {/* <UniversityCards country="UK" /> */}
+      <UniversityCards country="UK" universities={details?.topUniversity} />
       {/* <RequirementCard country={"UK"} /> */}
       {/* <Exams country="UK" /> */}
       {/* <GuidanceBanner /> */}
