@@ -27,6 +27,7 @@ export default function DestinationForm() {
     url: "",
     pageTitle: "",
     meta: "",
+    destinationFlag: "",
   });
 
   const handleChange = (e) => {
@@ -37,7 +38,6 @@ export default function DestinationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    alert("Form Submitted! Check the console for details.");
     try {
       // Make sure to pass 'data' in the request body
       await axios.post(
@@ -246,17 +246,31 @@ export default function DestinationForm() {
       <h1 className="text-2xl font-bold mb-4">Create Destination Page</h1>
       <form onSubmit={handleSubmit} className="space-y-2">
         {/* Country */}
-        <div>
-          <h2 className="text-lg font-semibold">Destination Name</h2>
-          <input
-            required
-            type="text"
-            name="destinationName"
-            value={formData.destinationName}
-            onChange={handleChange}
-            placeholder="Destination Name"
-            className="w-full border rounded p-2"
-          />
+        <div className="grid grid-cols-2 gap-5 justify-between items-center">
+          <div>
+            <h2 className="text-lg font-semibold">Destination Name</h2>
+            <input
+              required
+              type="text"
+              name="destinationName"
+              value={formData.destinationName}
+              onChange={handleChange}
+              placeholder="Destination Name"
+              className="w-full border rounded p-2"
+            />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">Destination Flag</h2>
+            <input
+              required
+              type="url"
+              value={formData.destinationFlag}
+              name="destinationFlag"
+              onChange={handleChange}
+              placeholder="flag URL"
+              className="w-full border rounded p-2 mb-2"
+            />
+          </div>
         </div>
 
         {/* banner & why study */}

@@ -5,12 +5,13 @@ import Home_Tab from "@/_components/Home/Home_Tab/Home_Tab";
 import Home_Counter from "@/_components/Home/Home_Counter/Home_Counter";
 // import Home_Testimonial from "@/_components/Home/Home_Testimonial/Home_Testimonial";
 import Home_Connection from "@/_components/Home/Home_Connection/Home_Connection";
-import Home_Destination from "@/_components/Home/Home_Destination/Home_Destination";
+// import Home_Destination from "../_components/Home/Home_Destination";
 import Home_UniversityList from "@/_components/Home/Home_UniversityList/Home_Universitylist";
 import ImageGallery from "@/_components/Home/Home_ImageGallery/ImageGallery";
 import Home_Contact from "@/_components/Home/Home_Contact/Home_Contact";
 import WelcomeModal from "@/_components/Home/WelcomeModal/WelcomeModal";
 import HomeVideoTestimonial from "@/_components/Home/Home_Testimonial/HomeVideoTestimonial";
+import Home_Destination from "@/_components/Home/Home_Destination/Home_Destination";
 
 
 export default function Home() {
