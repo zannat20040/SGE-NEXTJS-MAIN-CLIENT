@@ -1,5 +1,6 @@
 "use client";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
+import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -43,7 +44,7 @@ export default function DestinationDetails({ slug }) {
         title={details?.whyStudyTitle}
         description={details?.whyStudyDescription}
       />
-      {/* <QuickFacts country="UK" /> */}
+      <QuickFacts facts={details?.quickFacts} />
       {/* <Tabs country="UK" /> */}
       {/* <AnimatedText country="UK" /> */}
       {/* <UniversityCards country="UK" /> */}
