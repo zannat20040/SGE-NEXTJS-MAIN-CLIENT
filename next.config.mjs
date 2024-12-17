@@ -73,58 +73,60 @@ const nextConfig = {
         source: "/study-destinations",
         destination: "/pages/study-destinations",
       },
-      {
-        source: "/study-destinations/study-in-the-uk",
-        destination: "/pages/study-destinations/UK",
-      },
-      {
-        source: "/study-destinations/study-in-the-usa",
-        destination: "/pages/study-destinations/USA",
-      },
-      {
-        source: "/study-destinations/study-in-the-australia",
-        destination: "/pages/study-destinations/Australia",
-      },
-      {
-        source: "/study-destinations/study-in-the-canada",
-        destination: "/pages/study-destinations/Canada",
-      },
-      {
-        source: "/study-destinations/study-in-the-germany",
-        destination: "/pages/study-destinations/Germany",
-      },
-      {
-        source: "/study-destinations/study-in-the-new-zealand",
-        destination: "/pages/study-destinations/NewZealand",
-      },
-      {
-        source: "/study-destinations/study-in-the-uae",
-        destination: "/pages/study-destinations/UAE",
-      },
-      {
-        source: "/study-destinations/study-in-the-georgia",
-        destination: "/pages/study-destinations/Georgia",
-      },
-      {
-        source: "/study-destinations/study-in-the-finland",
-        destination: "/pages/study-destinations/Finland",
-      },
-      {
-        source: "/study-destinations/study-in-the-cyprus",
-        destination: "/pages/study-destinations/Cyprus",
-      },
-      {
-        source: "/study-destinations/study-in-the-switzerland",
-        destination: "/pages/study-destinations/Switzerland",
-      },
-      {
-        source: "/study-destinations/study-in-the-france",
-        destination: "/pages/study-destinations/France",
-      },
-      {
-        source: "/study-destinations/study-in-the-west-indies",
-        destination: "/pages/study-destinations/West-Indies",
-      },
+      { source: "/study-destinations/:slug", destination: "/pages/study-destinations/:slug" },
+
+      // {
+      //   source: "/study-destinations/study-in-the-uk",
+      //   destination: "/pages/study-destinations/UK",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-usa",
+      //   destination: "/pages/study-destinations/USA",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-australia",
+      //   destination: "/pages/study-destinations/Australia",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-canada",
+      //   destination: "/pages/study-destinations/Canada",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-germany",
+      //   destination: "/pages/study-destinations/Germany",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-new-zealand",
+      //   destination: "/pages/study-destinations/NewZealand",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-uae",
+      //   destination: "/pages/study-destinations/UAE",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-georgia",
+      //   destination: "/pages/study-destinations/Georgia",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-finland",
+      //   destination: "/pages/study-destinations/Finland",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-cyprus",
+      //   destination: "/pages/study-destinations/Cyprus",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-switzerland",
+      //   destination: "/pages/study-destinations/Switzerland",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-france",
+      //   destination: "/pages/study-destinations/France",
+      // },
+      // {
+      //   source: "/study-destinations/study-in-the-west-indies",
+      //   destination: "/pages/study-destinations/West-Indies",
+      // },
       {
         source: "/singleUniversity/:Name",
         destination: "/pages/singleUniversity/:Name",
