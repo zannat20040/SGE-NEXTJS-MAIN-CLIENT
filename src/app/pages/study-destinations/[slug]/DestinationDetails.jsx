@@ -1,4 +1,7 @@
 "use client";
+import Doc1 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc1";
+import Doc2 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc2";
+import Doc3 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc3";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
 import Exams from "@/_components/StudyDestinationComponents/Shared/Components/Exams/Exams";
@@ -6,6 +9,7 @@ import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Componen
 import RequirementCard from "@/_components/StudyDestinationComponents/Shared/Components/RequirementCard/RequirementCard";
 import Tabs from "@/_components/StudyDestinationComponents/Shared/Components/Tabs/Tabs";
 import UniversityCards from "@/_components/StudyDestinationComponents/Shared/Components/UniversityCards/UniversityCards";
+import University_Required_Docs from "@/_components/StudyDestinationComponents/Shared/Components/UniversityRequiredDocs/University_Required_Docs";
 import GuidanceBanner from "@/_components/StudyDestinationComponents/Shared/Guidence/GuidenceBanner";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
 import axios from "axios";
@@ -57,12 +61,13 @@ export default function DestinationDetails({ slug }) {
       <RequirementCard country={details?.destinationTitle} details={details}  />
       <Exams country={details?.destinationTitle} examRequirement={details.examRequirement} />
       <GuidanceBanner number={details?.expertNumber} />
-      {/* <University_Required_Docs
-        country="UK"
-        doc1={Doc1}
-        doc2={Doc2}
-        doc3={Doc3}
-      /> */}
+      <University_Required_Docs
+        country={details?.destinationTitle}
+        details={details}
+        Doc1={Doc1}
+        Doc2={Doc2}
+        Doc3={Doc3}
+      />
       {/* <FAQ bgColor={"bg-[#1A1A1A]"} FAQimg={FAQUK} country="UK" /> */}
       {/* <Counselor
         country="UK"
