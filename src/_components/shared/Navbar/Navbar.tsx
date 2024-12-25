@@ -16,6 +16,33 @@ import Link from "next/link";
 import Image from "next/image";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import auth from "../../../../firebase.config";
+import axios from "axios";
+
+interface Destination {
+  applyDocumentDescription: string;
+  applyDocumentList: string[];
+  destinationDescription: string;
+  destinationFlag: string;
+  destinationName: string;
+  destinationTitle: string;
+  documentDescription: string;
+  documentList: string[];
+  examRequirement: Array<{ [key: string]: any }>;
+  expertNumber: string;
+  faq: Array<{ question: string; answer: string }>;
+  meta: string;
+  pageTitle: string;
+  popularIn: string[];
+  quickFacts: string[];
+  statementDescription: string;
+  statementList: string[];
+  topUniversity: Array<{ name: string; url: string }>;
+  url: string;
+  whyStudyDescription: string;
+  whyStudyTitle: string;
+  __v: number;
+  _id: string;
+}
 
 const Navbar2 = () => {
   const [navButton, setNavButton] = useState(0);
@@ -46,8 +73,9 @@ const Navbar2 = () => {
             </p>
           </button>
           <span
-            className={` ${navButton == ind && "rotate-180 transition ease-in-out delay-450"
-              }`}
+            className={` ${
+              navButton == ind && "rotate-180 transition ease-in-out delay-450"
+            }`}
           >
             <FaChevronUp />
           </span>
@@ -81,6 +109,29 @@ const Navbar2 = () => {
     // Cleanup subscription on unmount
     return () => unSubscribe();
   }, []);
+
+  const [countries, setCountries] = useState<Destination[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Fetch data using Axios
+    const fetchDestinations = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/destination/getAllDestinations`
+        );
+        setCountries(response.data.data);
+      } catch (err) {
+        setError("Failed to load destinations");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
+
+  console.log("hsjfsjdf==>", countries);
 
   return (
     <div
@@ -139,21 +190,21 @@ const Navbar2 = () => {
                   </div>
                   <div className="collapse-content text-sm ">
                     <ul className="grid grid-cols-2 justify-between items-start max-w-7xl mx-auto my-8 gap-3">
-                      {countryData.map((country) => (
+                      {countries.map((country) => (
                         <Link
                           onClick={closeNavbar}
-                          key={country.name}
+                          key={country.destinationName}
                           className=" my-2 text-center flex flex-col justify-between"
-                          href={country.to}
+                          href={`/study-destinations/${country?.url}`}
                         >
                           <Image
                             width={100}
                             height={100}
                             className="w-2/4 h-auto mx-auto rounded-lg  -rotate-90"
-                            src={country.img}
-                            alt={country.name}
+                            src={country?.destinationFlag}
+                            alt="country flag"
                           />
-                          <li>{country.label}</li>
+                          <li> {country?.destinationName}</li>
                         </Link>
                       ))}
                     </ul>
@@ -696,8 +747,9 @@ const Navbar2 = () => {
           </div>
           {!user || loading ? (
             <div
-              className={`${width >= 1244 ? "text-base" : "text-sm"
-                } flex items-center justify-end gap-1`}
+              className={`${
+                width >= 1244 ? "text-base" : "text-sm"
+              } flex items-center justify-end gap-1`}
             >
               <Link
                 className={`  bg-[#BFDBFE] col-span-2  font-bold px-5 py-2 rounded-2xl`}
@@ -763,20 +815,20 @@ const Navbar2 = () => {
         {navIndex == 1 && (
           <div className="md:px-10">
             <ul className="lg:grid hidden lg:grid-cols-7 justify-between items-center max-w-7xl mx-auto my-8 gap-3">
-              {countryData.map((country) => (
+              {countries.map((country) => (
                 <Link
-                  key={country.name}
+                  key={country.destinationName}
                   className={flagClass}
-                  href={country.to}
+                  href={`/study-destinations/${country?.url}`}
                 >
                   <Image
                     width={100}
                     height={100}
                     className="w-2/4 h-auto mx-auto rounded-lg  -rotate-90"
-                    src={country.img}
-                    alt="country"
+                    src={country?.destinationFlag}
+                    alt="country flag"
                   />
-                  <li className="">{country.label}</li>
+                  <li> {country?.destinationName}</li>
                 </Link>
               ))}
             </ul>
@@ -785,8 +837,9 @@ const Navbar2 = () => {
         {navIndex == 2 && (
           <>
             <div
-              className={`${width <= 1450 ? "grid-cols-4" : "grid-cols-5"
-                }   mx-10 gap-5 hidden  lg:grid md:mx-auto   md:max-w-[1800px]`}
+              className={`${
+                width <= 1450 ? "grid-cols-4" : "grid-cols-5"
+              }   mx-10 gap-5 hidden  lg:grid md:mx-auto   md:max-w-[1800px]`}
             >
               <div className="col-span-1 md:my-10 my-5">
                 <h2 className="my-5 text-lg font-medium border-b-2 w-fit border-[#f85424]">

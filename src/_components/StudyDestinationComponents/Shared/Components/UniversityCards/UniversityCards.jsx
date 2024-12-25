@@ -47,7 +47,7 @@ export default function UniversityCards({ country, universities }) {
           ))}
         </div>
 
-        <div
+        <div key={selectedUniversity?.name}
           className={`${
             selectedUniversity ? "lg:w-[34%] md:w-[66%] w-[66%]" : "hidden"
           }`}
