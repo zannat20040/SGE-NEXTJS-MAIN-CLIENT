@@ -5,6 +5,7 @@ import Doc3 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc3";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
 import Exams from "@/_components/StudyDestinationComponents/Shared/Components/Exams/Exams";
+import FAQ from "@/_components/StudyDestinationComponents/Shared/Components/FAQ/FAQ";
 import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
 import RequirementCard from "@/_components/StudyDestinationComponents/Shared/Components/RequirementCard/RequirementCard";
 import Tabs from "@/_components/StudyDestinationComponents/Shared/Components/Tabs/Tabs";
@@ -12,6 +13,7 @@ import UniversityCards from "@/_components/StudyDestinationComponents/Shared/Com
 import University_Required_Docs from "@/_components/StudyDestinationComponents/Shared/Components/UniversityRequiredDocs/University_Required_Docs";
 import GuidanceBanner from "@/_components/StudyDestinationComponents/Shared/Guidence/GuidenceBanner";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
+import FAQUK from "@/_components/StudyDestinationComponents/UK/SVG/FAQUK";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -56,10 +58,19 @@ export default function DestinationDetails({ slug }) {
       />
       <QuickFacts facts={details?.quickFacts} />
       <Tabs country={details?.destinationTitle} />
-      <AnimatedText country={details?.destinationTitle} keywords={details?.popularIn} />
-      <UniversityCards country={details?.destinationTitle} universities={details?.topUniversity} />
-      <RequirementCard country={details?.destinationTitle} details={details}  />
-      <Exams country={details?.destinationTitle} examRequirement={details.examRequirement} />
+      <AnimatedText
+        country={details?.destinationTitle}
+        keywords={details?.popularIn}
+      />
+      <UniversityCards
+        country={details?.destinationTitle}
+        universities={details?.topUniversity}
+      />
+      <RequirementCard country={details?.destinationTitle} details={details} />
+      <Exams
+        country={details?.destinationTitle}
+        examRequirement={details.examRequirement}
+      />
       <GuidanceBanner number={details?.expertNumber} />
       <University_Required_Docs
         country={details?.destinationTitle}
@@ -68,7 +79,12 @@ export default function DestinationDetails({ slug }) {
         Doc2={Doc2}
         Doc3={Doc3}
       />
-      {/* <FAQ bgColor={"bg-[#1A1A1A]"} FAQimg={FAQUK} country="UK" /> */}
+      <FAQ
+        bgColor={"bg-blue-900"}
+        FAQimg={FAQUK}
+        country={details?.destinationTitle}
+        details={details?.faq}
+      />
       {/* <Counselor
         country="UK"
         bgColor="linear-gradient(93deg, rgba(50,135,253,1) 0%, rgba(2,28,229,1) 100%)"
