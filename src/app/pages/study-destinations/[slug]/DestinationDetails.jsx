@@ -1,7 +1,9 @@
 "use client";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
+import Exams from "@/_components/StudyDestinationComponents/Shared/Components/Exams/Exams";
 import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
+import RequirementCard from "@/_components/StudyDestinationComponents/Shared/Components/RequirementCard/RequirementCard";
 import Tabs from "@/_components/StudyDestinationComponents/Shared/Components/Tabs/Tabs";
 import UniversityCards from "@/_components/StudyDestinationComponents/Shared/Components/UniversityCards/UniversityCards";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
@@ -51,8 +53,8 @@ export default function DestinationDetails({ slug }) {
       <Tabs country={details?.destinationTitle} />
       <AnimatedText country="UK" keywords={details?.popularIn} />
       <UniversityCards country="UK" universities={details?.topUniversity} />
-      {/* <RequirementCard country={"UK"} /> */}
-      {/* <Exams country="UK" /> */}
+      <RequirementCard country={"UK"} details={details}  />
+      <Exams country="UK" examRequirement={details.examRequirement} />
       {/* <GuidanceBanner /> */}
       {/* <University_Required_Docs
         country="UK"

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Requirement_Card_SmallScreen from "./Requirement_Card_SmallScreen";
 import Requirement_Card_LargeScreen from "./Requirement_Card_LargeScreen";
-const RequirementCard = ({ country }:{country:string}) => {
+
+const RequirementCard = ({ country, details }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
