@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -40,7 +40,13 @@ const Responsive_Exams = ({ examRequirement }) => {
               expandedCard === 1 ? "hidden" : ""
             }`}
           >
-            <Image width={100} height={100} className="w-20 h-auto" src='https://i.ibb.co/com/r6XjskD/blue-arrow.gif' alt="Arrow indicating more content" />
+            <Image
+              width={100}
+              height={100}
+              className="w-20 h-auto"
+              src="https://i.ibb.co/com/r6XjskD/blue-arrow.gif"
+              alt="Arrow indicating more content"
+            />
           </div>
         </motion.div>
 
@@ -73,7 +79,13 @@ const Responsive_Exams = ({ examRequirement }) => {
               expandedCard === 2 ? "hidden" : ""
             }`}
           >
-            <Image width={100} height={100} className="w-20 h-auto" src='https://i.ibb.co/com/r6XjskD/blue-arrow.gif' alt="Arrow indicating more content" />
+            <Image
+              width={100}
+              height={100}
+              className="w-20 h-auto"
+              src="https://i.ibb.co/com/r6XjskD/blue-arrow.gif"
+              alt="Arrow indicating more content"
+            />
           </div>
         </motion.div>
 
@@ -104,7 +116,13 @@ const Responsive_Exams = ({ examRequirement }) => {
               expandedCard === 3 ? "hidden" : ""
             }`}
           >
-            <Image width={100} height={100} className="w-20 h-auto" src='https://i.ibb.co/com/r6XjskD/blue-arrow.gif' alt="Arrow indicating more content" />
+            <Image
+              width={100}
+              height={100}
+              className="w-20 h-auto"
+              src="https://i.ibb.co/com/r6XjskD/blue-arrow.gif"
+              alt="Arrow indicating more content"
+            />
           </div>
         </motion.div>
 
@@ -137,7 +155,13 @@ const Responsive_Exams = ({ examRequirement }) => {
               expandedCard === 4 ? "hidden" : ""
             }`}
           >
-            <Image width={100} height={100} className="w-20 h-auto" src='https://i.ibb.co/com/r6XjskD/blue-arrow.gif' alt="Arrow indicating more content" />
+            <Image
+              width={100}
+              height={100}
+              className="w-20 h-auto"
+              src="https://i.ibb.co/com/r6XjskD/blue-arrow.gif"
+              alt="Arrow indicating more content"
+            />
           </div>
         </motion.div>
       </div>

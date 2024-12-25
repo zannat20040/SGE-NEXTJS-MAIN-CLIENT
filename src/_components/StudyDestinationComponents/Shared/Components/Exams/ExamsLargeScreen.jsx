@@ -10,7 +10,7 @@ const ExamsLargeScreen = ({ examRequirement }) => {
 
   return (
  
-    <div className="grid grid-cols-2 max-w-screen-xl mx-auto gap-5 justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 max-w-screen-xl mx-auto gap-5 justify-center">
       {examRequirement.map((require, index) => (
         <div
           key={`examlist${index}`}
