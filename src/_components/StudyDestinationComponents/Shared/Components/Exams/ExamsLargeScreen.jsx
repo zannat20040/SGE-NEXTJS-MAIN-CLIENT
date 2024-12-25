@@ -21,7 +21,7 @@ const ExamsLargeScreen = ({ examRequirement }) => {
           }`}
         >
           <div className="text-[#004AC8]">
-            <h1 className=" mb-6 font-semibold text-xl sm:text-2xl lg:text-4xl mb-3lg:text-[40px] md:text-[30px] text-[45px] leading-tight mt-3">
+            <h1 className=" mb-6 text-center md:text-left font-semibold text-xl sm:text-2xl lg:text-4xl mb-3lg:text-[40px] md:text-[30px] text-[45px] leading-tight mt-3">
               {require?.title}
             </h1>
 

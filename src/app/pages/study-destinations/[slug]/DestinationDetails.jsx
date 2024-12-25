@@ -51,10 +51,10 @@ export default function DestinationDetails({ slug }) {
       />
       <QuickFacts facts={details?.quickFacts} />
       <Tabs country={details?.destinationTitle} />
-      <AnimatedText country="UK" keywords={details?.popularIn} />
-      <UniversityCards country="UK" universities={details?.topUniversity} />
-      <RequirementCard country={"UK"} details={details}  />
-      <Exams country="UK" examRequirement={details.examRequirement} />
+      <AnimatedText country={details?.destinationTitle} keywords={details?.popularIn} />
+      <UniversityCards country={details?.destinationTitle} universities={details?.topUniversity} />
+      <RequirementCard country={details?.destinationTitle} details={details}  />
+      <Exams country={details?.destinationTitle} examRequirement={details.examRequirement} />
       {/* <GuidanceBanner /> */}
       {/* <University_Required_Docs
         country="UK"
