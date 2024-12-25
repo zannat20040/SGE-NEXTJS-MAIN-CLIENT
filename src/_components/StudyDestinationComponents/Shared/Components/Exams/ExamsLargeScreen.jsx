@@ -28,7 +28,7 @@ const ExamsLargeScreen = ({ examRequirement }) => {
             <div
               className={`${
                 hoveredIndex === index ? "h-auto opacity-100" : "h-0 opacity-0"
-              } duration-500`}
+              } duration-1000`}
             >
               <ul className="list-disc ml-7 pl-5 space-y-2 ">
                 {require?.description?.map((list, i) => (

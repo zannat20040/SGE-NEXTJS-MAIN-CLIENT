@@ -6,6 +6,7 @@ import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Componen
 import RequirementCard from "@/_components/StudyDestinationComponents/Shared/Components/RequirementCard/RequirementCard";
 import Tabs from "@/_components/StudyDestinationComponents/Shared/Components/Tabs/Tabs";
 import UniversityCards from "@/_components/StudyDestinationComponents/Shared/Components/UniversityCards/UniversityCards";
+import GuidanceBanner from "@/_components/StudyDestinationComponents/Shared/Guidence/GuidenceBanner";
 import Tower from "@/_components/StudyDestinationComponents/Shared/SecondBanners/Tower/Tower";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -55,7 +56,7 @@ export default function DestinationDetails({ slug }) {
       <UniversityCards country={details?.destinationTitle} universities={details?.topUniversity} />
       <RequirementCard country={details?.destinationTitle} details={details}  />
       <Exams country={details?.destinationTitle} examRequirement={details.examRequirement} />
-      {/* <GuidanceBanner /> */}
+      <GuidanceBanner number={details?.expertNumber} />
       {/* <University_Required_Docs
         country="UK"
         doc1={Doc1}
