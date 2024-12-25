@@ -130,14 +130,22 @@ export default function DestinationForm() {
 
   // university
 
-  const handleUniversityChange = (e, index, field) => {
+  const handleUniversityChange = (e, index, field, value) => {
     const updatedUniversities = [...formData.topUniversity];
-    updatedUniversities[index] = {
-      ...updatedUniversities[index],
-      [field]: e.target.value,
-    };
+    if (field === "courseList") {
+      updatedUniversities[index] = {
+        ...updatedUniversities[index],
+        [field]: value.split(",").map((item) => item.trim()), // Split comma-separated string into an array
+      };
+    } else {
+      updatedUniversities[index] = {
+        ...updatedUniversities[index],
+        [field]: e.target.value,
+      };
+    }
     setFormData({ ...formData, topUniversity: updatedUniversities });
   };
+  
 
   const addUniversity = () => {
     const newUniversity = {
@@ -146,6 +154,17 @@ export default function DestinationForm() {
       desc: "",
       subtitle: "",
       location: "",
+      rank: "",
+      established: "",
+      history: "",
+      achievement: "",
+      service: "",
+      faculty: "",
+      accomodation: "",
+      fees: "",
+      internationalFees: "",
+      internationalStudent: "",
+      courseList: [],
     };
     setFormData({
       ...formData,
@@ -357,7 +376,7 @@ export default function DestinationForm() {
 
           {/* Popular In */}
           <div>
-            <div className="flex justify-between gap-5  mb-3">
+            <div className="flex justify-between  items-center gap-5  mb-3">
               <h2 className="text-lg font-semibold">Popular In</h2>
               <button
                 type="button"
@@ -404,9 +423,9 @@ export default function DestinationForm() {
 
           {formData?.topUniversity?.map((university, index) => (
             <div key={index} className="border p-4 rounded mb-4">
-              {/* university name & image */}
-              <div className="grid grid-cols-2 gap-5 justify-between">
-                <div className="mb-2">
+              {/* university name & image / rank/ established */}
+              <div className="grid grid-cols-5 gap-5 justify-between">
+                <div className="mb-2 col-span-2">
                   <input
                     required
                     type="text"
@@ -426,6 +445,28 @@ export default function DestinationForm() {
                     className="w-full border rounded p-2 mb-2"
                   />
                 </div>
+                <div className="mb-2">
+                  <input
+                    required
+                    type="text"
+                    value={university.rank}
+                    onChange={(e) => handleUniversityChange(e, index, "rank")}
+                    placeholder="eg:1st"
+                    className="w-full border rounded p-2 mb-2"
+                  />
+                </div>
+                <div className="mb-2">
+                  <input
+                    required
+                    type="number"
+                    value={university.established}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "established")
+                    }
+                    placeholder="eg:1990"
+                    className="w-full border rounded p-2 mb-2"
+                  />
+                </div>
               </div>
               {/* description */}
               <div className="mb-2">
@@ -435,6 +476,118 @@ export default function DestinationForm() {
                   onChange={(e) => handleUniversityChange(e, index, "desc")}
                   placeholder="Description"
                   className="w-full border rounded p-2 mb-2"
+                ></textarea>
+              </div>
+              {/* history/ achievement */}
+              <div className="grid grid-cols-2 gap-5 justify-between ">
+                <div className="mb-2">
+                  <textarea
+                    required
+                    value={university.history}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "history")
+                    }
+                    placeholder="write history"
+                    className="w-full border rounded p-2 mb-2"
+                  ></textarea>
+                </div>
+                <div className="mb-2">
+                  <textarea
+                    required
+                    value={university.achievement}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "achievement")
+                    }
+                    placeholder="write achievement"
+                    className="w-full border rounded p-2 mb-2"
+                  ></textarea>
+                </div>
+              </div>
+              {/* service/ accomodation/ faculty */}
+              <div className="grid grid-cols-3 gap-5 justify-between ">
+                <div className="mb-2">
+                  <textarea
+                    required
+                    value={university.service}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "service")
+                    }
+                    placeholder="write about services"
+                    className="w-full border rounded p-2 mb-2"
+                  ></textarea>
+                </div>
+                <div className="mb-2">
+                  <textarea
+                    required
+                    value={university.faculty}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "faculty")
+                    }
+                    placeholder="write about department & faculty"
+                    className="w-full border rounded p-2 mb-2"
+                  ></textarea>
+                </div>
+                <div className="mb-2">
+                  <textarea
+                    required
+                    value={university.accomodation}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "accomodation")
+                    }
+                    placeholder="write about accomodation"
+                    className="w-full border rounded p-2 mb-2"
+                  ></textarea>
+                </div>
+              </div>
+              {/* fees/ internation fees/ internation student */}
+              <div className="grid grid-cols-3 gap-5 justify-between ">
+                <div className="mb-2">
+                  <input
+                    required
+                    type="text"
+                    value={university.fees}
+                    onChange={(e) => handleUniversityChange(e, index, "fees")}
+                    placeholder="University fees"
+                    className="w-full border rounded p-2 mb-2"
+                  />
+                </div>
+                <div className="mb-2">
+                  <input
+                    required
+                    type="text"
+                    value={university.internationalFees}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "internationalFees")
+                    }
+                    placeholder="International fees"
+                    className="w-full border rounded p-2 mb-2"
+                  />
+                </div>
+                <div className="mb-2">
+                  <input
+                    required
+                    type="text"
+                    value={university.internationalStudent}
+                    onChange={(e) =>
+                      handleUniversityChange(e, index, "internationalStudent")
+                    }
+                    placeholder="International student"
+                    className="w-full border rounded p-2 mb-2"
+                  />
+                </div>
+              </div>
+              {/* popular course */}
+              <div>
+                <textarea
+                  required
+                  name="courseList"
+                  value={university?.courseList?.join(", ")}
+                  onChange={(e) =>
+                    handleUniversityChange(e, index, "courseList", e.target.value)
+                  }
+        
+                  placeholder="Enter popular course list (comma-separated)"
+                  className="w-full border rounded p-2"
                 ></textarea>
               </div>
               {/* subtitle & location */}
@@ -464,6 +617,7 @@ export default function DestinationForm() {
                   />
                 </div>
               </div>
+              {/* button */}
               <button
                 type="button"
                 onClick={() => removeUniversity(index)}
