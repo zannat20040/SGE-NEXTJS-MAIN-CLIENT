@@ -4,6 +4,8 @@ import Doc2 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc2";
 import Doc3 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc3";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
+import Counselor from "@/_components/StudyDestinationComponents/Shared/Components/Counselor/Counselor";
+// import Counselor from "@/_components/StudyDestinationComponents/Shared/Components/Counselor/Counselor";
 import Exams from "@/_components/StudyDestinationComponents/Shared/Components/Exams/Exams";
 import FAQ from "@/_components/StudyDestinationComponents/Shared/Components/FAQ/FAQ";
 import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
@@ -85,10 +87,11 @@ export default function DestinationDetails({ slug }) {
         country={details?.destinationTitle}
         details={details?.faq}
       />
-      {/* <Counselor
-        country="UK"
+      <Counselor
+        number={details?.expertNumber}
+        country={details?.destinationTitle}
         bgColor="linear-gradient(93deg, rgba(50,135,253,1) 0%, rgba(2,28,229,1) 100%)"
-      /> */}
+      />
     </div>
   );
 }
