@@ -1,5 +1,5 @@
-interface University  {
-  Name: string |   null;
+interface University {
+  Name: string | null;
   Overview: string | number | null;
   History: string | number | null;
   "Ranking & Achievement": string | number | null;
@@ -8,15 +8,15 @@ interface University  {
   Fee: string | number | null;
   Services: number | string | null;
   Accommodation: number | string | null;
-  established: number | string| null;
-  rank: number | string |null;
+  established: number | string | null;
+  rank: number | string | null;
   location: string | number | null;
-  "international student": number | string | null;
+  internationalStudent: number | string | null;
   country: string | number | null;
-  logo: string |   null;
+  logo: string | null;
 }
 
-const Single_University_Info = ({university}:{university: University}) => {
+const Single_University_Info = ({ university }: { university: University }) => {
   return (
     <div className=" mt-14">
       <div className="ml-auto bg-[#F5F5F5] rounded-2xl">
@@ -25,29 +25,43 @@ const Single_University_Info = ({university}:{university: University}) => {
         </p>
         <div className="px-10 pt-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">Rank</p>
-          <p className="text-[#1D4ED8]">{university.rank? university.rank : 'N/A' }</p>
+          <p className="text-[#1D4ED8]">
+            {university.rank ? university.rank : "N/A"}
+          </p>
         </div>
         <div className="px-10 pt-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">Location</p>
-          <p className="text-[#1D4ED8]">{university.location ? university.location : 'N/A'}</p>
+          <p className="text-[#1D4ED8]">
+            {university.location ? university.location : "N/A"}
+          </p>
         </div>
         <div className="px-10 pt-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">Established</p>
-          <p className="text-[#1D4ED8]">{university.established? university.established : 'N/A'}</p>
+          <p className="text-[#1D4ED8]">
+            {university.established ? university.established : "N/A"}
+          </p>
         </div>
         <div className="px-10 pt-5 pb-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">International Students</p>
-          <p className="text-[#1D4ED8]">{university["international student"] ? university["international student"] : 'N/A'}</p>
+          <p className="text-[#1D4ED8]">
+            {university?.internationalStudent 
+              ? university?.internationalStudent
+              : "N/A"}
+          </p>
         </div>
         <div className="border-t-2 border-dashed border-gray-400 py-5 mx-10"></div>
 
         <div className="px-10 pt-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">Famous Courses</p>
-          <p className="text-[#1D4ED8]">{university.courses? university.courses : 'N/A'}</p>
+          <p className="text-[#1D4ED8]">
+            {university.courses ? university.courses : "N/A"}
+          </p>
         </div>
         <div className="px-10 pt-5 pb-10 text-2xl font-bold">
           <p className="text-[#8E8E8E]">International Fees</p>
-          <p className="text-[#1D4ED8]">{university.Fee ? university.Fee : 'N/A'}</p>
+          <p className="text-[#1D4ED8]">
+            {university.Fee ? university.Fee : "N/A"}
+          </p>
         </div>
       </div>
     </div>
