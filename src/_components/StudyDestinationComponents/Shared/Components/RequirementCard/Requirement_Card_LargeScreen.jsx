@@ -3,41 +3,37 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 // Define an array of colors
-const colors = [
-  "bg-[#59C3CF]",
-  "bg-[#E2635E]",
-  "bg-[#A881F3]",
-  "bg-[#58B1EA]"
-];
+const colors = ["bg-[#59C3CF]", "bg-[#E2635E]", "bg-[#A881F3]", "bg-[#58B1EA]"];
 
 const RequirementCard = ({ require }) => {
-  const shortDescription = require?.description?.split(" ").slice(0, 50).join(" ");
-  
+  const shortDescription = require?.description
+    ?.split(" ")
+    .slice(0, 50)
+    .join(" ");
+
   // Randomly select a color from the colors array
   const randomColor = colors[Math.floor(Math.random() * 4)];
-  
+
   return (
-    <motion.div 
-      key={require?._id} 
-      initial={{ height: 'fit' }}
-      animate={{ height: 'auto' }}
-      transition={{ duration: 0.9, ease: 'easeInOut' }}
-      className={`h-fit pt-14 px-10 rounded-3xl group ${randomColor}`} // Apply the random color
-    > 
+    <motion.div
+      key={require?._id}
+      initial={{ height: "fit" }}
+      animate={{ height: "auto" }}
+      transition={{ duration: 0.9, ease: "easeInOut" }}
+      className={`h-fit pt-14 px-10 rounded-3xl group ${randomColor}`} 
+    >
       <div className="text-white">
         <h1 className="font-semibold text-2xl lg:text-4xl mb-3">
           {require?.title}
         </h1>
-        
+
         {/* Short description visible initially */}
         <p className="font-light h-full group-hover:hidden duration-500">
           {shortDescription}
         </p>
-        
+
         {/* Full description hidden initially, shown on hover */}
-        <motion.p
-          className="font-light lg:text-base text-sm h-0 overflow-hidden  transition-all duration-300 ease-in-out group-hover:h-full "
-        >
+        <motion.p className="font-light lg:text-base text-sm h-0 overflow-hidden  transition-all duration-300 ease-in-out group-hover:h-full ">
           {require?.description}
         </motion.p>
       </div>

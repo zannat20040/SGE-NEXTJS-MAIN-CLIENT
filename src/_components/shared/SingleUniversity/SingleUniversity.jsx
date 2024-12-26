@@ -12,6 +12,7 @@ import Single_University_Form from "./Single_University_Form";
 const SingleUniversity = ({ Name }) => {
   const [selectedUniversity, setSelectedUniversity] = useState(null);
 
+  
   useEffect(() => {
     if (Name) {
       const singleUniversity = data.find((uni) => uni.Name === Name.replace(/%20/g, ' '));

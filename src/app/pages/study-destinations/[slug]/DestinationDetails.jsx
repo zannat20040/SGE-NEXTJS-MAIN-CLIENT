@@ -64,10 +64,14 @@ export default function DestinationDetails({ slug }) {
         keywords={details?.popularIn}
       />
       <UniversityCards
+        details={details}
         country={details?.destinationTitle}
         universities={details?.topUniversity}
       />
-      <RequirementCard country={details?.destinationTitle} requirement={details?.studyRequirement} />
+      <RequirementCard
+        country={details?.destinationTitle}
+        requirement={details?.studyRequirement}
+      />
       <Exams
         country={details?.destinationTitle}
         examRequirement={details.examRequirement}

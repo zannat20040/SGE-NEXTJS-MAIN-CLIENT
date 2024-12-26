@@ -4,16 +4,15 @@ import React, { useState } from "react";
 import { TiLocation } from "react-icons/ti";
 import universitiesData from "../../../../../assets/json/ukUni.json";
 
-export default function UniversityCards({ country, universities }) {
+export default function UniversityCards({ country, universities, details }) {
   const [selectedUniversity, setSelectedUniversity] = useState(null);
 
-  // const universities = universitiesData;
+  console.log(details);
 
   const handleCardClick = (university) => {
     setSelectedUniversity(university);
   };
 
-  console.log(universities);
   return (
     <div
       className="mx-auto p-4 bg-[#EFF6FF] mb-40"
@@ -33,7 +32,7 @@ export default function UniversityCards({ country, universities }) {
           {universities.map((university) => (
             <div
               key={university.Name}
-              className="p-4 flex items-center justify-center bg-white rounded-lg cursor-pointer "
+              className="p-4 flex items-center justify-center bg-white rounded-lg cursor-pointer h-40"
               onMouseEnter={() => handleCardClick(university)}
             >
               <Image
@@ -41,7 +40,7 @@ export default function UniversityCards({ country, universities }) {
                 height={100}
                 src={university?.img}
                 alt={university?.name}
-                className="w-[200px] h-auto object-contain lg:px-4 md:px-4 px-0"
+                className="w-[200px] h-full object-contain lg:px-4 md:px-4 px-0"
               />
             </div>
           ))}
@@ -74,7 +73,7 @@ export default function UniversityCards({ country, universities }) {
                 <TiLocation className="text-blue-500" /> Located in{" "}
                 {selectedUniversity.location}
               </p>
-              <Link href={`/singleUniversity/${selectedUniversity.name}`}>
+              <Link href={`/${details?.url}/${selectedUniversity?.name}`}>
                 <button className="btn mt-4 lg:px-28 px-16 py-2 bg-blue-500 text-white rounded-3xl">
                   Apply Now
                 </button>
