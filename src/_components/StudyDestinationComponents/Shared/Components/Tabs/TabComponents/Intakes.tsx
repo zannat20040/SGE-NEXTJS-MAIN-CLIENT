@@ -15,7 +15,7 @@ const Intakes = ({ country }:{country:string}) => {
       col2: "January-February",
     },
   ];
-
+  
   return (
     <div className="max-w-[1400px] mx-auto px-4">
       <div className="flex w-full text-[#181A1B] items-center lg:flex-row flex-col gap-5">

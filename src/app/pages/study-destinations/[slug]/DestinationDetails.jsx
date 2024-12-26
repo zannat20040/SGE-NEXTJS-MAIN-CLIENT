@@ -5,7 +5,6 @@ import Doc3 from "@/_components/StudyDestinationComponents/Australia/SVG/Doc3";
 import Banner1 from "@/_components/StudyDestinationComponents/Shared/Banners/Banner1/Banner1";
 import AnimatedText from "@/_components/StudyDestinationComponents/Shared/Components/AnimatedText/AnimatedText";
 import Counselor from "@/_components/StudyDestinationComponents/Shared/Components/Counselor/Counselor";
-// import Counselor from "@/_components/StudyDestinationComponents/Shared/Components/Counselor/Counselor";
 import Exams from "@/_components/StudyDestinationComponents/Shared/Components/Exams/Exams";
 import FAQ from "@/_components/StudyDestinationComponents/Shared/Components/FAQ/FAQ";
 import QuickFacts from "@/_components/StudyDestinationComponents/Shared/Components/QuickFacts/QuickFacts";
@@ -68,7 +67,7 @@ export default function DestinationDetails({ slug }) {
         country={details?.destinationTitle}
         universities={details?.topUniversity}
       />
-      <RequirementCard country={details?.destinationTitle} details={details} />
+      <RequirementCard country={details?.destinationTitle} requirement={details?.studyRequirement} />
       <Exams
         country={details?.destinationTitle}
         examRequirement={details.examRequirement}
