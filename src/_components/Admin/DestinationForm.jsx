@@ -15,6 +15,7 @@ export default function DestinationForm() {
     programDuration: [],
     costOfStudy: [],
     academicIntake: [],
+    prepartionTime: "",
     topUniversity: [],
     studyRequirement: [],
     examRequirement: [],
@@ -175,6 +176,32 @@ export default function DestinationForm() {
       (_, i) => i !== index
     );
     setFormData({ ...formData, costOfStudy: updatedCostOfStudy });
+  };
+
+  // academic Intake
+  const handleAcademicIntake = (e, index, field, value) => {
+    const updateAcademicIntake = [...formData.academicIntake];
+    updateAcademicIntake[index] = {
+      ...updateAcademicIntake[index],
+      [field]: e.target.value,
+    };
+    setFormData({ ...formData, academicIntake: updateAcademicIntake });
+  };
+  const addAcademicIntake = () => {
+    const newAcademicIntake = {
+      qualification: "",
+      duration: "",
+    };
+    setFormData({
+      ...formData,
+      academicIntake: [...formData.academicIntake, newAcademicIntake],
+    });
+  };
+  const removeAcademicIntake = (index) => {
+    const updatedAcademicIntake = formData.academicIntake.filter(
+      (_, i) => i !== index
+    );
+    setFormData({ ...formData, academicIntake: updatedAcademicIntake });
   };
 
   // university
@@ -539,6 +566,64 @@ export default function DestinationForm() {
               </button>
             </div>
           ))}
+        </div>
+        {/* Academic Intake */}
+        <div>
+          <div className="flex justify-between gap-5 items-center mb-3">
+            <h2 className="text-lg font-semibold">Academic Intake</h2>
+            <button
+              type="button"
+              onClick={addAcademicIntake}
+              className="bg-blue-900 text-white px-4 py-2 rounded mt-2"
+            >
+              Add New Intake
+            </button>
+          </div>
+          {formData.academicIntake.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 mb-2 border p-4 "
+            >
+              <input
+                required
+                type="text"
+                value={item.qualification}
+                onChange={(e) =>
+                  handleAcademicIntake(e, index, "qualification")
+                }
+                placeholder={`qualification ${index + 1}`}
+                className="w-full border rounded p-2"
+              />{" "}
+              <input
+                required
+                type="text"
+                value={item.duration}
+                onChange={(e) => handleAcademicIntake(e, index, "duration")}
+                placeholder={`duration ${index + 1}`}
+                className="w-full border rounded p-2"
+              />
+              <button
+                type="button"
+                onClick={() => removeAcademicIntake(index)}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+        {/* preparation deadline */}
+        <div>
+          <h2 className="text-lg font-semibold">Preparation Deadline</h2>
+          <input
+            required
+            type="text"
+            name="prepartionTime"
+            value={formData.prepartionTime}
+            onChange={handleChange}
+            placeholder="You need to start preparing your application a minimum of 9-10 months in advance"
+            className="w-full border rounded p-2"
+          />
         </div>
 
         {/* Top University */}
