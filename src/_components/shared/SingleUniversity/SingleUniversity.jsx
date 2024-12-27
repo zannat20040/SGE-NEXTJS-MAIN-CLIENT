@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import Banner1 from "./Single_University_Banner";
 import data from "../../../assets/json/ukUni.json";
 import Single_Universty_Accordion from "./Single_Universty_Accordion";
-import Single_University_Info from "./Single_University_Info";
 import Single_University_Form from "./Single_University_Form";
 import Single_University_Check from "./Single_University_Check";
+import Single_University_Info from "./Single_University_Info";
 
 const SingleUniversity = ({ universityDetails }) => {
   console.log("University Details 11:", universityDetails);
