@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./Tabs.css";
 import Programs from "./TabComponents/Programs.jsx";
 import Cost from "./TabComponents/Cost";
-import Intakes from "./TabComponents/Intakes";
+import Intakes from "./TabComponents/Intakes.jsx";
 import Deadline from "./TabComponents/Deadline";
 
 const Tabs = ({ country, details }) => {
@@ -169,7 +169,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-intakes"
         >
-          <Intakes country={country} />
+          <Intakes country={country} academicIntake={academicIntake} />
         </div>
         <div
           className={`tab-content-display ${
