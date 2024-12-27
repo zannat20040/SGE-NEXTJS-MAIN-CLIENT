@@ -8,7 +8,6 @@ export default function AdminSidebar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("btn pressed");
     } catch (error) {
       console.log("Error logging out:", error);
     }

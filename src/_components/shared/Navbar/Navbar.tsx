@@ -131,7 +131,6 @@ const Navbar2 = () => {
     fetchDestinations();
   }, []);
 
-  console.log("hsjfsjdf==>", countries);
 
   return (
     <div

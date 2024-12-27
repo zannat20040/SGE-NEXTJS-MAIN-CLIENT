@@ -8,7 +8,6 @@ import Single_University_Check from "./Single_University_Check";
 import Single_University_Info from "./Single_University_Info";
 
 const SingleUniversity = ({ universityDetails }) => {
-  console.log("University Details 11:", universityDetails);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -35,7 +35,6 @@ const Home_Destination = () => {
   }, []);
 
 
-  console.log(countries)
 
   const displayedCountries = showAll ? countries : countries?.slice(0, 6);
 

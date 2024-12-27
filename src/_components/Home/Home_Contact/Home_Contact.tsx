@@ -36,7 +36,6 @@ const Home_Contact = () => {
 
     try {
       const response = await axios.post(`${apiUrl}/apply`, formData);
-      console.log('Form submitted successfully:', response.data);
       Swal.fire({
         icon: "success",
         title: "Thank You",

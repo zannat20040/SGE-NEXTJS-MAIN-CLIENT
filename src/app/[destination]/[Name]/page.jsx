@@ -12,10 +12,11 @@ export async function generateMetadata({ params }) {
   const decodedName = decodeURIComponent(Name);
 
   // Find the university details
-  const universityDetails = data?.topUniversity.find((item) => 
-    item.name.toLowerCase() === decodedName.toLowerCase()
+  const universityDetails = data?.topUniversity.find(
+    (item) => item.name.toLowerCase() === decodedName.toLowerCase()
   );
 
+  console.log("20===>", universityDetails);
   // Return metadata using destructured values
   return {
     title: `${universityDetails?.title} - ${universityDetails?.subTitle}`,
@@ -34,10 +35,9 @@ export default async function page({ params }) {
   const decodedName = decodeURIComponent(Name);
 
   // Find the university details
-  const universityDetails = data?.topUniversity.find((item) => 
-    item.name.toLowerCase() === decodedName.toLowerCase()
+  const universityDetails = data?.topUniversity.find(
+    (item) => item.name.toLowerCase() === decodedName.toLowerCase()
   );
-
 
   return (
     <div>

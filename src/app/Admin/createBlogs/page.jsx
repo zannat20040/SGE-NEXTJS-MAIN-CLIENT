@@ -73,7 +73,6 @@ export default function CreateBlogs() {
         error.message ||
         "An unknown error occurred";
 
-      console.log(error);
       toast.error(errMessage, {
         position: "bottom-right",
         autoClose: 5000,

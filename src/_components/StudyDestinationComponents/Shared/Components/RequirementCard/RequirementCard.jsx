@@ -5,7 +5,6 @@ import { GiConsoleController } from "react-icons/gi";
 
 const RequirementCard = ({ country, requirement }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  console.log("====>", requirement);
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 768);

@@ -27,7 +27,6 @@ const Blogs_Cards = () => {
     fetchBlogs();
   }, [apiUrl]);
 
-  console.log(error);
   return (
     <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 my-5 bg-[#FFF] mt-32">
       <div className="hidden md:block px-4">

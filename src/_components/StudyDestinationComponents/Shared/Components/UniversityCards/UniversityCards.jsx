@@ -7,7 +7,6 @@ import universitiesData from "../../../../../assets/json/ukUni.json";
 export default function UniversityCards({ country, universities, details }) {
   const [selectedUniversity, setSelectedUniversity] = useState(null);
 
-  console.log(details);
 
   const handleCardClick = (university) => {
     setSelectedUniversity(university);
