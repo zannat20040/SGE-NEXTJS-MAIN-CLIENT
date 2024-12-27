@@ -1,6 +1,6 @@
 
 
-const Cost = () => {
+const Cost = ({costOfStudy}) => {
     const tableData = [
         {
           col1: "Undergraduare Degree",
@@ -39,13 +39,13 @@ const Cost = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((row, index) => (
+              {costOfStudy.map((row, index) => (
                 <tr key={index} className="bg-[#EFF6FF] font-medium">
                   <td className="px-4 py-3 border-[E1E1E1] border-2">
-                    {row.col1}
+                    {row.degree}
                   </td>
                   <td className="p-4 border-[E1E1E1] border-2 text-center">
-                    {row.col2}
+                    {row.cost}
                   </td>
                  
                 </tr>

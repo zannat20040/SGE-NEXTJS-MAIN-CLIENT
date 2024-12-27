@@ -9,7 +9,8 @@ import Deadline from "./TabComponents/Deadline";
 const Tabs = ({ country, details }) => {
   console.log("10===>", details);
 
-  const { programDuration, costOfStudy, academicIntake , preparationTime} = details;
+  const { programDuration, costOfStudy, academicIntake, preparationTime } =
+    details;
   const [activeTab, setActiveTab] = useState("tab-program");
 
   const handleClick = (tabId) => {
@@ -160,7 +161,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-cost"
         >
-          <Cost />
+          <Cost costOfStudy={costOfStudy} />
         </div>
         <div
           className={`tab-content-display ${
