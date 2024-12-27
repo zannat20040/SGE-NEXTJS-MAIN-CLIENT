@@ -12,6 +12,9 @@ export default function DestinationForm() {
     whyStudyDescription: "",
     quickFacts: [],
     popularIn: [],
+    programDuration: [],
+    costOfStudy: [],
+    academicIntake: [],
     topUniversity: [],
     studyRequirement: [],
     examRequirement: [],
@@ -34,16 +37,15 @@ export default function DestinationForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     try {
       // Make sure to pass 'data' in the request body
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
-        formData
-      );
+      // await axios.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
+      //   formData
+      // );
 
       // Display success toast notification
       toast.success("Your new Destination added successfully.", {
@@ -95,41 +97,87 @@ export default function DestinationForm() {
   };
 
   // fact
-
   const handleQuickFactChange = (e, index) => {
     const updatedFacts = [...formData.quickFacts];
     updatedFacts[index] = e.target.value;
     setFormData({ ...formData, quickFacts: updatedFacts });
   };
-
   const addQuickFact = () => {
     setFormData({ ...formData, quickFacts: [...formData.quickFacts, ""] });
   };
-
   const removeQuickFact = (index) => {
     const updatedFacts = formData.quickFacts.filter((_, i) => i !== index);
     setFormData({ ...formData, quickFacts: updatedFacts });
   };
 
   // popular
-
   const handlePopularChange = (e, index) => {
     const updatedPopular = [...formData.popularIn];
     updatedPopular[index] = e.target.value;
     setFormData({ ...formData, popularIn: updatedPopular });
   };
-
   const addPopular = () => {
     setFormData({ ...formData, popularIn: [...formData.popularIn, ""] });
   };
-
   const removePopular = (index) => {
     const updatedPopular = formData.popularIn.filter((_, i) => i !== index);
     setFormData({ ...formData, popularIn: updatedPopular });
   };
 
-  // university
+  // program duration
+  const handleProgramDuration = (e, index, field, value) => {
+    const updatedProgramDuration = [...formData.programDuration];
+    updatedProgramDuration[index] = {
+      ...updatedProgramDuration[index],
+      [field]: e.target.value,
+    };
+    setFormData({ ...formData, programDuration: updatedProgramDuration });
+  };
+  const addProgramDuration = () => {
+    const newProgramDuration = {
+      qualification: "",
+      duration: "",
+      gir: "",
+    };
+    setFormData({
+      ...formData,
+      programDuration: [...formData.programDuration, newProgramDuration],
+    });
+  };
+  const removeProgramDuration = (index) => {
+    const updatedProgramDuration = formData.programDuration.filter(
+      (_, i) => i !== index
+    );
+    setFormData({ ...formData, programDuration: updatedProgramDuration });
+  };
 
+  // cost of study
+  const handleCostOfStudy = (e, index, field, value) => {
+    const updateCostOfStudy = [...formData.costOfStudy];
+    updateCostOfStudy[index] = {
+      ...updateCostOfStudy[index],
+      [field]: e.target.value,
+    };
+    setFormData({ ...formData, costOfStudy: updateCostOfStudy });
+  };
+  const addCostOfStudy = () => {
+    const newCostOfStudy = {
+      degree: "",
+      cost: "",
+    };
+    setFormData({
+      ...formData,
+      costOfStudy: [...formData.costOfStudy, newCostOfStudy],
+    });
+  };
+  const removeCostOfStudy = (index) => {
+    const updatedCostOfStudy = formData.costOfStudy.filter(
+      (_, i) => i !== index
+    );
+    setFormData({ ...formData, costOfStudy: updatedCostOfStudy });
+  };
+
+  // university
   const handleUniversityChange = (e, index, field, value) => {
     const updatedUniversities = [...formData.topUniversity];
     if (field === "courseList") {
@@ -145,8 +193,6 @@ export default function DestinationForm() {
     }
     setFormData({ ...formData, topUniversity: updatedUniversities });
   };
-  
-
   const addUniversity = () => {
     const newUniversity = {
       img: "",
@@ -171,7 +217,6 @@ export default function DestinationForm() {
       topUniversity: [...formData.topUniversity, newUniversity],
     });
   };
-
   const removeUniversity = (index) => {
     const updatedUniversities = formData.topUniversity.filter(
       (_, i) => i !== index
@@ -180,7 +225,6 @@ export default function DestinationForm() {
   };
 
   // requirement
-
   const handleRequirementChange = (e, index, field) => {
     const updatedRequirements = [...formData.studyRequirement];
     updatedRequirements[index] = {
@@ -189,7 +233,6 @@ export default function DestinationForm() {
     };
     setFormData({ ...formData, studyRequirement: updatedRequirements });
   };
-
   const addRequirement = () => {
     const newRequirement = {
       title: "",
@@ -201,7 +244,6 @@ export default function DestinationForm() {
       studyRequirement: [...formData.studyRequirement, newRequirement],
     });
   };
-
   const removeRequirement = (index) => {
     const updatedRequirements = formData.studyRequirement.filter(
       (_, i) => i !== index
@@ -210,7 +252,6 @@ export default function DestinationForm() {
   };
 
   // exam requirement
-
   const handleExamChange = (e, index, field) => {
     const updatedExams = [...formData.examRequirement];
     updatedExams[index] = {
@@ -219,7 +260,6 @@ export default function DestinationForm() {
     };
     setFormData({ ...formData, examRequirement: updatedExams });
   };
-
   const addExam = () => {
     const newExam = {
       title: "",
@@ -230,14 +270,12 @@ export default function DestinationForm() {
       examRequirement: [...formData.examRequirement, newExam],
     });
   };
-
   const removeExam = (index) => {
     const updatedExams = formData.examRequirement.filter((_, i) => i !== index);
     setFormData({ ...formData, examRequirement: updatedExams });
   };
 
   // faq
-
   const handleFAQChange = (e, index, field) => {
     const updatedFAQ = [...formData.faq];
     updatedFAQ[index] = {
@@ -246,7 +284,6 @@ export default function DestinationForm() {
     };
     setFormData({ ...formData, faq: updatedFAQ });
   };
-
   const addFAQ = () => {
     const newFAQ = {
       question: "",
@@ -254,7 +291,6 @@ export default function DestinationForm() {
     };
     setFormData({ ...formData, faq: [...formData.faq, newFAQ] });
   };
-
   const removeFAQ = (index) => {
     const updatedFAQ = formData.faq.filter((_, i) => i !== index);
     setFormData({ ...formData, faq: updatedFAQ });
@@ -406,6 +442,103 @@ export default function DestinationForm() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Program Duration */}
+        <div>
+          <div className="flex justify-between gap-5 items-center mb-3">
+            <h2 className="text-lg font-semibold">Program Duration</h2>
+            <button
+              type="button"
+              onClick={addProgramDuration}
+              className="bg-blue-900 text-white px-4 py-2 rounded mt-2"
+            >
+              Add New Qualification
+            </button>
+          </div>
+          {formData.programDuration.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 mb-2 border p-4 "
+            >
+              <input
+                required
+                type="text"
+                value={item.qualification}
+                onChange={(e) =>
+                  handleProgramDuration(e, index, "qualification")
+                }
+                placeholder={`qualification ${index + 1}`}
+                className="w-full border rounded p-2"
+              />{" "}
+              <input
+                required
+                type="text"
+                value={item.duration}
+                onChange={(e) => handleProgramDuration(e, index, "duration")}
+                placeholder={`duration ${index + 1}`}
+                className="w-full border rounded p-2"
+              />
+              <input
+                required
+                type="text"
+                value={item.gir}
+                onChange={(e) => handleProgramDuration(e, index, "gir")}
+                placeholder={`gir ${index + 1}`}
+                className="w-full border rounded p-2"
+              />
+              <button
+                type="button"
+                onClick={() => removeProgramDuration(index)}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+        {/* Cost */}
+        <div>
+          <div className="flex justify-between gap-5 items-center mb-3">
+            <h2 className="text-lg font-semibold">Cost of Study</h2>
+            <button
+              type="button"
+              onClick={addCostOfStudy}
+              className="bg-blue-900 text-white px-4 py-2 rounded mt-2"
+            >
+              Add New Cost
+            </button>
+          </div>
+          {formData.costOfStudy.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-2 mb-2 border p-4 "
+            >
+              <input
+                required
+                type="text"
+                value={item.degree}
+                onChange={(e) => handleCostOfStudy(e, index, "degree")}
+                placeholder={`degree ${index + 1}`}
+                className="w-full border rounded p-2"
+              />{" "}
+              <input
+                required
+                type="text"
+                value={item.cost}
+                onChange={(e) => handleCostOfStudy(e, index, "cost")}
+                placeholder={`cost ${index + 1}`}
+                className="w-full border rounded p-2"
+              />
+              <button
+                type="button"
+                onClick={() => removeCostOfStudy(index)}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
         </div>
 
         {/* Top University */}
@@ -583,9 +716,13 @@ export default function DestinationForm() {
                   name="courseList"
                   value={university?.courseList?.join(", ")}
                   onChange={(e) =>
-                    handleUniversityChange(e, index, "courseList", e.target.value)
+                    handleUniversityChange(
+                      e,
+                      index,
+                      "courseList",
+                      e.target.value
+                    )
                   }
-        
                   placeholder="Enter popular course list (comma-separated)"
                   className="w-full border rounded p-2"
                 ></textarea>
