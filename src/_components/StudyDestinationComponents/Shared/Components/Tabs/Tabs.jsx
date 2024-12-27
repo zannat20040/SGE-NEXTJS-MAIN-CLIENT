@@ -4,7 +4,7 @@ import "./Tabs.css";
 import Programs from "./TabComponents/Programs.jsx";
 import Cost from "./TabComponents/Cost";
 import Intakes from "./TabComponents/Intakes.jsx";
-import Deadline from "./TabComponents/Deadline";
+import Deadline from "./TabComponents/Deadline.jsx";
 
 const Tabs = ({ country, details }) => {
   console.log("10===>", details);
@@ -177,7 +177,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-deadline"
         >
-          <Deadline country={country} />
+          <Deadline country={country} preparationTime={preparationTime} />
         </div>
       </div>
     </div>
