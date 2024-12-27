@@ -98,224 +98,223 @@ const Single_Universty_Accordion = ({ university }) => {
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("history")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  History
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "history" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "history" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "history"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  {university?.history}
                 </div>
               </div>
             </div>
           </div>
         </div>
-         {/* ranking & achievement */}
+        {/* ranking & achievement */}
         <div className="mb-4">
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("achievement")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  Ranking & Achievement
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "achievement" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "achievement" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "achievement"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  {university?.achievement}
                 </div>
               </div>
             </div>
           </div>
         </div>
-         {/* department & faculty*/}
+        {/* department & faculty*/}
         <div className="mb-4">
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("faculty")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  Department & Faculty
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "faculty" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "faculty" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "faculty"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  {university?.faculty}
                 </div>
               </div>
             </div>
           </div>
         </div>
-         {/* fee*/}
+        {/* fee*/}
         <div className="mb-4">
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("fees")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  Fees
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "fees" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "fees" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "fees"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  ${university?.fees}
                 </div>
               </div>
             </div>
           </div>
         </div>
-           {/* service*/}
+        {/* service*/}
         <div className="mb-4">
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("service")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  Service
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "service" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "service" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "service"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  {university?.service}
                 </div>
               </div>
             </div>
           </div>
         </div>
-           {/* accommodation*/}
+        {/* accommodation*/}
         <div className="mb-4">
           <div className="w-full font-poppins h-auto rounded-lg pb-0">
             <div className="my-3">
               <button
-                onClick={() => toggle("overview")}
+                onClick={() => toggle("accommodation")}
                 className="flex w-full rounded-full bg-[#EEEEEE] items-center justify-between font-medium outline-none"
               >
                 <span className="pl-5 py-3 text-lg md:text-2xl font-bold text-[#00399F] text-left">
-                  Overview
+                  Accommodation
                 </span>
                 <span
                   className={`rounded-full text-lg md:text-xl px-8 py-4 ${
-                    isOpen === "overview" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
+                    isOpen === "accommodation" ? "bg-[#00399F]" : "bg-[#e1e1e1]"
                   }`}
                 >
                   <LuTriangle
                     className={`origin-center transform transition duration-200 ease-out rotate-90 text-[#00399F] ${
-                      isOpen === "overview" && "!rotate-180 text-white"
+                      isOpen === "accommodation" && "!rotate-180 text-white"
                     }`}
                   />
                 </span>
               </button>
               <div
                 className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen === "overview"
+                  isOpen === "accommodation"
                     ? "grid-rows-[1fr] pb-1 pt-3 opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 }`}
               >
                 <div className="overflow-hidden pr-4 text-sm">
-                  {university?.desc}
+                  {university?.accomodation}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
       </div>
     );
   };
