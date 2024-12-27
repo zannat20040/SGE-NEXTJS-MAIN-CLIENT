@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Programs = ({ country }:{country:string}) => {
+const Programs = ({ country, programDuration }) => {
   const tableData = [
     {
       col1: "Degrees (Such as BA, B.Sc., BEng)",
@@ -13,12 +13,12 @@ const Programs = ({ country }:{country:string}) => {
       col3: "2 years",
     },
     {
-      col1: "Tauch masters (such as MA, M.Sc, LLM, MBA, MREs)",
+      col1: "Taught masters (such as MA, M.Sc, LLM, MBA, MRes)",
       col2: "1 year",
       col3: "2 years",
     },
     {
-      col1: "Research masters (such as MPhil, PhD, Dphil)",
+      col1: "Research masters (such as MPhil, PhD, DPhil)",
       col2: "1-2 years",
       col3: "3 years",
     },
@@ -35,7 +35,7 @@ const Programs = ({ country }:{country:string}) => {
             Here are the programs that the {country} universities offer:
           </p>
           <div className="lg:text-xl md:text-xl mt-10 text-xs w-full overflow-x-scroll">
-            <table className="bg-white border border-gray-300  w-auto ">
+            <table className="bg-white border border-gray-300 w-auto">
               <thead>
                 <tr className="bg-[#3B82F6] text-white">
                   <th className="py-2 px-4 border-b">QUALIFICATION</th>
@@ -46,16 +46,16 @@ const Programs = ({ country }:{country:string}) => {
                 </tr>
               </thead>
               <tbody>
-                {tableData.map((row, index) => (
+                {programDuration.map((row, index) => (
                   <tr key={index} className="bg-[#EFF6FF] font-medium">
                     <td className="px-4 py-3 border-[E1E1E1] border-2">
-                      {row.col1}
+                      {row?.qualification}
                     </td>
                     <td className="p-4 border-[E1E1E1] border-2 text-center">
-                      {row.col2}
+                      {row?.duration}
                     </td>
                     <td className="p-4 border-[E1E1E1] border-2 text-center">
-                      {row.col3}
+                      {row?.gir}
                     </td>
                   </tr>
                 ))}
@@ -64,7 +64,9 @@ const Programs = ({ country }:{country:string}) => {
           </div>
         </div>
         <div className="lg:w-[45%] w-full lg:block hidden">
-          <Image width={100} height={100}
+          <Image
+            width={100}
+            height={100}
             className="w-[80%] h-auto mt-28 mx-auto"
             src="https://i.ibb.co/k6yJDnY/time-flies-rafiki-1.png"
             alt="Time flies illustration"

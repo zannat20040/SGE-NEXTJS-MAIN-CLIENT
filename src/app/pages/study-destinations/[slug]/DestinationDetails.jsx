@@ -57,7 +57,7 @@ export default function DestinationDetails({ slug }) {
         description={details?.whyStudyDescription}
       />
       <QuickFacts facts={details?.quickFacts} />
-      <Tabs country={details?.destinationTitle} />
+      <Tabs details={details} country={details?.destinationTitle} />
       <AnimatedText
         country={details?.destinationTitle}
         keywords={details?.popularIn}

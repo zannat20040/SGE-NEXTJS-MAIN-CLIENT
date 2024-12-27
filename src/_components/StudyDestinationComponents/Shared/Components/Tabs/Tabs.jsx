@@ -1,19 +1,22 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import "./Tabs.css";
-import Programs from "./TabComponents/Programs";
+import Programs from "./TabComponents/Programs.jsx";
 import Cost from "./TabComponents/Cost";
 import Intakes from "./TabComponents/Intakes";
 import Deadline from "./TabComponents/Deadline";
 
-const Tabs = ({ country }:{country:string}) => {
+const Tabs = ({ country, details }) => {
+  console.log("10===>", details);
+
+  const { programDuration, costOfStudy, academicIntake , preparationTime} = details;
   const [activeTab, setActiveTab] = useState("tab-program");
 
-  const handleClick = (tabId:string) => {
+  const handleClick = (tabId) => {
     setActiveTab(tabId);
   };
 
-  const [width, setWidth] = useState<number>(1024);
+  const [width, setWidth] = useState(1024);
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -30,8 +33,8 @@ const Tabs = ({ country }:{country:string}) => {
           data-tab="tab-program"
         >
           <button
-            className={`bg-transparent p-1  ${
-              activeTab === "tab-program" ? "  " : " hover:text-white"
+            className={`bg-transparent p-1 ${
+              activeTab === "tab-program" ? "" : "hover:text-white"
             }`}
           >
             Programs & Duration
@@ -45,8 +48,8 @@ const Tabs = ({ country }:{country:string}) => {
           data-tab="tab-cost"
         >
           <button
-            className={`bg-transparent p-1  ${
-              activeTab === "tab-cost" ? "  " : " hover:text-white"
+            className={`bg-transparent p-1 ${
+              activeTab === "tab-cost" ? "" : "hover:text-white"
             }`}
           >
             Cost of Studying
@@ -60,8 +63,8 @@ const Tabs = ({ country }:{country:string}) => {
           data-tab="tab-intakes"
         >
           <button
-            className={`bg-transparent p-1  ${
-              activeTab === "tab-intakes" ? "  " : " hover:text-white"
+            className={`bg-transparent p-1 ${
+              activeTab === "tab-intakes" ? "" : "hover:text-white"
             }`}
           >
             Academic Intakes
@@ -75,8 +78,8 @@ const Tabs = ({ country }:{country:string}) => {
           data-tab="tab-deadline"
         >
           <button
-            className={`bg-transparent p-1  ${
-              activeTab === "tab-deadline" ? "  " : " hover:text-white"
+            className={`bg-transparent p-1 ${
+              activeTab === "tab-deadline" ? "" : "hover:text-white"
             }`}
           >
             Deadline
@@ -141,7 +144,7 @@ const Tabs = ({ country }:{country:string}) => {
       <div
         className={`${
           width < 600 ? "" : "tab-content--container"
-        }   lg:p-[100px] md:p-[100px] p-0 pb-10 bg-[#EFF6FF]`}
+        } lg:p-[100px] md:p-[100px] p-0 pb-10 bg-[#EFF6FF]`}
       >
         <div
           className={`tab-content-display ${
@@ -149,7 +152,7 @@ const Tabs = ({ country }:{country:string}) => {
           }`}
           id="tab-program"
         >
-          <Programs country={country} />
+          <Programs country={country} programDuration={programDuration} />
         </div>
         <div
           className={`tab-content-display ${

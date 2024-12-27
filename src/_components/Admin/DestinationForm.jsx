@@ -15,7 +15,7 @@ export default function DestinationForm() {
     programDuration: [],
     costOfStudy: [],
     academicIntake: [],
-    prepartionTime: "",
+    preparationTime: "",
     topUniversity: [],
     studyRequirement: [],
     examRequirement: [],
@@ -43,10 +43,10 @@ export default function DestinationForm() {
     console.log("Form Data Submitted:", formData);
     try {
       // Make sure to pass 'data' in the request body
-      // await axios.post(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
-      //   formData
-      // );
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
+        formData
+      );
 
       // Display success toast notification
       toast.success("Your new Destination added successfully.", {
@@ -63,7 +63,7 @@ export default function DestinationForm() {
       });
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
-
+      console.log(error);
       if (error.response) {
         // Check if error.response and error.response.data exist
         const errorData = error.response.data;
