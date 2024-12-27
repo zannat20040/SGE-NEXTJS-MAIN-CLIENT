@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   console.log("20===>", universityDetails);
   // Return metadata using destructured values
   return {
-    title: `${universityDetails?.title} - ${universityDetails?.subTitle}`,
+    title: `${universityDetails?.name} - ${universityDetails?.subtitle}`,
     description: universityDetails?.desc,
   };
 }
