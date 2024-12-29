@@ -326,7 +326,7 @@ export default function DestinationForm() {
   const inputCss = "w-full  rounded p-2 focus:outline-none border-2  ";
 
   return (
-    <div className=" p-6 max-w-4xl mx-auto shadow-xl bg-gray-100">
+    <div className=" p-3 md:p-6 max-w-4xl mx-auto shadow-xl shadow-gray-400 rounded-lg bg-gray-100">
       <h1 className="text-2xl font-bold border-b-2 border-blue-900  pb-6 text-blue-900 text-center pt-3 mb-10">
         Create Destination Page
       </h1>
@@ -534,45 +534,55 @@ export default function DestinationForm() {
               }`}
             >
               {formData.programDuration.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-end flex-col md:flex-row md:items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
-                >
-                  <input
-                    required
-                    type="text"
-                    value={item.qualification}
-                    onChange={(e) =>
-                      handleProgramDuration(e, index, "qualification")
-                    }
-                    placeholder={`Qualification ${index + 1}`}
-                    className={`${inputCss}`}
-                  />{" "}
-                  <input
-                    required
-                    type="text"
-                    value={item.duration}
-                    onChange={(e) =>
-                      handleProgramDuration(e, index, "duration")
-                    }
-                    placeholder={`Duration ${index + 1}`}
-                    className={`${inputCss}`}
-                  />
-                  <input
-                    required
-                    type="text"
-                    value={item.gir}
-                    onChange={(e) => handleProgramDuration(e, index, "gir")}
-                    placeholder={`GIR ${index + 1}`}
-                    className={`${inputCss}`}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeProgramDuration(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Remove
-                  </button>
+                <div className="collapse bg-gray-100  mb-2 rounded ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    Row {index + 1}
+                  </div>
+
+                  <div className={`collapse-content `}>
+                    <div
+                      key={index}
+                      className="flex items-end flex-col md:flex-row md:items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
+                    >
+                      <input
+                        required
+                        type="text"
+                        value={item.qualification}
+                        onChange={(e) =>
+                          handleProgramDuration(e, index, "qualification")
+                        }
+                        placeholder={`Qualification ${index + 1}`}
+                        className={`${inputCss}`}
+                      />{" "}
+                      <input
+                        required
+                        type="text"
+                        value={item.duration}
+                        onChange={(e) =>
+                          handleProgramDuration(e, index, "duration")
+                        }
+                        placeholder={`Duration ${index + 1}`}
+                        className={`${inputCss}`}
+                      />
+                      <input
+                        required
+                        type="text"
+                        value={item.gir}
+                        onChange={(e) => handleProgramDuration(e, index, "gir")}
+                        placeholder={`GIR ${index + 1}`}
+                        className={`${inputCss}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeProgramDuration(index)}
+                        className="bg-red-500 text-white px-2 py-1 rounded"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -605,33 +615,43 @@ export default function DestinationForm() {
               }`}
             >
               {formData.costOfStudy.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex md:flex-row flex-col items-end md:items-center gap-2 mb-2 bg-gray-200 rounded p-2 "
-                >
-                  <input
-                    required
-                    type="text"
-                    value={item.degree}
-                    onChange={(e) => handleCostOfStudy(e, index, "degree")}
-                    placeholder={`Degree ${index + 1}`}
-                    className={`${inputCss}`}
-                  />{" "}
-                  <input
-                    required
-                    type="text"
-                    value={item.cost}
-                    onChange={(e) => handleCostOfStudy(e, index, "cost")}
-                    placeholder={`Cost ${index + 1}`}
-                    className={`${inputCss}`}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeCostOfStudy(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Remove
-                  </button>
+                <div className="collapse bg-gray-100  mb-2 rounded ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    Row {index + 1}
+                  </div>
+
+                  <div className={`collapse-content `}>
+                    <div
+                      key={index}
+                      className="flex md:flex-row flex-col items-end md:items-center gap-2 mb-2 bg-gray-200 rounded p-2 "
+                    >
+                      <input
+                        required
+                        type="text"
+                        value={item.degree}
+                        onChange={(e) => handleCostOfStudy(e, index, "degree")}
+                        placeholder={`Degree ${index + 1}`}
+                        className={`${inputCss}`}
+                      />{" "}
+                      <input
+                        required
+                        type="text"
+                        value={item.cost}
+                        onChange={(e) => handleCostOfStudy(e, index, "cost")}
+                        placeholder={`Cost ${index + 1}`}
+                        className={`${inputCss}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeCostOfStudy(index)}
+                        className="bg-red-500 text-white px-2 py-1 rounded"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -664,35 +684,47 @@ export default function DestinationForm() {
               }`}
             >
               {formData.academicIntake.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
-                >
-                  <input
-                    required
-                    type="text"
-                    value={item.qualification}
-                    onChange={(e) =>
-                      handleAcademicIntake(e, index, "qualification")
-                    }
-                    placeholder={`Qualification ${index + 1}`}
-                    className={`${inputCss}`}
-                  />{" "}
-                  <input
-                    required
-                    type="text"
-                    value={item.duration}
-                    onChange={(e) => handleAcademicIntake(e, index, "duration")}
-                    placeholder={`Duration ${index + 1}`}
-                    className={`${inputCss}`}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeAcademicIntake(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Remove
-                  </button>
+                <div className="collapse bg-gray-100  mb-2 rounded ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    Row {index + 1}
+                  </div>
+
+                  <div className={`collapse-content `}>
+                    <div
+                      key={index}
+                      className="flex flex-col md:flex-row  items-end md:items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
+                    >
+                      <input
+                        required
+                        type="text"
+                        value={item.qualification}
+                        onChange={(e) =>
+                          handleAcademicIntake(e, index, "qualification")
+                        }
+                        placeholder={`Qualification ${index + 1}`}
+                        className={`${inputCss}`}
+                      />{" "}
+                      <input
+                        required
+                        type="text"
+                        value={item.duration}
+                        onChange={(e) =>
+                          handleAcademicIntake(e, index, "duration")
+                        }
+                        placeholder={`Duration ${index + 1}`}
+                        className={`${inputCss}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeAcademicIntake(index)}
+                        className="bg-red-500 text-white px-2 py-1 rounded"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -700,7 +732,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Preparation deadline */}
-        <div>
+        <div className="!mt-5">
           <h2 className="text-lg font-semibold">Preparation Deadline</h2>
           <textarea
             required
@@ -749,8 +781,8 @@ export default function DestinationForm() {
                   <div className={`collapse-content bg-gray-100`}>
                     <div key={index} className=" mb-4">
                       {/* university name & image / rank/ established */}
-                      <div className="grid grid-cols-5 gap-2 justify-between !mb-2">
-                        <div className="col-span-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-2 justify-between !mb-2">
+                        <div className="sm:col-span-3 md:col-span-2 ">
                           <input
                             required
                             type="text"
@@ -812,7 +844,7 @@ export default function DestinationForm() {
                         ></textarea>
                       </div>
                       {/* history/ achievement */}
-                      <div className="grid grid-cols-2 gap-2 justify-between ">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between ">
                         <div className="">
                           <textarea
                             required
@@ -837,7 +869,7 @@ export default function DestinationForm() {
                         </div>
                       </div>
                       {/* service/ accomodation/ faculty */}
-                      <div className="grid grid-cols-3 gap-2 justify-between ">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 justify-between ">
                         <div className="">
                           <textarea
                             required
@@ -873,7 +905,7 @@ export default function DestinationForm() {
                         </div>
                       </div>
                       {/* fees/ internation fees/ internation student */}
-                      <div className="grid grid-cols-3 gap-2 justify-between !mb-2">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 justify-between !mb-2">
                         <div className="">
                           <input
                             required
@@ -938,7 +970,7 @@ export default function DestinationForm() {
                         ></textarea>
                       </div>
                       {/* subtitle & location */}
-                      <div className="grid grid-cols-2 gap-2 justify-between !mb-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between !mb-2">
                         <div className="">
                           <input
                             required
@@ -1017,7 +1049,7 @@ export default function DestinationForm() {
 
                   <div className={`collapse-content `}>
                     <div key={index} className="p-2 bg-gray-200 rounded mb-2">
-                      <div className="grid grid-cols-2 gap-5 justify-between">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-between">
                         <div className="mb-2">
                           <input
                             required
@@ -1234,7 +1266,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Apply Document */}
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <h2 className="text-lg font-semibold">
               Apply Document - Description
@@ -1309,7 +1341,7 @@ export default function DestinationForm() {
                     {formData.examRequirement.map((exam, index) => (
                       <div
                         key={index}
-                        className=" rounded mb-4 flex justify-center items-center gap-x-2"
+                        className=" rounded mb-4 flex flex-col md:flex-row justify-center items-end md:items-center gap-2"
                       >
                         <input
                           required
