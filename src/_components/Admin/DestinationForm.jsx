@@ -1347,7 +1347,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Expert Number */}
-        <div>
+        <div className="!my-4">
           <h2 className="text-lg font-semibold">Expert Number</h2>
           <input
             required
@@ -1356,26 +1356,26 @@ export default function DestinationForm() {
             value={formData.expertNumber}
             onChange={handleChange}
             placeholder="Expert Number"
-            className="w-full border rounded p-2"
+            className={`${inputCss}`}
           />
         </div>
 
         {/* URL */}
         <div>
-          <h2 className="text-lg font-semibold">URL</h2>
+          <h2 className="text-lg font-semibold">Page URL</h2>
           <input
             required
             type="text"
             name="url"
             value={formData.url}
             onChange={handleChange}
-            placeholder="URL"
-            className="w-full border rounded p-2"
+            placeholder="URL eg:study-in-uk"
+            className={`${inputCss}`}
           />
         </div>
 
         {/* Page Title */}
-        <div>
+        <div  className="!my-4">
           <h2 className="text-lg font-semibold">Page Title</h2>
           <input
             required
@@ -1384,7 +1384,7 @@ export default function DestinationForm() {
             value={formData.pageTitle}
             onChange={handleChange}
             placeholder="Page Title"
-            className="w-full border rounded p-2"
+            className={`${inputCss}`}
           />
         </div>
 
@@ -1396,17 +1396,19 @@ export default function DestinationForm() {
             name="meta"
             value={formData.meta}
             onChange={handleChange}
-            placeholder="Meta Information"
-            className="w-full border rounded p-2"
+            placeholder="Write here your Meta Information.. "
+            className={`${inputCss}`}
           ></textarea>
         </div>
 
-        <button
+       <div className="flex ">
+       <button
           type="submit"
-          className="bg-blue-900 text-white px-4 py-2 rounded"
+          className="bg-blue-900 text-white  py-2 rounded px-10"
         >
           Submit
         </button>
+       </div>
       </form>
     </div>
   );
