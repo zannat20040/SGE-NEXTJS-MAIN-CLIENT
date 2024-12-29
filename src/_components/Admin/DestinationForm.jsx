@@ -1154,7 +1154,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Document Requirement */}
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-2 gap-5 !mt-3">
           <div>
             <h2 className="text-lg font-semibold">
               Document Requirement - Description
@@ -1169,8 +1169,8 @@ export default function DestinationForm() {
                   documentDescription: e.target.value,
                 })
               }
-              placeholder="Enter document description"
-              className="w-full border rounded p-2"
+              placeholder="Write document description"
+              className={`${inputCss}`}
             ></textarea>
           </div>
           <div>
@@ -1189,8 +1189,8 @@ export default function DestinationForm() {
                     .map((item) => item.trim()),
                 })
               }
-              placeholder="Enter document list (comma-separated)"
-              className="w-full border rounded p-2"
+              placeholder="Give document list (comma-separated)"
+              className={`${inputCss}`}
             ></textarea>
           </div>
         </div>
@@ -1209,8 +1209,8 @@ export default function DestinationForm() {
                   statementDescription: e.target.value,
                 })
               }
-              placeholder="Enter statement description"
-              className="w-full border rounded p-2"
+              placeholder="Write statement description"
+              className={`${inputCss}`}
             ></textarea>
           </div>
           <div>
@@ -1227,8 +1227,8 @@ export default function DestinationForm() {
                     .map((item) => item.trim()),
                 })
               }
-              placeholder="Enter statement list (comma-separated)"
-              className="w-full border rounded p-2"
+              placeholder="Give statement list (comma-separated)"
+              className={`${inputCss}`}
             ></textarea>
           </div>
         </div>
@@ -1249,8 +1249,8 @@ export default function DestinationForm() {
                   applyDocumentDescription: e.target.value,
                 })
               }
-              placeholder="Enter apply document description"
-              className="w-full border rounded p-2"
+              placeholder="Write apply document description"
+              className={`${inputCss}`}
             ></textarea>
           </div>
           <div>
@@ -1267,8 +1267,8 @@ export default function DestinationForm() {
                     .map((item) => item.trim()),
                 })
               }
-              placeholder="Enter apply document list (comma-separated)"
-              className="w-full border rounded p-2"
+              placeholder="Give apply document list (comma-separated)"
+              className={`${inputCss}`}
             ></textarea>
           </div>
         </div>
