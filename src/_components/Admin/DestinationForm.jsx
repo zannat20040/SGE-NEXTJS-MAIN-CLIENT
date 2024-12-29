@@ -442,7 +442,7 @@ export default function DestinationForm() {
                       value={fact}
                       onChange={(e) => handleQuickFactChange(e, index)}
                       placeholder={`Fact ${index + 1}`}
-                      className="w-full border rounded p-2"
+                      className={`${inputCss}`}
                     />
                     <button
                       type="button"
@@ -491,7 +491,7 @@ export default function DestinationForm() {
                       value={location}
                       onChange={(e) => handlePopularChange(e, index)}
                       placeholder={`Popular in ${index + 1}`}
-                      className="w-full border rounded p-2"
+                      className={`${inputCss}`}
                     />
                     <button
                       type="button"
@@ -519,47 +519,66 @@ export default function DestinationForm() {
               Add New Qualification
             </button>
           </div>
-          {formData.programDuration.map((item, index) => (
+
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.programDuration.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Clear to see
+              </div>
+            )}
+
             <div
-              key={index}
-              className="flex items-center gap-2 mb-2 border p-4 "
+              className={`collapse-content ${
+                formData.programDuration.length > 0 && "bg-gray-300 "
+              }`}
             >
-              <input
-                required
-                type="text"
-                value={item.qualification}
-                onChange={(e) =>
-                  handleProgramDuration(e, index, "qualification")
-                }
-                placeholder={`qualification ${index + 1}`}
-                className="w-full border rounded p-2"
-              />{" "}
-              <input
-                required
-                type="text"
-                value={item.duration}
-                onChange={(e) => handleProgramDuration(e, index, "duration")}
-                placeholder={`duration ${index + 1}`}
-                className="w-full border rounded p-2"
-              />
-              <input
-                required
-                type="text"
-                value={item.gir}
-                onChange={(e) => handleProgramDuration(e, index, "gir")}
-                placeholder={`gir ${index + 1}`}
-                className="w-full border rounded p-2"
-              />
-              <button
-                type="button"
-                onClick={() => removeProgramDuration(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
+              {formData.programDuration.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 mb-2  bg-gray-200 p-2 rounded "
+                >
+                  <input
+                    required
+                    type="text"
+                    value={item.qualification}
+                    onChange={(e) =>
+                      handleProgramDuration(e, index, "qualification")
+                    }
+                    placeholder={`Qualification ${index + 1}`}
+                    className="w-full border rounded p-2"
+                  />{" "}
+                  <input
+                    required
+                    type="text"
+                    value={item.duration}
+                    onChange={(e) =>
+                      handleProgramDuration(e, index, "duration")
+                    }
+                    placeholder={`Duration ${index + 1}`}
+                    className="w-full border rounded p-2"
+                  />
+                  <input
+                    required
+                    type="text"
+                    value={item.gir}
+                    onChange={(e) => handleProgramDuration(e, index, "gir")}
+                    placeholder={`GIR ${index + 1}`}
+                    className="w-full border rounded p-2"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeProgramDuration(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
+
         {/* Cost */}
         <div>
           <div className="flex justify-between gap-5 items-center mb-3">
