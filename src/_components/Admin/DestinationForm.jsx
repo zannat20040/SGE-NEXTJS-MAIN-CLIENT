@@ -332,7 +332,7 @@ export default function DestinationForm() {
       </h1>
       <form onSubmit={handleSubmit} className="space-y-2">
         {/* Country */}
-        <div className="grid grid-cols-2 gap-5 justify-between items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-between items-center">
           <div>
             <h2 className="text-lg font-semibold">Destination Name</h2>
             <input
@@ -360,7 +360,7 @@ export default function DestinationForm() {
         </div>
 
         {/* banner & why study */}
-        <div className="grid grid-cols-2 gap-5 justify-between !mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-between !mt-5">
           {/* Destination Banner */}
           <div className="space-y-2">
             <h2 className="text-lg font-semibold">Destination Banner</h2>
@@ -407,7 +407,7 @@ export default function DestinationForm() {
         </div>
 
         {/* quick fact & popular in */}
-        <div className="grid grid-cols-2 gap-5 justify-between !mt-5 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-between !mt-5 ">
           {/* Quick Facts */}
           <div>
             <div className="flex justify-between gap-5 items-center mb-3">
@@ -536,7 +536,7 @@ export default function DestinationForm() {
               {formData.programDuration.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
+                  className="flex items-end flex-col md:flex-row md:items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
                 >
                   <input
                     required
@@ -607,7 +607,7 @@ export default function DestinationForm() {
               {formData.costOfStudy.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 mb-2 bg-gray-200 rounded p-2 "
+                  className="flex md:flex-row flex-col items-end md:items-center gap-2 mb-2 bg-gray-200 rounded p-2 "
                 >
                   <input
                     required
@@ -1154,7 +1154,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Document Requirement */}
-        <div className="grid grid-cols-2 gap-5 !mt-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 !mt-3">
           <div>
             <h2 className="text-lg font-semibold">
               Document Requirement - Description
@@ -1196,7 +1196,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Statement */}
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
             <h2 className="text-lg font-semibold">Statement - Description</h2>
             <textarea
@@ -1375,7 +1375,7 @@ export default function DestinationForm() {
         </div>
 
         {/* Page Title */}
-        <div  className="!my-4">
+        <div className="!my-4">
           <h2 className="text-lg font-semibold">Page Title</h2>
           <input
             required
@@ -1401,14 +1401,14 @@ export default function DestinationForm() {
           ></textarea>
         </div>
 
-       <div className="flex ">
-       <button
-          type="submit"
-          className="bg-blue-900 text-white  py-2 rounded px-10"
-        >
-          Submit
-        </button>
-       </div>
+        <div className="flex ">
+          <button
+            type="submit"
+            className="bg-blue-900 text-white  py-2 rounded px-10"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
