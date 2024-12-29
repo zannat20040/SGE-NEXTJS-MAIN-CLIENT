@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import Image from "next/image";
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
@@ -57,7 +58,7 @@ export default function BlogsPage() {
             });
           }
         } catch (error) {
-          console.error("Error deleting blog:", error);
+          console.error("Error deleting blog:", error.message);
           swal("An error occurred while deleting the blog.", {
             icon: "error",
           });
@@ -81,9 +82,9 @@ export default function BlogsPage() {
             key={blog._id}
             className="flex justify-between   rounded-md overflow-hidden shadow-lg bg-white"
           >
-            <div className="w-2/5 ">
-              <img
-                className="w-full h-full"
+            <div className="w-2/5 h-[100px]">
+              <Image width={100} height={100}
+                className="w-full image-full"
                 src={blog?.img}
                 alt="Description of the image"
               />
@@ -96,7 +97,7 @@ export default function BlogsPage() {
                   {blog?.date.split("T")[0]}
                 </p>
               </div>
-              <div className=" flex justify-end gap-2">
+              <div className=" flex justify-end gap-2 mt-4">
                 <button
                   onClick={() => handleEdit(blog?._id)}
                   className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"

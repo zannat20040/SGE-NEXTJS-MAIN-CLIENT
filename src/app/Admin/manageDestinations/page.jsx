@@ -2,6 +2,7 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 export default function page() {
   const [destinations, setDestinations] = useState([]);
@@ -30,43 +31,41 @@ export default function page() {
   };
 
   const handleDelete = (id) => {
-    // swal({
-    //   title: "Are you sure you want to delete this blog?",
-    //   text: "Once deleted, you will not be able to recover this blog!",
-    //   icon: "warning",
-    //   buttons: true,
-    //   dangerMode: true,
-    // }).then(async (willDelete) => {
-    //   if (willDelete) {
-    //     try {
-    //       const response = await axios.delete(
-    //         `${process.env.NEXT_PUBLIC_API_URL}/blog/deleteBlog/${id}`
-    //       );
+    swal({
+      title: "Are you sure you want to delete this destination?",
+      text: "Once deleted, you will not be able to recover this destinations details!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        try {
+          const response = await axios.delete(
+            `${process.env.NEXT_PUBLIC_API_URL}/destination/deleteDestination/${id}`
+          );
 
-    //       if (response.status === 200) {
-    //         swal("Your blog has been deleted successfully!", {
-    //           icon: "success",
-    //         });
-    //         setBlogs((prevBlogs) =>
-    //           prevBlogs.filter((blog) => blog._id !== id)
-    //         ); // Update the UI
-    //       } else {
-    //         swal("Failed to delete the blog.", {
-    //           icon: "error",
-    //         });
-    //       }
-    //     } catch (error) {
-    //       console.error("Error deleting blog:", error);
-    //       swal("An error occurred while deleting the blog.", {
-    //         icon: "error",
-    //       });
-    //     }
-    //   } else {
-    //     swal("Your blog is still safe!");
-    //   }
-    // });
-
-    console.log("========>>", id);
+          if (response.status === 200) {
+            swal("Your destination has been deleted successfully!", {
+              icon: "success",
+            });
+            setDestinations((prevBlogs) =>
+              prevBlogs.filter((destination) => destination._id !== id)
+            );
+          } else {
+            swal("Failed to delete the destination.", {
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting destination:", error.message);
+          swal("An error occurred while deleting the destination.", {
+            icon: "error",
+          });
+        }
+      } else {
+        swal("Your destination's details is still safe!");
+      }
+    });
   };
 
   if (loading) {
@@ -84,7 +83,9 @@ export default function page() {
             className="flex justify-between !max-h-fit rounded-md overflow-hidden shadow-lg bg-white"
           >
             <div className="w-2/5 h-[100px]">
-              <Image width={100} height={100}
+              <Image
+                width={100}
+                height={100}
                 className=" w-full "
                 src={destination?.destinationFlag}
                 alt="Description of the image"
@@ -99,7 +100,7 @@ export default function page() {
                   {destination?.destinationTitle}
                 </p>
               </div>
-              <div className=" flex justify-end gap-2">
+              <div className=" flex justify-end gap-2 mt-4">
                 <button
                   onClick={() => handleEdit(destination?._id)}
                   className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
