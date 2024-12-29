@@ -536,7 +536,7 @@ export default function DestinationForm() {
               {formData.programDuration.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 mb-2  bg-gray-200 p-2 rounded "
+                  className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
                 >
                   <input
                     required
@@ -546,7 +546,7 @@ export default function DestinationForm() {
                       handleProgramDuration(e, index, "qualification")
                     }
                     placeholder={`Qualification ${index + 1}`}
-                    className="w-full border rounded p-2"
+                    className={`${inputCss}`}
                   />{" "}
                   <input
                     required
@@ -556,7 +556,7 @@ export default function DestinationForm() {
                       handleProgramDuration(e, index, "duration")
                     }
                     placeholder={`Duration ${index + 1}`}
-                    className="w-full border rounded p-2"
+                    className={`${inputCss}`}
                   />
                   <input
                     required
@@ -564,7 +564,7 @@ export default function DestinationForm() {
                     value={item.gir}
                     onChange={(e) => handleProgramDuration(e, index, "gir")}
                     placeholder={`GIR ${index + 1}`}
-                    className="w-full border rounded p-2"
+                    className={`${inputCss}`}
                   />
                   <button
                     type="button"
@@ -591,37 +591,53 @@ export default function DestinationForm() {
               Add New Cost
             </button>
           </div>
-          {formData.costOfStudy.map((item, index) => (
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.costOfStudy.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Clear to see
+              </div>
+            )}
+
             <div
-              key={index}
-              className="flex items-center gap-2 mb-2 border p-4 "
+              className={`collapse-content ${
+                formData.costOfStudy.length > 0 && "bg-gray-300 "
+              }`}
             >
-              <input
-                required
-                type="text"
-                value={item.degree}
-                onChange={(e) => handleCostOfStudy(e, index, "degree")}
-                placeholder={`degree ${index + 1}`}
-                className="w-full border rounded p-2"
-              />{" "}
-              <input
-                required
-                type="text"
-                value={item.cost}
-                onChange={(e) => handleCostOfStudy(e, index, "cost")}
-                placeholder={`cost ${index + 1}`}
-                className="w-full border rounded p-2"
-              />
-              <button
-                type="button"
-                onClick={() => removeCostOfStudy(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
+              {formData.costOfStudy.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 mb-2 bg-gray-200 rounded p-2 "
+                >
+                  <input
+                    required
+                    type="text"
+                    value={item.degree}
+                    onChange={(e) => handleCostOfStudy(e, index, "degree")}
+                    placeholder={`degree ${index + 1}`}
+                    className={`${inputCss}`}
+                    />{" "}
+                  <input
+                    required
+                    type="text"
+                    value={item.cost}
+                    onChange={(e) => handleCostOfStudy(e, index, "cost")}
+                    placeholder={`cost ${index + 1}`}
+                    className={`${inputCss}`}
+                    />
+                  <button
+                    type="button"
+                    onClick={() => removeCostOfStudy(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
+
         {/* Academic Intake */}
         <div>
           <div className="flex justify-between gap-5 items-center mb-3">
