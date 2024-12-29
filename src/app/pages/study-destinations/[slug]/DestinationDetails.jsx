@@ -31,7 +31,7 @@ export default function DestinationDetails({ slug }) {
         );
         setDetails(response.data.destination);
       } catch (err) {
-        setError("Failed to load blog", err);
+        setError("Failed to load destination", err);
       } finally {
         setLoading(false);
       }

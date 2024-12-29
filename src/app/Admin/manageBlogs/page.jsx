@@ -30,7 +30,7 @@ export default function BlogsPage() {
     console.log("Edit blog with ID:", id);
   };
 
-  const handleDelete =  (id) => {
+  const handleDelete = (id) => {
     swal({
       title: "Are you sure you want to delete this blog?",
       text: "Once deleted, you will not be able to recover this blog!",
@@ -43,12 +43,14 @@ export default function BlogsPage() {
           const response = await axios.delete(
             `${process.env.NEXT_PUBLIC_API_URL}/blog/deleteBlog/${id}`
           );
-  
+
           if (response.status === 200) {
             swal("Your blog has been deleted successfully!", {
               icon: "success",
             });
-            setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id)); // Update the UI
+            setBlogs((prevBlogs) =>
+              prevBlogs.filter((blog) => blog._id !== id)
+            ); // Update the UI
           } else {
             swal("Failed to delete the blog.", {
               icon: "error",
@@ -65,7 +67,6 @@ export default function BlogsPage() {
       }
     });
   };
-  
 
   if (loading) {
     return <div>Loading...</div>;
