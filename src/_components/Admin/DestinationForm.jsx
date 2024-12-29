@@ -425,7 +425,7 @@ export default function DestinationForm() {
               <input type="checkbox" className="peer" />
               {formData.quickFacts.length > 0 && (
                 <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
-                  Clear to see
+                  Click to see
                 </div>
               )}
 
@@ -474,7 +474,7 @@ export default function DestinationForm() {
               <input type="checkbox" className="peer" />
               {formData.popularIn.length > 0 && (
                 <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
-                  Clear to see
+                  Click to see
                 </div>
               )}
 
@@ -524,7 +524,7 @@ export default function DestinationForm() {
             <input type="checkbox" className="peer" />
             {formData.programDuration.length > 0 && (
               <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
-                Clear to see
+                Click to see
               </div>
             )}
 
@@ -595,7 +595,7 @@ export default function DestinationForm() {
             <input type="checkbox" className="peer" />
             {formData.costOfStudy.length > 0 && (
               <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
-                Clear to see
+                Click to see
               </div>
             )}
 
@@ -614,17 +614,17 @@ export default function DestinationForm() {
                     type="text"
                     value={item.degree}
                     onChange={(e) => handleCostOfStudy(e, index, "degree")}
-                    placeholder={`degree ${index + 1}`}
+                    placeholder={`Degree ${index + 1}`}
                     className={`${inputCss}`}
-                    />{" "}
+                  />{" "}
                   <input
                     required
                     type="text"
                     value={item.cost}
                     onChange={(e) => handleCostOfStudy(e, index, "cost")}
-                    placeholder={`cost ${index + 1}`}
+                    placeholder={`Cost ${index + 1}`}
                     className={`${inputCss}`}
-                    />
+                  />
                   <button
                     type="button"
                     onClick={() => removeCostOfStudy(index)}
@@ -650,10 +650,23 @@ export default function DestinationForm() {
               Add New Intake
             </button>
           </div>
-          {formData.academicIntake.map((item, index) => (
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.academicIntake.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+              Click to see
+              </div>
+            )}
+
+            <div
+              className={`collapse-content ${
+                formData.academicIntake.length > 0 && "bg-gray-300 "
+              }`}
+            >
+              {formData.academicIntake.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 mb-2 border p-4 "
+              className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
             >
               <input
                 required
@@ -662,16 +675,16 @@ export default function DestinationForm() {
                 onChange={(e) =>
                   handleAcademicIntake(e, index, "qualification")
                 }
-                placeholder={`qualification ${index + 1}`}
-                className="w-full border rounded p-2"
+                placeholder={`Qualification ${index + 1}`}
+                className={`${inputCss}`}
               />{" "}
               <input
                 required
                 type="text"
                 value={item.duration}
                 onChange={(e) => handleAcademicIntake(e, index, "duration")}
-                placeholder={`duration ${index + 1}`}
-                className="w-full border rounded p-2"
+                placeholder={`Duration ${index + 1}`}
+                className={`${inputCss}`}
               />
               <button
                 type="button"
@@ -682,7 +695,12 @@ export default function DestinationForm() {
               </button>
             </div>
           ))}
+            </div>
+          </div>
+
+         
         </div>
+
         {/* preparation deadline */}
         <div>
           <h2 className="text-lg font-semibold">Preparation Deadline</h2>
