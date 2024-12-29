@@ -725,216 +725,243 @@ export default function DestinationForm() {
             </button>
           </div>
 
-          {formData?.topUniversity?.map((university, index) => (
-            <div key={index} className="border p-4 rounded mb-4">
-              {/* university name & image / rank/ established */}
-              <div className="grid grid-cols-5 gap-5 justify-between">
-                <div className="mb-2 col-span-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.name}
-                    onChange={(e) => handleUniversityChange(e, index, "name")}
-                    placeholder="University Name"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="url"
-                    value={university.img}
-                    onChange={(e) => handleUniversityChange(e, index, "img")}
-                    placeholder="Image URL"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.rank}
-                    onChange={(e) => handleUniversityChange(e, index, "rank")}
-                    placeholder="eg:1st"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="number"
-                    value={university.established}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "established")
-                    }
-                    placeholder="eg:1990"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.topUniversity.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Click to see
               </div>
-              {/* description */}
-              <div className="mb-2">
-                <textarea
-                  required
-                  value={university.desc}
-                  onChange={(e) => handleUniversityChange(e, index, "desc")}
-                  placeholder="Description"
-                  className="w-full border rounded p-2 mb-2"
-                ></textarea>
-              </div>
-              {/* history/ achievement */}
-              <div className="grid grid-cols-2 gap-5 justify-between ">
-                <div className="mb-2">
-                  <textarea
-                    required
-                    value={university.history}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "history")
-                    }
-                    placeholder="write history"
-                    className="w-full border rounded p-2 mb-2"
-                  ></textarea>
+            )}
+
+            <div
+              className={`collapse-content ${
+                formData.topUniversity.length > 0 && "bg-gray-300 "
+              }`}
+            >
+              {formData?.topUniversity?.map((university, index) => (
+                <div key={index} className="border p-4 rounded mb-4">
+                  {/* university name & image / rank/ established */}
+                  <div className="grid grid-cols-5 gap-2 justify-between !mb-2">
+                    <div className="col-span-2">
+                      <input
+                        required
+                        type="text"
+                        value={university.name}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "name")
+                        }
+                        placeholder="University Name"
+                        className={`${inputCss}`}
+                        />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="url"
+                        value={university.img}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "img")
+                        }
+                        placeholder="Image URL"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.rank}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "rank")
+                        }
+                        placeholder="eg:1st"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="number"
+                        value={university.established}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "established")
+                        }
+                        placeholder="eg:1990"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                  </div>
+                  {/* description */}
+                  <div className="">
+                    <textarea
+                      required
+                      value={university.desc}
+                      onChange={(e) => handleUniversityChange(e, index, "desc")}
+                      placeholder="Write about the University"
+                      className={`${inputCss}`}
+                      ></textarea>
+                  </div>
+                  {/* history/ achievement */}
+                  <div className="grid grid-cols-2 gap-2 justify-between ">
+                    <div className="">
+                      <textarea
+                        required
+                        value={university.history}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "history")
+                        }
+                        placeholder="Write the history of the University"
+                        className={`${inputCss}`}
+                      ></textarea>
+                    </div>
+                    <div className="">
+                      <textarea
+                        required
+                        value={university.achievement}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "achievement")
+                        }
+                        placeholder="Write about the  achievement"
+                        className={`${inputCss}`}
+                      ></textarea>
+                    </div>
+                  </div>
+                  {/* service/ accomodation/ faculty */}
+                  <div className="grid grid-cols-3 gap-2 justify-between ">
+                    <div className="">
+                      <textarea
+                        required
+                        value={university.service}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "service")
+                        }
+                        placeholder="Write about services provided by the University"
+                        className={`${inputCss}`}
+                      ></textarea>
+                    </div>
+                    <div className="">
+                      <textarea
+                        required
+                        value={university.faculty}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "faculty")
+                        }
+                        placeholder="Write about  the department & faculty"
+                        className={`${inputCss}`}
+                      ></textarea>
+                    </div>
+                    <div className="">
+                      <textarea
+                        required
+                        value={university.accomodation}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "accomodation")
+                        }
+                        placeholder="Write about the accomodation"
+                        className={`${inputCss}`}
+                      ></textarea>
+                    </div>
+                  </div>
+                  {/* fees/ internation fees/ internation student */}
+                  <div className="grid grid-cols-3 gap-2 justify-between !mb-2">
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.fees}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "fees")
+                        }
+                        placeholder="University fees eg: $12,000 - $14,000"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.internationalFees}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "internationalFees")
+                        }
+                        placeholder="International fees eg: $9,000-$10,000"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.internationalStudent}
+                        onChange={(e) =>
+                          handleUniversityChange(
+                            e,
+                            index,
+                            "internationalStudent"
+                          )
+                        }
+                        placeholder="International student eg: 0.4"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                  </div>
+                  {/* popular course */}
+                  <div>
+                    <textarea
+                      required
+                      name="courseList"
+                      value={university?.courseList?.join(", ")}
+                      onChange={(e) =>
+                        handleUniversityChange(
+                          e,
+                          index,
+                          "courseList",
+                          e.target.value
+                        )
+                      }
+                      placeholder="Enter popular course list (comma-separated)"
+                      className={`${inputCss}`}
+                      ></textarea>
+                  </div>
+                  {/* subtitle & location */}
+                  <div className="grid grid-cols-2 gap-2 justify-between !mb-2">
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.subtitle}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "subtitle")
+                        }
+                        placeholder="University Tagline"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                    <div className="">
+                      <input
+                        required
+                        type="text"
+                        value={university.location}
+                        onChange={(e) =>
+                          handleUniversityChange(e, index, "location")
+                        }
+                        placeholder="Location"
+                        className={`${inputCss}`}
+                      />
+                    </div>
+                  </div>
+                  {/* button */}
+                  <button
+                    type="button"
+                    onClick={() => removeUniversity(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Remove
+                  </button>
                 </div>
-                <div className="mb-2">
-                  <textarea
-                    required
-                    value={university.achievement}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "achievement")
-                    }
-                    placeholder="write achievement"
-                    className="w-full border rounded p-2 mb-2"
-                  ></textarea>
-                </div>
-              </div>
-              {/* service/ accomodation/ faculty */}
-              <div className="grid grid-cols-3 gap-5 justify-between ">
-                <div className="mb-2">
-                  <textarea
-                    required
-                    value={university.service}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "service")
-                    }
-                    placeholder="write about services"
-                    className="w-full border rounded p-2 mb-2"
-                  ></textarea>
-                </div>
-                <div className="mb-2">
-                  <textarea
-                    required
-                    value={university.faculty}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "faculty")
-                    }
-                    placeholder="write about department & faculty"
-                    className="w-full border rounded p-2 mb-2"
-                  ></textarea>
-                </div>
-                <div className="mb-2">
-                  <textarea
-                    required
-                    value={university.accomodation}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "accomodation")
-                    }
-                    placeholder="write about accomodation"
-                    className="w-full border rounded p-2 mb-2"
-                  ></textarea>
-                </div>
-              </div>
-              {/* fees/ internation fees/ internation student */}
-              <div className="grid grid-cols-3 gap-5 justify-between ">
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.fees}
-                    onChange={(e) => handleUniversityChange(e, index, "fees")}
-                    placeholder="University fees"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.internationalFees}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "internationalFees")
-                    }
-                    placeholder="International fees"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.internationalStudent}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "internationalStudent")
-                    }
-                    placeholder="International student"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-              </div>
-              {/* popular course */}
-              <div>
-                <textarea
-                  required
-                  name="courseList"
-                  value={university?.courseList?.join(", ")}
-                  onChange={(e) =>
-                    handleUniversityChange(
-                      e,
-                      index,
-                      "courseList",
-                      e.target.value
-                    )
-                  }
-                  placeholder="Enter popular course list (comma-separated)"
-                  className="w-full border rounded p-2"
-                ></textarea>
-              </div>
-              {/* subtitle & location */}
-              <div className="grid grid-cols-2 gap-5 justify-between">
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.subtitle}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "subtitle")
-                    }
-                    placeholder="University Slogan"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={university.location}
-                    onChange={(e) =>
-                      handleUniversityChange(e, index, "location")
-                    }
-                    placeholder="Location"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-              </div>
-              {/* button */}
-              <button
-                type="button"
-                onClick={() => removeUniversity(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Study Requirement */}
