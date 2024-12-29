@@ -323,9 +323,13 @@ export default function DestinationForm() {
     setFormData({ ...formData, faq: updatedFAQ });
   };
 
+  const inputCss = "w-full  rounded p-2 focus:outline-none border-2  ";
+
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Create Destination Page</h1>
+    <div className=" p-6 max-w-4xl mx-auto shadow-xl bg-gray-100">
+      <h1 className="text-2xl font-bold border-b-2 border-blue-900  pb-6 text-blue-900 text-center pt-3 mb-10">
+        Create Destination Page
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-2">
         {/* Country */}
         <div className="grid grid-cols-2 gap-5 justify-between items-center">
@@ -338,7 +342,7 @@ export default function DestinationForm() {
               value={formData.destinationName}
               onChange={handleChange}
               placeholder="Destination Name"
-              className="w-full border rounded p-2"
+              className={`${inputCss}`}
             />
           </div>
           <div>
@@ -350,15 +354,15 @@ export default function DestinationForm() {
               name="destinationFlag"
               onChange={handleChange}
               placeholder="flag URL"
-              className="w-full border rounded p-2 mb-2"
+              className={`${inputCss}`}
             />
           </div>
         </div>
 
         {/* banner & why study */}
-        <div className="grid grid-cols-2 gap-5 justify-between ">
+        <div className="grid grid-cols-2 gap-5 justify-between !mt-5">
           {/* Destination Banner */}
-          <div>
+          <div className="space-y-2">
             <h2 className="text-lg font-semibold">Destination Banner</h2>
             <input
               required
@@ -367,7 +371,7 @@ export default function DestinationForm() {
               value={formData.destinationTitle}
               onChange={handleChange}
               placeholder="Title"
-              className="w-full border rounded p-2 mb-2"
+              className={`${inputCss}`}
             />
             <textarea
               required
@@ -375,12 +379,12 @@ export default function DestinationForm() {
               value={formData.destinationDescription}
               onChange={handleChange}
               placeholder="Description"
-              className="w-full border rounded p-2"
+              className={`${inputCss}`}
             ></textarea>
           </div>
 
           {/* Why Study */}
-          <div>
+          <div className="space-y-2">
             <h2 className="text-lg font-semibold">Why Study</h2>
             <input
               required
@@ -389,7 +393,7 @@ export default function DestinationForm() {
               value={formData.whyStudyTitle}
               onChange={handleChange}
               placeholder="Title"
-              className="w-full border rounded p-2 mb-2"
+              className={`${inputCss}`}
             />
             <textarea
               required
@@ -397,7 +401,7 @@ export default function DestinationForm() {
               value={formData.whyStudyDescription}
               onChange={handleChange}
               placeholder="Description"
-              className="w-full border rounded p-2"
+              className={`${inputCss}`}
             ></textarea>
           </div>
         </div>
