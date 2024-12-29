@@ -654,7 +654,7 @@ export default function DestinationForm() {
             <input type="checkbox" className="peer" />
             {formData.academicIntake.length > 0 && (
               <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
-              Click to see
+                Click to see
               </div>
             )}
 
@@ -664,54 +664,51 @@ export default function DestinationForm() {
               }`}
             >
               {formData.academicIntake.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
-            >
-              <input
-                required
-                type="text"
-                value={item.qualification}
-                onChange={(e) =>
-                  handleAcademicIntake(e, index, "qualification")
-                }
-                placeholder={`Qualification ${index + 1}`}
-                className={`${inputCss}`}
-              />{" "}
-              <input
-                required
-                type="text"
-                value={item.duration}
-                onChange={(e) => handleAcademicIntake(e, index, "duration")}
-                placeholder={`Duration ${index + 1}`}
-                className={`${inputCss}`}
-              />
-              <button
-                type="button"
-                onClick={() => removeAcademicIntake(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
+                <div
+                  key={index}
+                  className="flex items-center gap-2 mb-2 bg-gray-200 p-2 rounded "
+                >
+                  <input
+                    required
+                    type="text"
+                    value={item.qualification}
+                    onChange={(e) =>
+                      handleAcademicIntake(e, index, "qualification")
+                    }
+                    placeholder={`Qualification ${index + 1}`}
+                    className={`${inputCss}`}
+                  />{" "}
+                  <input
+                    required
+                    type="text"
+                    value={item.duration}
+                    onChange={(e) => handleAcademicIntake(e, index, "duration")}
+                    placeholder={`Duration ${index + 1}`}
+                    className={`${inputCss}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeAcademicIntake(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
-
-         
         </div>
 
-        {/* preparation deadline */}
+        {/* Preparation deadline */}
         <div>
           <h2 className="text-lg font-semibold">Preparation Deadline</h2>
-          <input
+          <textarea
             required
-            type="text"
-            name="prepartionTime"
-            value={formData.prepartionTime}
+            name="preparationTime"
+            value={formData.preparationTime}
             onChange={handleChange}
             placeholder="You need to start preparing your application a minimum of 9-10 months in advance"
-            className="w-full border rounded p-2"
+            className={`${inputCss} `}
           />
         </div>
 
