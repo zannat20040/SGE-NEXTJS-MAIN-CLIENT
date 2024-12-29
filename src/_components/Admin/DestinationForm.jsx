@@ -469,25 +469,41 @@ export default function DestinationForm() {
                 Add More Popular
               </button>
             </div>
-            {formData?.popularIn?.map((location, index) => (
-              <div key={index} className="flex items-center gap-2 mb-2 ">
-                <input
-                  required
-                  type="text"
-                  value={location}
-                  onChange={(e) => handlePopularChange(e, index)}
-                  placeholder={`Popular in ${index + 1}`}
-                  className="w-full border rounded p-2"
-                />
-                <button
-                  type="button"
-                  onClick={() => removePopular(index)}
-                  className="bg-red-500 text-white px-2 py-1 rounded"
-                >
-                  Remove
-                </button>
+
+            <div className="collapse  rounded ">
+              <input type="checkbox" className="peer" />
+              {formData.popularIn.length > 0 && (
+                <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                  Clear to see
+                </div>
+              )}
+
+              <div
+                className={`collapse-content ${
+                  formData.popularIn.length > 0 && "bg-gray-300 "
+                }`}
+              >
+                {formData?.popularIn?.map((location, index) => (
+                  <div key={index} className="flex items-center gap-2 mb-2 ">
+                    <input
+                      required
+                      type="text"
+                      value={location}
+                      onChange={(e) => handlePopularChange(e, index)}
+                      placeholder={`Popular in ${index + 1}`}
+                      className="w-full border rounded p-2"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removePopular(index)}
+                      className="bg-red-500 text-white px-2 py-1 rounded"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
