@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
@@ -29,9 +30,42 @@ export default function BlogsPage() {
     console.log("Edit blog with ID:", id);
   };
 
-  const handleDelete = async (id) => {
-    console.log("deleting blog:", id);
+  const handleDelete =  (id) => {
+    swal({
+      title: "Are you sure you want to delete this blog?",
+      text: "Once deleted, you will not be able to recover this blog!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        try {
+          const response = await axios.delete(
+            `${process.env.NEXT_PUBLIC_API_URL}/blog/deleteBlog/${id}`
+          );
+  
+          if (response.status === 200) {
+            swal("Your blog has been deleted successfully!", {
+              icon: "success",
+            });
+            setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id)); // Update the UI
+          } else {
+            swal("Failed to delete the blog.", {
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting blog:", error);
+          swal("An error occurred while deleting the blog.", {
+            icon: "error",
+          });
+        }
+      } else {
+        swal("Your blog is still safe!");
+      }
+    });
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -47,7 +81,11 @@ export default function BlogsPage() {
             className="flex justify-between   rounded-md overflow-hidden shadow-lg bg-white"
           >
             <div className="w-2/5 ">
-              <img className="w-full h-full" src={blog?.img} alt="Description of the image"/>
+              <img
+                className="w-full h-full"
+                src={blog?.img}
+                alt="Description of the image"
+              />
             </div>
             <div className="flex flex-col w-full px-3 py-3">
               <div className="">

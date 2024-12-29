@@ -34,7 +34,9 @@ export default function AdminSidebar() {
         <ul className="menu bg-blue-900 text-white min-h-full w-60 p-4">
           {/* Sidebar content here */}
           <div>
-            <h1 className="text-lg mb-7 border-b  pb-3 text-center font-semibold">SGE Admin Panel</h1>
+            <h1 className="text-lg mb-7 border-b  pb-3 text-center font-semibold">
+              SGE Admin Panel
+            </h1>
           </div>{" "}
           <Link
             href={"/admin/createBlogs"}
@@ -58,13 +60,13 @@ export default function AdminSidebar() {
             href={"/admin/manageBlogs"}
             className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300"
           >
-            Edit New blog
+            Manage Blogs
           </Link>
           <Link
-            href={"/admin/manageDestinations"} 
+            href={"/admin/manageDestinations"}
             className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300"
           >
-            Edit New Destinations
+            Manage Destinations
           </Link>
           <button
             onClick={handleLogout} // Changed onSubmit to onClick
