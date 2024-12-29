@@ -1285,37 +1285,65 @@ export default function DestinationForm() {
               Add FAQ
             </button>
           </div>
-          {formData.faq.map((faqItem, index) => (
-            <div
-              key={index}
-              className="border p-4 rounded mb-4 flex justify-center items-center gap-x-5"
-            >
-              <input
-                required
-                type="text"
-                value={faqItem.question}
-                onChange={(e) => handleFAQChange(e, index, "question")}
-                placeholder="Question"
-                className="w-full border rounded p-2 "
-              />
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.faq.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Click to see
+              </div>
+            )}
 
-              <input
-                required
-                type="text"
-                value={faqItem.answer}
-                onChange={(e) => handleFAQChange(e, index, "answer")}
-                placeholder="Answer"
-                className="w-full border rounded p-2 "
-              />
-              <button
-                type="button"
-                onClick={() => removeFAQ(index)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Remove
-              </button>
+            <div
+              className={`collapse-content ${
+                formData.faq.length > 0 && "bg-gray-300 "
+              }`}
+            >
+              {formData.faq.map((faqItem, index) => (
+                <div className="collapse mb-2 rounded bg-gray-200 ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    FAQ {index + 1}
+                  </div>
+                  <div className={`collapse-content`}>
+                    {formData.examRequirement.map((exam, index) => (
+                      <div
+                        key={index}
+                        className=" rounded mb-4 flex justify-center items-center gap-x-2"
+                      >
+                        <input
+                          required
+                          type="text"
+                          value={faqItem.question}
+                          onChange={(e) =>
+                            handleFAQChange(e, index, "question")
+                          }
+                          placeholder="Question"
+                          className={`${inputCss}`}
+                        />
+
+                        <input
+                          required
+                          type="text"
+                          value={faqItem.answer}
+                          onChange={(e) => handleFAQChange(e, index, "answer")}
+                          placeholder="Answer"
+                          className={`${inputCss}`}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeFAQ(index)}
+                          className="bg-red-500 text-white px-4 py-2 rounded"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Expert Number */}
