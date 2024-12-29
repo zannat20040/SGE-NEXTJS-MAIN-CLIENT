@@ -743,10 +743,10 @@ export default function DestinationForm() {
                 <div className="collapse  rounded pb-2">
                   <input type="checkbox" className="peer" />
 
-                  <div className="collapse-title font-semibold  text-blue-900 bg-gray-200 !pb-3 rounded ">
+                  <div className="collapse-title font-semibold  text-blue-900 bg-gray-100 !pb-3 ">
                     Expand Unversity {index + 1}
                   </div>
-                  <div className={`collapse-content bg-gray-200`}>
+                  <div className={`collapse-content bg-gray-100`}>
                     <div key={index} className=" mb-4">
                       {/* university name & image / rank/ established */}
                       <div className="grid grid-cols-5 gap-2 justify-between !mb-2">
@@ -984,7 +984,7 @@ export default function DestinationForm() {
 
         {/* Study Requirement */}
         <div>
-          <div className="flex justify-between gap-5 items-center">
+          <div className="flex justify-between gap-5 items-center mb-3">
             <h2 className="text-lg font-semibold">Study Requirement</h2>
             <button
               type="button"
@@ -994,51 +994,80 @@ export default function DestinationForm() {
               Add Study Requirement
             </button>
           </div>
-          {formData.studyRequirement.map((requirement, index) => (
-            <div key={index} className="border p-4 rounded mb-4">
-              <div className="grid grid-cols-2 gap-5 justify-between">
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={requirement.title}
-                    onChange={(e) => handleRequirementChange(e, index, "title")}
-                    placeholder="Title"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
-                <div className="mb-2">
-                  <input
-                    required
-                    type="text"
-                    value={requirement.img}
-                    onChange={(e) => handleRequirementChange(e, index, "img")}
-                    placeholder="Image URL"
-                    className="w-full border rounded p-2 mb-2"
-                  />
-                </div>
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.studyRequirement.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Click to see
               </div>
-              <div className="mb-2">
-                <textarea
-                  required
-                  value={requirement.description}
-                  onChange={(e) =>
-                    handleRequirementChange(e, index, "description")
-                  }
-                  placeholder="Description"
-                  className="w-full border rounded p-2 mb-2"
-                ></textarea>
-              </div>
+            )}
 
-              <button
-                type="button"
-                onClick={() => removeRequirement(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
+            <div
+              className={`collapse-content ${
+                formData.studyRequirement.length > 0 && "bg-gray-300 "
+              }`}
+            >
+              {formData.studyRequirement.map((requirement, index) => (
+                <div className="collapse bg-gray-100  mb-2 rounded ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    Requirement {index + 1}
+                  </div>
+
+                  <div className={`collapse-content `}>
+                    <div key={index} className="p-2 bg-gray-200 rounded mb-2">
+                      <div className="grid grid-cols-2 gap-5 justify-between">
+                        <div className="mb-2">
+                          <input
+                            required
+                            type="text"
+                            value={requirement.title}
+                            onChange={(e) =>
+                              handleRequirementChange(e, index, "title")
+                            }
+                            placeholder="Title"
+                            className={`${inputCss}`}
+                          />
+                        </div>
+                        <div className="mb-2">
+                          <input
+                            required
+                            type="url"
+                            value={requirement.img}
+                            onChange={(e) =>
+                              handleRequirementChange(e, index, "img")
+                            }
+                            placeholder="Image URL"
+                            className={`${inputCss}`}
+                          />
+                        </div>
+                      </div>
+                      <div className="">
+                        <textarea
+                          required
+                          value={requirement.description}
+                          onChange={(e) =>
+                            handleRequirementChange(e, index, "description")
+                          }
+                          placeholder="Description"
+                          className={`${inputCss}`}
+                        ></textarea>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => removeRequirement(index)}
+                        className="bg-red-500 text-white  py-1 rounded px-10"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Exam Requirement */}
