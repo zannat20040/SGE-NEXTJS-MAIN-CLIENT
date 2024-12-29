@@ -55,10 +55,16 @@ export default function AdminSidebar() {
             Add New Destination
           </Link>
           <Link
-            href={"/admin/editBlogs"}
+            href={"/admin/manageBlogs"}
             className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300"
           >
             Edit New blog
+          </Link>
+          <Link
+            href={"/admin/manageDestinations"} 
+            className="py-2 px-6 hover:bg-gray-50 hover:text-blue-900 rounded duration-300"
+          >
+            Edit New Destinations
           </Link>
           <button
             onClick={handleLogout} // Changed onSubmit to onClick
