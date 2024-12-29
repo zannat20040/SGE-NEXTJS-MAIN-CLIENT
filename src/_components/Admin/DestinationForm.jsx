@@ -1012,7 +1012,7 @@ export default function DestinationForm() {
                   <input type="checkbox" className="peer" />
 
                   <div className="collapse-title font-semibold    !pb-2 ">
-                    Requirement {index + 1}
+                    Study Requirement {index + 1}
                   </div>
 
                   <div className={`collapse-content `}>
@@ -1072,7 +1072,7 @@ export default function DestinationForm() {
 
         {/* Exam Requirement */}
         <div>
-          <div className="flex justify-between items-center gap-5">
+          <div className="flex justify-between items-center gap-5 mb-3">
             <h2 className="text-lg font-semibold">Exam Requirement</h2>
             <button
               type="button"
@@ -1082,50 +1082,75 @@ export default function DestinationForm() {
               Add Exam Requirement
             </button>
           </div>
-          {formData.examRequirement.map((exam, index) => (
-            <div key={index} className="border p-4 rounded mb-4">
-              <div className="mb-2">
-                <input
-                  required
-                  type="text"
-                  value={exam.title}
-                  onChange={(e) => handleExamChange(e, index, "title")}
-                  placeholder="Title"
-                  className="w-full border rounded p-2 mb-2"
-                />
+          <div className="collapse  rounded ">
+            <input type="checkbox" className="peer" />
+            {formData.examRequirement.length > 0 && (
+              <div className="collapse-title font-semibold   bg-gray-300 !pb-2 ">
+                Click to see
               </div>
-              <div className="mb-2">
-                <textarea
-                  required
-                  value={exam.description.join(", ")} // Display array as a comma-separated string
-                  onChange={(e) =>
-                    handleExamChange(
-                      {
-                        ...e,
-                        target: {
-                          ...e.target,
-                          value: e.target.value
-                            .split(",")
-                            .map((item) => item.trim()), // Trim extra spaces
-                        },
-                      },
-                      index,
-                      "description"
-                    )
-                  }
-                  placeholder="Description (comma-separated)"
-                  className="w-full border rounded p-2 mb-2"
-                ></textarea>
-              </div>
-              <button
-                type="button"
-                onClick={() => removeExam(index)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
-              >
-                Remove
-              </button>
+            )}
+
+            <div
+              className={`collapse-content ${
+                formData.examRequirement.length > 0 && "bg-gray-300 "
+              }`}
+            >
+              {formData.examRequirement.map((exam, index) => (
+                <div className="collapse bg-gray-100  mb-2 rounded ">
+                  <input type="checkbox" className="peer" />
+
+                  <div className="collapse-title font-semibold    !pb-2 ">
+                    Exam Requirement {index + 1}
+                  </div>
+
+                  <div className={`collapse-content `}>
+                    <div key={index} className="bg-gray-200 p-2 rounded mb-2">
+                      <div className="mb-2">
+                        <input
+                          required
+                          type="text"
+                          value={exam.title}
+                          onChange={(e) => handleExamChange(e, index, "title")}
+                          placeholder="Title"
+                          className={`${inputCss}`}
+                        />
+                      </div>
+                      <div className="">
+                        <textarea
+                          required
+                          value={exam.description.join(", ")} // Display array as a comma-separated string
+                          onChange={(e) =>
+                            handleExamChange(
+                              {
+                                ...e,
+                                target: {
+                                  ...e.target,
+                                  value: e.target.value
+                                    .split(",")
+                                    .map((item) => item.trim()), // Trim extra spaces
+                                },
+                              },
+                              index,
+                              "description"
+                            )
+                          }
+                          placeholder="Description (comma-separated)"
+                          className={`${inputCss}`}
+                        ></textarea>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeExam(index)}
+                        className="bg-red-500 text-white py-1 rounded px-10"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Document Requirement */}
