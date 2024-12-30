@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
@@ -73,6 +74,8 @@ export default function BlogsPage() {
     return <div>Loading...</div>;
   }
 
+  console.log(blogs)
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
       {blogs &&
@@ -83,7 +86,9 @@ export default function BlogsPage() {
             className="flex justify-between   rounded-md overflow-hidden shadow-lg bg-white"
           >
             <div className="w-2/5 h-[100px]">
-              <Image width={100} height={100}
+              <Image
+                width={100}
+                height={100}
                 className="w-full image-full"
                 src={blog?.img}
                 alt="Description of the image"
@@ -98,12 +103,13 @@ export default function BlogsPage() {
                 </p>
               </div>
               <div className=" flex justify-end gap-2 mt-4">
-                <button
-                  onClick={() => handleEdit(blog?._id)}
-                  className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
-                >
-                  Edit
-                </button>
+                <Link href={`/admin/editBlog/${blog?.url}`}>
+                  <button
+                    className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
+                  >
+                    Edit
+                  </button>
+                </Link>
                 <button
                   onClick={() => handleDelete(blog?._id)}
                   className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700 duration-300"

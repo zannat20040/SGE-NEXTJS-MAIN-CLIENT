@@ -5,6 +5,7 @@ import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function DestinationForm() {
+  
   const [formData, setFormData] = useState({
     destinationTitle: "",
     destinationDescription: "",
@@ -61,6 +62,7 @@ export default function DestinationForm() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
       console.log(error);
@@ -1338,8 +1340,7 @@ export default function DestinationForm() {
                     FAQ {index + 1}
                   </div>
                   <div className={`collapse-content`}>
-                    {formData.examRequirement.map((exam, index) => (
-                      <div
+                  <div
                         key={index}
                         className=" rounded mb-4 flex flex-col md:flex-row justify-center items-end md:items-center gap-2"
                       >
@@ -1370,7 +1371,6 @@ export default function DestinationForm() {
                           Remove
                         </button>
                       </div>
-                    ))}
                   </div>
                 </div>
               ))}

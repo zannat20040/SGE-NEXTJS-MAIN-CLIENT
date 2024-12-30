@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Slide, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
-export default function CreateBlogs() {
+export default function EditBlog({ params }) {
   const [formValues, setFormValues] = useState({
     title: "",
     subtitle: "",
@@ -19,8 +19,40 @@ export default function CreateBlogs() {
     metaDescription: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(true); // For indicating data fetch
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const blogSlug = params?.slug;
   const router = useRouter();
+
+  // Fetch the blog data by ID
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/blog/getBlogBySlug/${blogSlug}`);
+        console.log(response.data);
+        setFormValues(response.data.blog); // Assuming API returns the blog data as an object
+      } catch (error) {
+        toast.error(
+          error.response?.data?.message || "Failed to load blog data",
+          {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Slide,
+            style: { zIndex: 999999999 },
+          }
+        );
+      } finally {
+        setIsFetching(false);
+      }
+    };
+
+    fetchBlogData();
+  }, [apiUrl, blogSlug]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,18 +62,18 @@ export default function CreateBlogs() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
-
     setIsLoading(true);
+
     const formData = {
       ...formValues,
       date: new Date().toISOString(),
     };
 
     try {
-      await axios.post(`${apiUrl}/blog/createBlog`, formData);
-      toast.success("Your blog posted successfully.", {
+      await axios.put(`${apiUrl}/blog/editBlog/${blogSlug}`, formData);
+      toast.success("Your blog has been updated successfully.", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -53,20 +85,7 @@ export default function CreateBlogs() {
         style: { zIndex: 999999999 },
       });
 
-      // Reset form after submission
-      setFormValues({
-        title: "",
-        subtitle: "",
-        pageTitle: "",
-        url: "",
-        createdBy: "",
-        category: "",
-        readingTime: "",
-        img: "",
-        description: "",
-        metaDescription: "",
-      });
-      router.push("/blogs");
+      router.push("/admin/manageBlogs");
     } catch (error) {
       let errMessage =
         error.response?.data?.message ||
@@ -90,12 +109,17 @@ export default function CreateBlogs() {
     }
   };
 
+  if (isFetching) {
+    return <p>Loading blog data...</p>; // Loader while fetching data
+  }
+
+  console.log(formValues)
   return (
     <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">
       <h1 className="text-xl rounded-t-lg p-3 px-6 text-center font-bold mb-4 bg-blue-900 text-white">
-        Create a New Post
+        Update a This Post
       </h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleEdit}>
         <div className="p-6 space-y-3">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div>
@@ -293,7 +317,7 @@ export default function CreateBlogs() {
               : "bg-blue-900 text-white hover:bg-gray-500"
           } duration-500 uppercase tracking-wider font-medium text-sm`}
         >
-          {isLoading ? "Posting..." : "Post this blog"}
+          {isLoading ? "Updating..." : "Update this blog"}
         </button>
       </form>
     </div>
