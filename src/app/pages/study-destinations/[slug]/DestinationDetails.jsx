@@ -59,15 +59,20 @@ export default function DestinationDetails({ slug }) {
         <QuickFacts facts={details?.quickFacts} />
       )}
       <Tabs details={details} country={details?.destinationTitle} />
-      <AnimatedText
-        country={details?.destinationTitle}
-        keywords={details?.popularIn}
-      />
+      {details?.popularIn.length > 0 && (
+        <AnimatedText
+          country={details?.destinationTitle}
+          keywords={details?.popularIn}
+        />
+      )}
+
       <UniversityCards
         details={details}
         country={details?.destinationTitle}
         universities={details?.topUniversity}
       />
+
+      
       <RequirementCard
         country={details?.destinationTitle}
         requirement={details?.studyRequirement}

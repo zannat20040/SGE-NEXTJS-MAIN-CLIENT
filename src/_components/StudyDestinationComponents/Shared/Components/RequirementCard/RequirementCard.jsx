@@ -24,10 +24,16 @@ const RequirementCard = ({ country, requirement }) => {
           {" "}
           Requirements for Studying in the {country}
         </h1>
-        {isSmallScreen ? (
-          <Requirement_Card_SmallScreen />
+        {requirement?.length > 0 ? (
+          isSmallScreen ? (
+            <Requirement_Card_SmallScreen />
+          ) : (
+            <Requirement_Card_LargeScreen requirement={requirement} />
+          )
         ) : (
-          <Requirement_Card_LargeScreen  requirement={requirement}/>
+          <p className="text-center italic text-xl  mt-10 pb-20">
+            No requirement related data found
+          </p>
         )}
       </div>
     </div>
