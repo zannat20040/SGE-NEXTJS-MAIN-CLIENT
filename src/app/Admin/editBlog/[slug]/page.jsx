@@ -115,7 +115,7 @@ export default function EditBlog({ params }) {
     return <p className="p-6 text-center italic text-lg">Fetching data....</p>;
 
   return (
-    <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto bg-gray-100 shadow-2xl rounded-lg">
       <h1 className="text-xl rounded-t-lg p-3 px-6 text-center font-bold mb-4 bg-blue-900 text-white">
         Update a This Post
       </h1>

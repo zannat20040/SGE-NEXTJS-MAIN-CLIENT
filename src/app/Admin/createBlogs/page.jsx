@@ -73,7 +73,7 @@ export default function CreateBlogs() {
         error.message ||
         "An unknown error occurred";
 
-        console.log(error)
+      console.log(error);
       toast.error(errMessage, {
         position: "bottom-right",
         autoClose: 5000,
@@ -91,7 +91,7 @@ export default function CreateBlogs() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto bg-gray-100 shadow-2xl rounded-lg">
       <h1 className="text-xl rounded-t-lg p-3 px-6 text-center font-bold mb-4 bg-blue-900 text-white">
         Create a New Post
       </h1>

@@ -65,7 +65,7 @@ export default function DestinationForm() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
-      router.push("/admin/manageDestinations"); // Navigate after form submission
+      router.push(`/study-destinations/${formData?.url}`); // Navigate after form submission
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
       console.log(error);
