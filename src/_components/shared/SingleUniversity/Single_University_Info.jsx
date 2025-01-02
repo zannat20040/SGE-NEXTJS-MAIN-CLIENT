@@ -14,7 +14,11 @@ const Single_University_Info = ({ university }) => {
         <div className="px-10 pt-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">Location</p>
           <p className="text-[#1D4ED8]">
-            {university.location ? university.location : "N/A"}
+            {university.location ? (
+              <p className="break-words">{university?.location}</p>
+            ) : (
+              "N/A"
+            )}
           </p>
         </div>
         <div className="px-10 pt-5 text-2xl font-bold">
@@ -26,9 +30,11 @@ const Single_University_Info = ({ university }) => {
         <div className="px-10 pt-5 pb-5 text-2xl font-bold">
           <p className="text-[#8E8E8E]">International Students</p>
           <p className="text-[#1D4ED8]">
-            {university?.internationalStudent
-              ? university?.internationalStudent
-              : "N/A"}
+            {university?.internationalStudent ? (
+              <p className="break-words">{university?.internationalStudent}</p>
+            ) : (
+              "N/A"
+            )}
           </p>
         </div>
         <div className="border-t-2 border-dashed border-gray-400 py-5 mx-10"></div>
@@ -38,7 +44,9 @@ const Single_University_Info = ({ university }) => {
           <p className="text-[#1D4ED8]">
             {university.courseList
               ? university?.courseList?.map((list) => (
-                  <span key={list}>{list}, </span>
+                  <span className="break-words" key={list}>
+                    {list},{" "}
+                  </span>
                 ))
               : "N/A"}
           </p>
@@ -46,7 +54,11 @@ const Single_University_Info = ({ university }) => {
         <div className="px-10 pt-5 pb-10 text-2xl font-bold">
           <p className="text-[#8E8E8E]">International Fees</p>
           <p className="text-[#1D4ED8]">
-            ${university.internationalFees ? university.internationalFees : "N/A"}
+            {university.internationalFees ? (
+              <p className="break-words">university.internationalFees</p>
+            ) : (
+              "N/A"
+            )}
           </p>
         </div>
       </div>

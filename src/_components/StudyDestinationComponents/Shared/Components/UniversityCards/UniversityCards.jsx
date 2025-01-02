@@ -83,7 +83,7 @@ export default function UniversityCards({ country, universities, details }) {
           </div>
         </div>
       ) : (
-        <p className="text-center italic mb-9 text-xl">
+        <p className="text-center italic mb-20 text-xl">
           No Top Universities found for this destination.
         </p>
       )}

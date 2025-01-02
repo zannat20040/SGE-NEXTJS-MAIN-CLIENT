@@ -86,7 +86,7 @@ export default function page({ params }) {
       );
 
       // Display success toast notification
-      toast.success("Your new Destination added successfully.", {
+      toast.success("Your Destination updated successfully.", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,

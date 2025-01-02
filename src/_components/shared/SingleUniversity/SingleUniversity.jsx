@@ -24,12 +24,12 @@ const SingleUniversity = ({ universityDetails }) => {
           {universityDetails?.name}
         </p>
         {universityDetails && (
-          <div className="md:grid md:grid-cols-12 grid-cols-1 mt-8 md:mt-12 gap-10 px-5">
-            <div className="lg:col-span-7 col-span-6">
+          <div className="grid lg:grid-cols-12 grid-cols-1 mt-8 md:mt-12 gap-10 px-5">
+            <div className="lg:col-span-7 ">
               <Single_Universty_Accordion university={universityDetails} />
               <Single_University_Check uniName={universityDetails?.name} />
             </div>
-            <div className="lg:col-span-5 col-span-6">
+            <div className="lg:col-span-5 ">
               <Single_University_Info university={universityDetails} />
               <Single_University_Form Name={universityDetails.name} />
             </div>
