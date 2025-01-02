@@ -1471,7 +1471,7 @@ export default function page({ params }) {
             type="submit"
             className="bg-blue-900 text-white  py-2 rounded px-10"
           >
-            Submit
+            Update
           </button>
         </div>
       </form>

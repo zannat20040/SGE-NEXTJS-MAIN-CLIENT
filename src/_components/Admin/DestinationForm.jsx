@@ -5,7 +5,6 @@ import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function DestinationForm() {
-  
   const [formData, setFormData] = useState({
     destinationTitle: "",
     destinationDescription: "",
@@ -39,7 +38,7 @@ export default function DestinationForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
@@ -62,7 +61,6 @@ export default function DestinationForm() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
-
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
       console.log(error);
@@ -1339,37 +1337,35 @@ export default function DestinationForm() {
                     FAQ {index + 1}
                   </div>
                   <div className={`collapse-content`}>
-                  <div
-                        key={index}
-                        className=" rounded mb-4 flex flex-col md:flex-row justify-center items-end md:items-center gap-2"
-                      >
-                        <input
-                          required
-                          type="text"
-                          value={faqItem.question}
-                          onChange={(e) =>
-                            handleFAQChange(e, index, "question")
-                          }
-                          placeholder="Question"
-                          className={`${inputCss}`}
-                        />
+                    <div
+                      key={index}
+                      className=" rounded mb-4 flex flex-col md:flex-row justify-center items-end md:items-center gap-2"
+                    >
+                      <input
+                        required
+                        type="text"
+                        value={faqItem.question}
+                        onChange={(e) => handleFAQChange(e, index, "question")}
+                        placeholder="Question"
+                        className={`${inputCss}`}
+                      />
 
-                        <input
-                          required
-                          type="text"
-                          value={faqItem.answer}
-                          onChange={(e) => handleFAQChange(e, index, "answer")}
-                          placeholder="Answer"
-                          className={`${inputCss}`}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeFAQ(index)}
-                          className="bg-red-500 text-white px-4 py-2 rounded"
-                        >
-                          Remove
-                        </button>
-                      </div>
+                      <input
+                        required
+                        type="text"
+                        value={faqItem.answer}
+                        onChange={(e) => handleFAQChange(e, index, "answer")}
+                        placeholder="Answer"
+                        className={`${inputCss}`}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeFAQ(index)}
+                        className="bg-red-500 text-white px-4 py-2 rounded"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -1437,7 +1433,7 @@ export default function DestinationForm() {
             type="submit"
             className="bg-blue-900 text-white  py-2 rounded px-10"
           >
-            Submit
+            Add this destination
           </button>
         </div>
       </form>

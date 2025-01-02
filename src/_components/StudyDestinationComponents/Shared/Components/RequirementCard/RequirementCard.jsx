@@ -4,18 +4,6 @@ import Requirement_Card_LargeScreen from "./Requirement_Card_LargeScreen";
 import { GiConsoleController } from "react-icons/gi";
 
 const RequirementCard = ({ country, requirement }) => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div className="m-5 md:m-0 lg:m-0 px-4 ">
