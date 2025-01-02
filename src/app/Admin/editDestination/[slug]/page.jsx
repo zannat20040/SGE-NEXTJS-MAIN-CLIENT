@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
 import { Slide, toast } from "react-toastify";
 
@@ -33,7 +33,7 @@ export default function page({ params }) {
     meta: "",
     destinationFlag: "",
   });
-
+const router = useRouter(); // Initialize router
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true); // For indicating data fetch
   const { slug } = use(params);
@@ -41,12 +41,12 @@ export default function page({ params }) {
   // fetch destination
   useEffect(() => {
     const fetchDestinationData = async () => {
+      setIsFetching(true);
       try {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/destination/getDestinationBySlug/${slug}`
         );
-        console.log("data===>", response.data);
-        setFormData(response.data.destination); // Assuming API returns the blog data as an object
+        setFormData(response.data.destination);
       } catch (error) {
         console.log(error);
         toast.error(
@@ -78,13 +78,12 @@ export default function page({ params }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    setIsLoading(true);
     try {
       await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/destination/editDestination/${slug}`,
         formData
       );
-
       // Display success toast notification
       toast.success("Your Destination updated successfully.", {
         position: "bottom-right",
@@ -98,6 +97,7 @@ export default function page({ params }) {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+      router.push("/admin/manageDestinations"); // Navigate after form submission
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
       console.log(error);
@@ -131,6 +131,8 @@ export default function page({ params }) {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -361,7 +363,11 @@ export default function page({ params }) {
     setFormData({ ...formData, faq: updatedFAQ });
   };
 
+
   const inputCss = "w-full  rounded p-2 focus:outline-none border-2  ";
+
+  if (isFetching)
+    return <p className="p-6 text-center italic text-lg">Fetching data....</p>;
 
   return (
     <div className=" p-3 md:p-6 max-w-4xl mx-auto shadow-xl shadow-gray-400 rounded-lg bg-gray-100">
@@ -809,7 +815,7 @@ export default function page({ params }) {
               }`}
             >
               {formData?.topUniversity?.map((university, index) => (
-                <div className="collapse  rounded pb-2">
+                <div className="collapse  rounded pb-2" key={index}>
                   <input type="checkbox" className="peer" />
 
                   <div className="collapse-title font-semibold  text-blue-900 bg-gray-100 !pb-3 ">
@@ -1460,13 +1466,17 @@ export default function page({ params }) {
 
         <div className="flex ">
           <button
+            disabled={isLoading}
             type="submit"
-            className="bg-blue-900 text-white  py-2 rounded px-10"
+            className={`${
+              isLoading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-900 hover:bg-gray-500"
+            } text-white  py-2 rounded px-10 duration-500`}
           >
-            Update
+            {isLoading ? "Updating...! Please wait a moment" : "Update"}
           </button>
         </div>
       </form>
     </div>
   );
 }
+

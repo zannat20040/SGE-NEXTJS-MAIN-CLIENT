@@ -113,7 +113,6 @@ export default function EditBlog({ params }) {
     return <p>Loading blog data...</p>; // Loader while fetching data
   }
 
-  console.log(formValues)
   return (
     <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">
       <h1 className="text-xl rounded-t-lg p-3 px-6 text-center font-bold mb-4 bg-blue-900 text-white">
@@ -313,7 +312,7 @@ export default function EditBlog({ params }) {
           disabled={isLoading}
           className={`text-center w-full rounded-t-none rounded-lg px-6 py-3 ${
             isLoading
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-gray-500  cursor-not-allowed"
               : "bg-blue-900 text-white hover:bg-gray-500"
           } duration-500 uppercase tracking-wider font-medium text-sm`}
         >
