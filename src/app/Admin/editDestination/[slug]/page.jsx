@@ -38,6 +38,7 @@ export default function page({ params }) {
   const [isFetching, setIsFetching] = useState(true); // For indicating data fetch
   const { slug } = use(params);
 
+  // fetch destination
   useEffect(() => {
     const fetchDestinationData = async () => {
       try {
@@ -79,8 +80,8 @@ export default function page({ params }) {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/destination/editDestination/${slug}`,
         formData
       );
 
@@ -280,6 +281,7 @@ export default function page({ params }) {
       topUniversity: [...formData.topUniversity, newUniversity],
     });
   };
+
   const removeUniversity = (index) => {
     const updatedUniversities = formData.topUniversity.filter(
       (_, i) => i !== index
