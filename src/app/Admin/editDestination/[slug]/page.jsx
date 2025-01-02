@@ -773,7 +773,6 @@ export default function page({ params }) {
         <div className="!mt-5">
           <h2 className="text-lg font-semibold">Preparation Deadline</h2>
           <textarea
-            required
             name="preparationTime"
             value={formData.preparationTime}
             onChange={handleChange}

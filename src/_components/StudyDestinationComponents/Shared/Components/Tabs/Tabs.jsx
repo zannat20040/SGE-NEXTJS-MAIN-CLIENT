@@ -153,6 +153,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-program"
         >
+         
           <Programs country={country} programDuration={programDuration} />
         </div>
         <div
@@ -169,6 +170,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-intakes"
         >
+         
           <Intakes country={country} academicIntake={academicIntake} />
         </div>
         <div
@@ -177,6 +179,7 @@ const Tabs = ({ country, details }) => {
           }`}
           id="tab-deadline"
         >
+       
           <Deadline country={country} preparationTime={preparationTime} />
         </div>
       </div>

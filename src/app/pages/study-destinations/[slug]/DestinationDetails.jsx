@@ -45,7 +45,6 @@ export default function DestinationDetails({ slug }) {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-
   return (
     <div>
       <Banner1
@@ -56,7 +55,9 @@ export default function DestinationDetails({ slug }) {
         title={details?.whyStudyTitle}
         description={details?.whyStudyDescription}
       />
-      <QuickFacts facts={details?.quickFacts} />
+      {details?.quickFacts?.length > 0 && (
+        <QuickFacts facts={details?.quickFacts} />
+      )}
       <Tabs details={details} country={details?.destinationTitle} />
       <AnimatedText
         country={details?.destinationTitle}

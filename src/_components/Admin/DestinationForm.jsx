@@ -737,7 +737,6 @@ export default function DestinationForm() {
         <div className="!mt-5">
           <h2 className="text-lg font-semibold">Preparation Deadline</h2>
           <textarea
-            required
             name="preparationTime"
             value={formData.preparationTime}
             onChange={handleChange}

@@ -29,26 +29,30 @@ const Intakes = ({ country, academicIntake }) => {
             three intakes available in the {country} are:
           </p>
           <div className="mx-auto text-xl mt-10">
-            <table className="bg-white border border-gray-300 mx-auto overflow-x-scroll">
-              <thead>
-                <tr className="bg-[#3B82F6] text-white">
-                  <th className="py-2 px-4 border-b">QUALIFICATION</th>
-                  <th className="py-2 px-4 border-b">DURATION</th>
-                </tr>
-              </thead>
-              <tbody>
-                {academicIntake.map((row, index) => (
-                  <tr key={index} className="bg-[#EFF6FF] font-medium">
-                    <td className="px-8 py-3 border-[E1E1E1] border-2">
-                      {row.qualification}
-                    </td>
-                    <td className="px-8 border-[E1E1E1] border-2 text-center">
-                      {row.duration}
-                    </td>
+            {academicIntake?.length > 0 ? (
+              <table className="bg-white border border-gray-300 mx-auto overflow-x-scroll">
+                <thead>
+                  <tr className="bg-[#3B82F6] text-white">
+                    <th className="py-2 px-4 border-b">QUALIFICATION</th>
+                    <th className="py-2 px-4 border-b">DURATION</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {academicIntake.map((row, index) => (
+                    <tr key={index} className="bg-[#EFF6FF] font-medium">
+                      <td className="px-8 py-3 border-[E1E1E1] border-2">
+                        {row.qualification}
+                      </td>
+                      <td className="px-8 border-[E1E1E1] border-2 text-center">
+                        {row.duration}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-center italic">No academic intake related data found</p>
+            )}
           </div>
         </div>
         <div className="lg:w-[45%] w-full lg:block hidden">

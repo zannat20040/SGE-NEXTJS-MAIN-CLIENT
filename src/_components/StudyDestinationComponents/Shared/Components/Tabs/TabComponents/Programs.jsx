@@ -35,32 +35,38 @@ const Programs = ({ country, programDuration }) => {
             Here are the programs that the {country} universities offer:
           </p>
           <div className="lg:text-xl md:text-xl mt-10 text-xs w-full overflow-x-scroll">
-            <table className="bg-white border border-gray-300 w-auto">
-              <thead>
-                <tr className="bg-[#3B82F6] text-white">
-                  <th className="py-2 px-4 border-b">QUALIFICATION</th>
-                  <th className="py-2 px-4 border-b">DURATION</th>
-                  <th className="py-2 px-4 border-b">
-                    GRADUATE IMMIGRATION ROUTE (GIR)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {programDuration.map((row, index) => (
-                  <tr key={index} className="bg-[#EFF6FF] font-medium">
-                    <td className="px-4 py-3 border-[E1E1E1] border-2">
-                      {row?.qualification}
-                    </td>
-                    <td className="p-4 border-[E1E1E1] border-2 text-center">
-                      {row?.duration}
-                    </td>
-                    <td className="p-4 border-[E1E1E1] border-2 text-center">
-                      {row?.gir}
-                    </td>
+            {programDuration?.length > 0 ? (
+              <table className="bg-white border border-gray-300 w-auto">
+                <thead>
+                  <tr className="bg-[#3B82F6] text-white">
+                    <th className="py-2 px-4 border-b">QUALIFICATION</th>
+                    <th className="py-2 px-4 border-b">DURATION</th>
+                    <th className="py-2 px-4 border-b">
+                      GRADUATE IMMIGRATION ROUTE (GIR)
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {programDuration.map((row, index) => (
+                    <tr key={index} className="bg-[#EFF6FF] font-medium">
+                      <td className="px-4 py-3 border-[E1E1E1] border-2">
+                        {row?.qualification}
+                      </td>
+                      <td className="p-4 border-[E1E1E1] border-2 text-center">
+                        {row?.duration}
+                      </td>
+                      <td className="p-4 border-[E1E1E1] border-2 text-center">
+                        {row?.gir}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-center italic">
+                No programs duration related information found
+              </p>
+            )}
           </div>
         </div>
         <div className="lg:w-[45%] w-full lg:block hidden">
