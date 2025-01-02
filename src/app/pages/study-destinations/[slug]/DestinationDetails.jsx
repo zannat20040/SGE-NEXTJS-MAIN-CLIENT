@@ -81,6 +81,7 @@ export default function DestinationDetails({ slug }) {
         country={details?.destinationTitle}
         examRequirement={details.examRequirement}
       />
+      
       <GuidanceBanner number={details?.expertNumber} />
       <University_Required_Docs
         country={details?.destinationTitle}

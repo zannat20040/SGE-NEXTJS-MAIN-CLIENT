@@ -8,6 +8,7 @@ export default function University_Required_Docs({
   Doc3,
   details,
 }) {
+  console.log(details);
   return (
     <div>
       <div className="min-h-screen bg-[#EFF6FF] py-10 lg:py-28">
@@ -21,9 +22,15 @@ export default function University_Required_Docs({
               {details?.documentDescription}{" "}
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
-              {details?.documentList?.map((list, index) => (
-                <li key={index}>{list}</li>
-              ))}
+              {details?.documentList?.some((list) => list !== "") ? (
+                details?.documentList?.map(
+                  (list, index) => list !== "" && <li key={index}>{list}</li>
+                )
+              ) : (
+                <p className="text-center italic font-lg">
+                  No documents list available
+                </p>
+              )}
             </ul>
           </div>
           <div>{Doc1 && <Doc1 />}</div>
@@ -46,9 +53,15 @@ export default function University_Required_Docs({
                 A typical SOP generally follows the following structure:
               </p>
               <ul className="list-disc poppins-medium text-[18px] text-[#1F1F1F] pl-6">
-                {details?.statementList?.map((list, index) => (
-                  <li key={index}>{list}</li>
-                ))}
+                {details?.statementList?.some((list) => list !== "") ? (
+                  details?.statementList?.map(
+                    (list, index) => list !== "" && <li key={index}>{list}</li>
+                  )
+                ) : (
+                  <p className="text-center italic font-lg">
+                    No statement list available
+                  </p>
+                )}
               </ul>
             </div>
           </div>
@@ -62,9 +75,15 @@ export default function University_Required_Docs({
           <div className="flex-1 px-10 lg:px-0 text-[18px] poppins-medium md:poppins-semibold text-[#1F1F1F]">
             <p className="pb-8">{details?.applyDocumentDescription}</p>
             <ul className="list-disc pl-6">
-              {details?.applyDocumentList?.map((list, index) => (
-                <li key={index}>{list}</li>
-              ))}
+              {details?.applyDocumentList?.some((list) => list !== "") ? (
+                details?.applyDocumentList?.map(
+                  (list, index) => list !== "" && <li key={index}>{list}</li>
+                )
+              ) : (
+                <p className="text-center italic font-lg">
+                  No application document list available
+                </p>
+              )}
             </ul>
           </div>
           <div>{Doc3 && <Doc3 />}</div>

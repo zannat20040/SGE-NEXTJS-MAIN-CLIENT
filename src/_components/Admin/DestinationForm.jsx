@@ -1191,7 +1191,6 @@ export default function DestinationForm() {
               Document Requirement - Description
             </h2>
             <textarea
-              required
               name="documentRequirementDescription"
               value={formData.documentDescription}
               onChange={(e) =>
@@ -1209,7 +1208,6 @@ export default function DestinationForm() {
               Document Requirement - List
             </h2>
             <textarea
-              required
               name="documentRequirementList"
               value={formData.documentList.join(", ")}
               onChange={(e) =>
@@ -1231,7 +1229,6 @@ export default function DestinationForm() {
           <div>
             <h2 className="text-lg font-semibold">Statement - Description</h2>
             <textarea
-              required
               name="statementDescription"
               value={formData.statementDescription}
               onChange={(e) =>
@@ -1247,7 +1244,6 @@ export default function DestinationForm() {
           <div>
             <h2 className="text-lg font-semibold">Statement - List</h2>
             <textarea
-              required
               name="statementList"
               value={formData.statementList.join(", ")}
               onChange={(e) =>
@@ -1271,7 +1267,6 @@ export default function DestinationForm() {
               Apply Document - Description
             </h2>
             <textarea
-              required
               name="applyDocumentDescription"
               value={formData.applyDocumentDescription}
               onChange={(e) =>
@@ -1287,7 +1282,6 @@ export default function DestinationForm() {
           <div>
             <h2 className="text-lg font-semibold">Apply Document - List</h2>
             <textarea
-              required
               name="applyDocumentList"
               value={formData.applyDocumentList.join(", ")}
               onChange={(e) =>
