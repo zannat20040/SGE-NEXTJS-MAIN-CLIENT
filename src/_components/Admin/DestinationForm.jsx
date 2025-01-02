@@ -43,7 +43,6 @@ export default function DestinationForm() {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     try {
-      // Make sure to pass 'data' in the request body
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
         formData
