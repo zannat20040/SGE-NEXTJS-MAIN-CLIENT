@@ -69,11 +69,11 @@ export default function page() {
     });
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading)
+    return (
+      <p className="p-6 text-center italic text-lg">Loading destinations....</p>
+    );
 
-  console.log(destinations);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
       {destinations &&
@@ -81,13 +81,13 @@ export default function page() {
         destinations?.map((destination) => (
           <div
             key={destination._id}
-            className="flex justify-between !max-h-fit rounded-md overflow-hidden shadow-lg bg-white"
+            className="flex justify-between items-center  rounded-md overflow-hidden shadow-lg bg-white"
           >
-            <div className="w-2/5 h-[100px]">
+            <div className="w-2/5 h-[150px]">
               <Image
                 width={100}
                 height={100}
-                className=" w-full "
+                className=" w-full"
                 src={destination?.destinationFlag}
                 alt="Description of the image"
               />
@@ -103,9 +103,7 @@ export default function page() {
               </div>
               <div className=" flex justify-end gap-2 mt-4">
                 <Link href={`/admin/editDestination/${destination?.url}`}>
-                  <button
-                    className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
-                  >
+                  <button className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300">
                     Edit
                   </button>
                 </Link>

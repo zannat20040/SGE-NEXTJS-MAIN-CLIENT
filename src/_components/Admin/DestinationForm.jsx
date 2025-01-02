@@ -1,10 +1,13 @@
 "use client";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function DestinationForm() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     destinationTitle: "",
     destinationDescription: "",
@@ -42,6 +45,7 @@ export default function DestinationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
+    setIsLoading(true);
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/destination/createDestination`,
@@ -61,6 +65,7 @@ export default function DestinationForm() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+      router.push("/admin/manageDestinations"); // Navigate after form submission
     } catch (error) {
       let errMessage = "An unknown error occurred"; // Default message
       console.log(error);
@@ -94,6 +99,8 @@ export default function DestinationForm() {
         transition: Slide,
         style: { zIndex: 999999999 },
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -1422,10 +1429,17 @@ export default function DestinationForm() {
 
         <div className="flex ">
           <button
+            disabled={isLoading}
             type="submit"
-            className="bg-blue-900 text-white  py-2 rounded px-10"
+            className={`${
+              isLoading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-blue-900 hover:bg-gray-500"
+            } text-white  py-2 rounded px-10 duration-500`}
           >
-            Add this destination
+            {isLoading
+              ? "Adding...! Please wait a moment"
+              : " Add this destination"}
           </button>
         </div>
       </form>
