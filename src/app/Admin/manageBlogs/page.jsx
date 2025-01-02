@@ -28,9 +28,7 @@ export default function BlogsPage() {
     fetchBlogs();
   }, []);
 
-  const handleEdit = (id) => {
-    console.log("Edit blog with ID:", id);
-  };
+  
 
   const handleDelete = (id) => {
     swal({

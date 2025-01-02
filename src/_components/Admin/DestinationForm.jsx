@@ -39,6 +39,7 @@ export default function DestinationForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);

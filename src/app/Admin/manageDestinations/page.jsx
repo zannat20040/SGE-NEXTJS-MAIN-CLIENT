@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 
@@ -101,12 +102,14 @@ export default function page() {
                 </p>
               </div>
               <div className=" flex justify-end gap-2 mt-4">
-                <button
-                  onClick={() => handleEdit(destination?._id)}
-                  className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
-                >
-                  Edit
-                </button>
+                <Link href={`/admin/editDestination/${destination?.destinationName}`}>
+                  <button
+                    className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
+                  >
+                    Edit
+                  </button>
+                </Link>
+
                 <button
                   onClick={() => handleDelete(destination?._id)}
                   className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700 duration-300"
