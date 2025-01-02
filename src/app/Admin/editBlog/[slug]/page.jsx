@@ -28,7 +28,9 @@ export default function EditBlog({ params }) {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/blog/getBlogBySlug/${blogSlug}`);
+        const response = await axios.get(
+          `${apiUrl}/blog/getBlogBySlug/${blogSlug}`
+        );
         console.log(response.data);
         setFormValues(response.data.blog); // Assuming API returns the blog data as an object
       } catch (error) {
@@ -92,7 +94,7 @@ export default function EditBlog({ params }) {
         error.message ||
         "An unknown error occurred";
 
-        console.log(error)
+      console.log(error);
       toast.error(errMessage, {
         position: "bottom-right",
         autoClose: 5000,
@@ -109,9 +111,8 @@ export default function EditBlog({ params }) {
     }
   };
 
-  if (isFetching) {
-    return <p>Loading blog data...</p>; // Loader while fetching data
-  }
+  if (isFetching)
+    return <p className="p-6 text-center italic text-lg">Fetching data....</p>;
 
   return (
     <div className="max-w-4xl mx-auto bg-gray-100 shadow-lg rounded-lg">

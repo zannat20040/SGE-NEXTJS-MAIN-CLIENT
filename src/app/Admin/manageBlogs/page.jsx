@@ -19,7 +19,6 @@ export default function BlogsPage() {
         setBlogs(response.data.blogs);
       } catch (error) {
         console.error("Error fetching blogs:", error);
-        console.log(error);
       } finally {
         setLoading(false);
       }
@@ -27,8 +26,6 @@ export default function BlogsPage() {
 
     fetchBlogs();
   }, []);
-
-  
 
   const handleDelete = (id) => {
     swal({
@@ -68,11 +65,8 @@ export default function BlogsPage() {
     });
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log(blogs)
+  if (loading)
+    return <p className="p-6 text-center italic text-lg">Loading blogs....</p>;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
@@ -81,13 +75,13 @@ export default function BlogsPage() {
         blogs?.map((blog) => (
           <div
             key={blog._id}
-            className="flex justify-between   rounded-md overflow-hidden shadow-lg bg-white"
+            className="flex justify-between  items-center rounded-md overflow-hidden shadow-lg bg-white"
           >
-            <div className="w-2/5 h-[100px]">
+            <div className="w-2/5 max-h-min">
               <Image
                 width={100}
                 height={100}
-                className="w-full image-full"
+                className="w-full h-full image-full"
                 src={blog?.img}
                 alt="Description of the image"
               />
@@ -102,9 +96,7 @@ export default function BlogsPage() {
               </div>
               <div className=" flex justify-end gap-2 mt-4">
                 <Link href={`/admin/editBlog/${blog?.url}`}>
-                  <button
-                    className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
-                  >
+                  <button className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300">
                     Edit
                   </button>
                 </Link>
