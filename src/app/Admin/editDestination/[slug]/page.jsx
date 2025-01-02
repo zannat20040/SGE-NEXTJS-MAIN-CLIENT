@@ -1,8 +1,10 @@
 "use client";
+import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
+import { Slide, toast } from "react-toastify";
 
-export default function page() {
+export default function page({ params }) {
   const [formData, setFormData] = useState({
     destinationTitle: "",
     destinationDescription: "",
@@ -34,18 +36,18 @@ export default function page() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true); // For indicating data fetch
-  const destinationSlug = params?.slug;
-  const router = useRouter();
+  const { slug } = use(params);
 
-  
   useEffect(() => {
     const fetchDestinationData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/destination/getDestinationBySlug/${destination}`
+          `${process.env.NEXT_PUBLIC_API_URL}/destination/getDestinationBySlug/${slug}`
         );
+        console.log("data===>", response.data);
         setFormData(response.data.destination); // Assuming API returns the blog data as an object
       } catch (error) {
+        console.log(error);
         toast.error(
           error.response?.data?.message || "Failed to load blog data",
           {
@@ -66,11 +68,10 @@ export default function page() {
     };
 
     fetchDestinationData();
-  }, [destinationSlug]);
+  }, [slug]);
 
-
-console.log('formData==>',formData)
-console.log('destination slug==>',destinationSlug)
+  console.log("formData==>", formData);
+  console.log("destination slug==>", slug);
 
   return <div>page</div>;
 }

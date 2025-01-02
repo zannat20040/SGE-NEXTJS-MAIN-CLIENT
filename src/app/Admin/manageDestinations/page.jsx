@@ -102,7 +102,7 @@ export default function page() {
                 </p>
               </div>
               <div className=" flex justify-end gap-2 mt-4">
-                <Link href={`/admin/editDestination/${destination?.destinationName}`}>
+                <Link href={`/admin/editDestination/${destination?.url}`}>
                   <button
                     className="bg-blue-900 text-white py-1 px-3 rounded hover:bg-blue-700 duration-300"
                   >
