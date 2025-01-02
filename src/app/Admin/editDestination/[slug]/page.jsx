@@ -1374,7 +1374,6 @@ export default function page({ params }) {
                       className=" rounded mb-4 flex flex-col md:flex-row justify-center items-end md:items-center gap-2"
                     >
                       <input
-                        required
                         type="text"
                         value={faqItem.question}
                         onChange={(e) => handleFAQChange(e, index, "question")}
@@ -1383,7 +1382,6 @@ export default function page({ params }) {
                       />
 
                       <input
-                        required
                         type="text"
                         value={faqItem.answer}
                         onChange={(e) => handleFAQChange(e, index, "answer")}
